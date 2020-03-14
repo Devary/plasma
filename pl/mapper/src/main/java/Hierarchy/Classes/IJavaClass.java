@@ -3,6 +3,8 @@ package Hierarchy.Classes;
 import files.AbstractFile;
 import files.IAbstractFile;
 
+import java.util.ArrayList;
+
 public interface IJavaClass extends IAbstractFile {
     @Override
     String getName();
@@ -14,7 +16,7 @@ public interface IJavaClass extends IAbstractFile {
     AbstractFile refresh();
 
     @Override
-    AbstractFile[] getChildren();
+    ArrayList<AbstractFile> getChildren();
 
     @Override
     AbstractFile getParent();

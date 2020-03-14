@@ -1,10 +1,5 @@
 package files;
 
-import Hierarchy.persistence.Persistent;
-import Hierarchy.persistence.types.Field;
-import Hierarchy.persistence.types.Links;
-import Hierarchy.persistence.types.SolifeQuery;
-
 import java.util.ArrayList;
 
 public class AbstractFile implements IAbstractFile {
@@ -14,7 +9,7 @@ public class AbstractFile implements IAbstractFile {
     private boolean isDirectory;
     private boolean isValid;
     private AbstractFile parent;
-    private AbstractFile[] children;
+    private ArrayList<AbstractFile> children;
     private String name;
     private String extension;
 
@@ -64,7 +59,7 @@ public class AbstractFile implements IAbstractFile {
         return this.parent;
     }
 
-    public AbstractFile[] getChildren() {
+    public ArrayList<AbstractFile> getChildren() {
         return this.children;
     }
 
@@ -88,7 +83,7 @@ public class AbstractFile implements IAbstractFile {
         private boolean isDirectory;
         private boolean isValid;
         private AbstractFile parent;
-        private AbstractFile[] children;
+        private ArrayList<AbstractFile> children;
         private String name;
         private String extension;
 
@@ -124,7 +119,7 @@ public class AbstractFile implements IAbstractFile {
             return this;
         }
 
-        public Builder children(AbstractFile[] children) {
+        public Builder children(ArrayList<AbstractFile> children) {
             this.children = children;
             return this;
         }

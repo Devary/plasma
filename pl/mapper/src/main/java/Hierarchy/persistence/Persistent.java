@@ -54,8 +54,8 @@ public class Persistent implements IPersistent {
     }
 
     
-    public AbstractFile[] getChildren() {
-        return new AbstractFile[0];
+    public ArrayList<AbstractFile> getChildren() {
+        return new ArrayList<AbstractFile>();
     }
 
     
@@ -147,6 +147,21 @@ public class Persistent implements IPersistent {
         this.queries = queries;
     }
 
+    @Override
+    public String toString() {
+        return "Persistent{" +
+                "className='" + className + '\'' +
+                ", name='" + name + '\'' +
+                ", mappingType='" + mappingType + '\'' +
+                ", isPersistent=" + isPersistent +
+                ", tableName='" + tableName + '\'' +
+                ", shortTableName='" + shortTableName + '\'' +
+                ", fields=" + fields +
+                ", links=" + links +
+                ", queries=" + queries +
+                '}';
+    }
+
 
     public static final class Builder {
         private String className;
@@ -212,18 +227,4 @@ public class Persistent implements IPersistent {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Persistent{" +
-                "className='" + className + '\'' +
-                ", name='" + name + '\'' +
-                ", mappingType='" + mappingType + '\'' +
-                ", isPersistent=" + isPersistent +
-                ", tableName='" + tableName + '\'' +
-                ", shortTableName='" + shortTableName + '\'' +
-                ", fields=" + fields +
-                ", links=" + links +
-                ", queries=" + queries +
-                '}';
-    }
 }

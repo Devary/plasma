@@ -3,6 +3,8 @@ package Hierarchy.persistence;
 import files.AbstractFile;
 import files.IAbstractFile;
 
+import java.util.ArrayList;
+
 public interface IPersistent extends IAbstractFile {
 
     @Override
@@ -15,7 +17,7 @@ public interface IPersistent extends IAbstractFile {
     AbstractFile refresh();
 
     @Override
-    AbstractFile[] getChildren();
+    ArrayList<AbstractFile> getChildren();
 
     @Override
     AbstractFile getParent();
