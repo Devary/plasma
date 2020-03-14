@@ -9,17 +9,17 @@ import java.util.ArrayList;
 
 public class Persistent implements IPersistent {
 
-    public String className;
-    public String name;
-    public String mappingType;
-    public boolean isPersistent;
-    public String tableName;
-    public String shortTableName;
-    public ArrayList<Field> fields;
-    public ArrayList<Links> links;
-    public ArrayList<SolifeQuery> queries;
+    private String className;
+    private String name;
+    private String mappingType;
+    private boolean isPersistent;
+    private String tableName;
+    private String shortTableName;
+    private ArrayList<Field> fields;
+    private ArrayList<Links> links;
+    private ArrayList<SolifeQuery> queries;
 
-    public Persistent(Builder builder) {
+    private Persistent(Builder builder) {
         this.className = builder.className;
         this.name = builder.name;
         this.mappingType = builder.mappingType;
