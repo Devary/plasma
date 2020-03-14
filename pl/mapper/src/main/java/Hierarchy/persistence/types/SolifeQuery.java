@@ -1,4 +1,4 @@
-package persistence.types;
+package Hierarchy.persistence.types;
 
 public class SolifeQuery  {
     private String className;
