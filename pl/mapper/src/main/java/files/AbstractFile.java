@@ -76,6 +76,18 @@ public class AbstractFile implements IAbstractFile {
         return extension;
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
 
     public static final class Builder {
         private String url;

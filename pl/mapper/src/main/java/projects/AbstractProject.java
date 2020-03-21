@@ -3,6 +3,7 @@ package projects;
 import files.AbstractFile;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 
 public class AbstractProject implements IProject {
 
@@ -41,6 +42,10 @@ public class AbstractProject implements IProject {
         this.basePath = basePath;
     }
 
+    @Override
+    public ArrayList<ProjectFile> getProjectFiles() {
+        return null;
+    }
 
 
 }

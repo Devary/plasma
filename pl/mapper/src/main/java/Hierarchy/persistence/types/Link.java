@@ -1,6 +1,6 @@
 package Hierarchy.persistence.types;
 
-public class Links extends Field {
+public class Link extends Field {
 
     private Class collectionType ;
     private Class elementType;

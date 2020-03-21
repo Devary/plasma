@@ -5,6 +5,7 @@ public class Field implements IField {
     private String name;
     private String dbtype;
     private String dbname;
+    private String dbsize;
     private String defaultValue;
     private boolean allowsNull= false;
 
@@ -47,5 +48,13 @@ public class Field implements IField {
 
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
+    }
+
+    public String getDbsize() {
+        return dbsize;
+    }
+
+    public void setDbsize(String dbsize) {
+        this.dbsize = dbsize;
     }
 }

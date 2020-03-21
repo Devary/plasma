@@ -2,11 +2,15 @@ Hierarchy\persistence\types\IField.class
 IServiceImpl.class
 Hierarchy\persistence\types\Links.class
 projects\IProject.class
+Exceptions\FileCreationException.class
+Hierarchy\persistence\types\SolifeQuery$SolifeQueryBuilder.class
+projects\ProjectImpl.class
 Hierarchy\persistence\types\SolifeQuery.class
 files\AbstractFile$1.class
 Run.class
 files\AbstractFile$Builder.class
 AbstractMapper.class
+Exceptions\AbstractPlasmaException.class
 Hierarchy\persistence\IPersistent.class
 IService.class
 Hierarchy\persistence\Persistent.class
@@ -19,6 +23,7 @@ files\AbstractFile.class
 Hierarchy\persistence\types\Field.class
 Hierarchy\persistence\Persistent$Builder.class
 files\IAbstractFile.class
+Exceptions\ErrorCodes.class
 Hierarchy\persistence\Persistent$1.class
 projects\Solife.class
 projects\AbstractProject.class

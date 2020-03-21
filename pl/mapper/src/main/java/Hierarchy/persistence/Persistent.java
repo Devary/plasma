@@ -1,8 +1,9 @@
 package Hierarchy.persistence;
 
+import Hierarchy.persistence.types.Code;
 import files.AbstractFile;
 import Hierarchy.persistence.types.Field;
-import Hierarchy.persistence.types.Links;
+import Hierarchy.persistence.types.Link;
 import Hierarchy.persistence.types.SolifeQuery;
 
 import java.util.ArrayList;
@@ -16,8 +17,10 @@ public class Persistent implements IPersistent {
     private String tableName;
     private String shortTableName;
     private ArrayList<Field> fields;
-    private ArrayList<Links> links;
+    private ArrayList<Link> links;
     private ArrayList<SolifeQuery> queries;
+    private ArrayList<Code> codes;
+
 
     private Persistent(Builder builder) {
         this.className = builder.className;
@@ -29,6 +32,7 @@ public class Persistent implements IPersistent {
         this.fields = builder.fields;
         this.links = builder.links;
         this.queries = builder.queries;
+        this.codes = builder.codes;
     }
 
     public static Builder newPersistent() {
@@ -131,11 +135,11 @@ public class Persistent implements IPersistent {
         this.fields = fields;
     }
 
-    public ArrayList<Links> getLinks() {
+    public ArrayList<Link> getLinks() {
         return links;
     }
 
-    public void setLinks(ArrayList<Links> links) {
+    public void setLinks(ArrayList<Link> links) {
         this.links = links;
     }
 
@@ -145,6 +149,13 @@ public class Persistent implements IPersistent {
 
     public void setQueries(ArrayList<SolifeQuery> queries) {
         this.queries = queries;
+    }
+    public ArrayList<Code> getCodes() {
+        return codes;
+    }
+
+    public void setCodes(ArrayList<Code> codes) {
+        this.codes = codes;
     }
 
     @Override
@@ -171,8 +182,9 @@ public class Persistent implements IPersistent {
         private String tableName;
         private String shortTableName;
         private ArrayList<Field> fields;
-        private ArrayList<Links> links;
+        private ArrayList<Link> links;
         private ArrayList<SolifeQuery> queries;
+        private ArrayList<Code> codes;
 
         private Builder() {
         }
@@ -216,13 +228,18 @@ public class Persistent implements IPersistent {
             return this;
         }
 
-        public Builder links(ArrayList<Links> links) {
+        public Builder links(ArrayList<Link> links) {
             this.links = links;
             return this;
         }
 
         public Builder queries(ArrayList<SolifeQuery> queries) {
             this.queries = queries;
+            return this;
+        }
+
+        public Builder codes(ArrayList<Code> codeList) {
+            this.codes = codeList;
             return this;
         }
     }
