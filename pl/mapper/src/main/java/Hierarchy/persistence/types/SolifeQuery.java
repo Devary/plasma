@@ -4,7 +4,7 @@ public class SolifeQuery  {
     private String className;
     private boolean identity;
     private String name;
-    private Class resultType;
+    private String resultType;
 
     private SolifeQuery(Builder builder) {
         this.className = builder.className;
@@ -41,11 +41,11 @@ public class SolifeQuery  {
         this.name = name;
     }
 
-    public Class getResultType() {
+    public String getResultType() {
         return resultType;
     }
 
-    private void setResultType(Class resultType) {
+    private void setResultType(String resultType) {
         this.resultType = resultType;
     }
 
@@ -64,7 +64,7 @@ public class SolifeQuery  {
         private String className;
         private boolean identity;
         private String name;
-        private Class resultType;
+        private String resultType;
 
         private Builder() {
         }
@@ -88,7 +88,7 @@ public class SolifeQuery  {
             return this;
         }
 
-        public Builder resultType(Class resultType) {
+        public Builder resultType(String resultType) {
             this.resultType = resultType;
             return this;
         }

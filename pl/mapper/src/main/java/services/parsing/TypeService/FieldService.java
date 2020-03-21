@@ -47,20 +47,13 @@ public class FieldService extends ParsingService{
         return createNodeAndCheckForExistence("class");
     }
 
-    public Class<?> getResultType() {
-        try {
-
-            if (createNodeAndCheckForExistence("resultType")!=null)
-            {
-                Class cls = this.loadClassFromTargetProject(this.file,this.node
-                        .getAttributes()
-                        .getNamedItem("resultType")
-                        .getNodeValue());
-                return Class.forName(cls.getName());
-            }
-            return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    public String getResultType() {
+        if (createNodeAndCheckForExistence("resultType")!=null)
+        {
+            return this.node
+                    .getAttributes()
+                    .getNamedItem("resultType")
+                    .getNodeValue();
         }
         return null;
     }

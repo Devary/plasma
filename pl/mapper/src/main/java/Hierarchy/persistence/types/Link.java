@@ -2,8 +2,8 @@ package Hierarchy.persistence.types;
 
 public class Link extends Field {
 
-    private Class collectionType ;
-    private Class elementType;
+    private String collectionType ;
+    private String elementType;
     private String referenceIntegrityCheck;
     private String inverseName;
 
@@ -13,19 +13,19 @@ public class Link extends Field {
         return super.getName();
     }
 
-    public Class getCollectionType() {
+    public String getCollectionType() {
         return collectionType;
     }
 
-    public void setCollectionType(Class collectionType) {
+    public void setCollectionType(String collectionType) {
         this.collectionType = collectionType;
     }
 
-    public Class getElementType() {
+    public String getElementType() {
         return elementType;
     }
 
-    public void setElementType(Class elementType) {
+    public void setElementType(String elementType) {
         this.elementType = elementType;
     }
 

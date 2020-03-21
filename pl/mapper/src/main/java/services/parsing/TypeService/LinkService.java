@@ -19,35 +19,25 @@ public class LinkService extends ParsingService{
 
     }
 
-    public Class getCollectionType() {
+    public String getCollectionType() {
         if (!checkForObjects)
-        try {
             if (createNodeAndCheckForExistence("collectionType")!=null)
             {
-                Class cls = this.loadClassFromTargetProject(this.projectFile,this.node
+                return this.node
                         .getAttributes()
                         .getNamedItem("collectionType")
-                        .getNodeValue());
-                return Class.forName(cls.getName());
+                        .getNodeValue();
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         return null;
     }
 
-    public Class getElementType() {
+    public String getElementType() {
         if (!checkForObjects)
-        try {
             if (createNodeAndCheckForExistence("elementType")!=null)
-            return Class.forName(this.node
-                    .getAttributes()
-                    .getNamedItem("elementType")
-                    .getNodeValue());
-            return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+                return this.node
+                        .getAttributes()
+                        .getNamedItem("elementType")
+                        .getNodeValue();
         return null;
     }
 
