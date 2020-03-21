@@ -77,6 +77,28 @@ public class Run {
 
         System.out.println(p.getClassName());
         System.out.println(p.getFields().size());
+        System.out.println(p.getLinks().size());
+        System.out.println(p.getQueries().size());
+        System.out.println(p.getCodes().size());
+        ////creating persistent
+        createProjectPersistentFiles(projectPersistenceFiles,ps);
+
+    }
+
+    public static ProjectImpl createProject()
+    {
+        ProjectImpl project = new ProjectImpl();
+        project.setBasePath("C:/SolifePlasma/is");
+        project.setMainDirectory((AbstractFile)createAbstractFile());
+        project.setName("SOLIFE");
+        return project;
+    }
+    public static IAbstractFile createAbstractFile()
+    {
+        return AbstractFile.newAbstractFile().path("C:/SolifePlasma").name("is").build();
+    }
+    public static void createProjectPersistentFiles(ArrayList<ProjectFile> projectPersistenceFiles,ParsingService ps)
+    {
         System.out.println("Processing Object creation");
         try {
             Thread.sleep(10000);
@@ -95,19 +117,6 @@ public class Run {
         }
         System.out.println("FINISHED :: "+persistents.size()+" Objects created !");
 
-    }
-
-    public static ProjectImpl createProject()
-    {
-        ProjectImpl project = new ProjectImpl();
-        project.setBasePath("C:/SolifePlasma/is");
-        project.setMainDirectory((AbstractFile)createAbstractFile());
-        project.setName("SOLIFE");
-        return project;
-    }
-    public static IAbstractFile createAbstractFile()
-    {
-        return AbstractFile.newAbstractFile().path("C:/SolifePlasma").name("is").build();
     }
 
 }

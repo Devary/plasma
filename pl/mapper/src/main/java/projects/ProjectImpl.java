@@ -47,6 +47,7 @@ public class ProjectImpl extends AbstractProject implements IProject {
                 pf.setExtension("persistence");
                 pf.setName(f.getName());
                 pf.setPath(f.getPath());
+                pf.setProject(this);
                 projectPersistenceFiles.add(pf);
             });
 

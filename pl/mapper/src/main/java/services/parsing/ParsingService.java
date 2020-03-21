@@ -17,13 +17,28 @@ import services.parsing.TypeService.LinkService;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
 import java.util.ArrayList;
 
 public class ParsingService {
 
     private static Document xmlDocument;
+
+    public ProjectFile getFile() {
+        return file;
+    }
+
+    public void setFile(ProjectFile file) {
+        this.file = file;
+    }
+
     public ProjectFile file;
 
     static {
@@ -37,6 +52,9 @@ public class ParsingService {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ParsingService() {
     }
 
     public boolean parse() throws ParserConfigurationException, IOException, SAXException {
@@ -161,6 +179,46 @@ public class ParsingService {
     private String getMappingType()
     {
         return createNodeAndCheckForExistence("class","mapping");
+    }
+
+    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)
+    {
+        String filePathAndName = this.file.getProject().getBasePath()+"/created_classes/"+file.getName();
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(filePathAndName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try{
+
+            File file = new File(projectFile.getProject().getBasePath());
+
+            URL url = file.toURI().toURL();
+            URL[] urls = new URL[]{url};
+
+            ClassLoader cl = new URLClassLoader(urls);
+            Class cls = cl.loadClass(classPath);
+            File newFile = new File(filePathAndName);
+            ProtectionDomain pDomain = cls.getProtectionDomain();
+            CodeSource cSource = pDomain.getCodeSource();
+            if (newFile.createNewFile())
+                if (writer != null) {
+                    writer.write(cSource.toString());
+                    writer.close();
+                }
+            return newFile.getClass();
+
+            //ProtectionDomain pDomain = cls.getProtectionDomain();
+            //CodeSource cSource = pDomain.getCodeSource();
+            //URL urlfrom = cSource.getLocation();
+            //System.out.println(urlfrom.getFile());
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -1,12 +1,16 @@
 package services.parsing.TypeService;
 
 import org.w3c.dom.Node;
+import projects.ProjectFile;
 import services.parsing.ParsingService;
 
-public class FieldService {
+public class FieldService extends ParsingService{
     Node node= null;
+    ProjectFile projectFile;
     public FieldService(Node node) {
-    this.node = node;
+        this.node = node;
+        this.projectFile= getFile();
+
     }
     /// TODO : optimization node
     //                .getAttributes() must be replaced
@@ -43,13 +47,17 @@ public class FieldService {
         return createNodeAndCheckForExistence("class");
     }
 
-    public Class getResultType() {
+    public Class<?> getResultType() {
         try {
+
             if (createNodeAndCheckForExistence("resultType")!=null)
-            return Class.forName(this.node
-                    .getAttributes()
-                    .getNamedItem("resultType")
-                    .getNodeValue());
+            {
+                Class cls = this.loadClassFromTargetProject(this.file,this.node
+                        .getAttributes()
+                        .getNamedItem("resultType")
+                        .getNodeValue());
+                return Class.forName(cls.getName());
+            }
             return null;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -71,5 +79,10 @@ public class FieldService {
     }
     private boolean checkIfNodeExists(Node node) {
         return null != node;
+    }
+
+    @Override
+    public Class loadClassFromTargetProject(ProjectFile projectFile, String classPath) {
+        return super.loadClassFromTargetProject(projectFile, classPath);
     }
 }

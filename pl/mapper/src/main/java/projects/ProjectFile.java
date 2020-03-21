@@ -6,6 +6,20 @@ import org.xml.sax.InputSource;
 import java.io.*;
 
 public class ProjectFile extends AbstractFile {
+
+
+
+
+    ProjectImpl project = null;
+
+    public void setProject(ProjectImpl project) {
+        this.project = project;
+    }
+
+    public ProjectImpl getProject() {
+        return project;
+    }
+
     public String getFileContent()
     {
         if (getPath() != null && getName()!= null && getExtension() !=null)
