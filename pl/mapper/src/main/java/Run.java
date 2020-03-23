@@ -96,7 +96,7 @@ public class Run {
     }
     public static IAbstractFile createAbstractFile()
     {
-        return AbstractFile.newAbstractFile().path("C:/SolifePlasma").name("is").build();
+        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is").build();
     }
     public static void createProjectPersistentFiles(ArrayList<ProjectFile> projectPersistenceFiles,ParsingService ps)
     {

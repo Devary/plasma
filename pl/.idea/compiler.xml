@@ -12,6 +12,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.vermeg.plasma" target="1.8" />
+      <module name="com.vermeg.plasma.database" target="1.8" />
+      <module name="com.vermeg.plasma.mapper" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

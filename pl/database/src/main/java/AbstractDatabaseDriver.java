@@ -5,6 +5,7 @@ public class AbstractDatabaseDriver {
     private static String USER = "plasma";
     private static String PASSWORD = "plasma";
     private static String SID = "orcl";
+    private static String TEST = "tst";
 
 
     public static void connect()
