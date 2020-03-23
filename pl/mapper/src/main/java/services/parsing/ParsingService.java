@@ -12,6 +12,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import projects.ProjectFile;
 import services.parsing.TypeService.FieldService;
+import services.parsing.TypeService.JsonParsingService;
 import services.parsing.TypeService.LinkService;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -30,7 +31,8 @@ import java.util.ArrayList;
 public class ParsingService {
 
     private static Document xmlDocument;
-
+    private JsonParsingService jsonParsingService;
+    private Persistent persistent = Persistent.newPersistent().build();
     public ProjectFile getFile() {
         return file;
     }
@@ -47,6 +49,7 @@ public class ParsingService {
 
     public ParsingService(ProjectFile file) {
         this.file=file;
+        jsonParsingService = new JsonParsingService();
         try {
             parse();
         } catch (ParserConfigurationException | SAXException | IOException e) {
@@ -70,9 +73,9 @@ public class ParsingService {
 
     public Persistent buildPersistentFromXML()
     {
-        return Persistent.newPersistent()
+        persistent = Persistent.newPersistent()
                 .className(getClassName())
-                .tableName(getTableName())
+                .tableName(getTableName(getClassName()))
                 .isPersistent(Boolean.parseBoolean(getIsPersistent()))
                 .mappingType(getMappingType())
                 .shortTableName(getShortTableName())
@@ -81,6 +84,7 @@ public class ParsingService {
                 .queries(getQueryList())
                 .links(getLinkList())
                 .build();
+        return persistent;
     }
 
     private ArrayList<Link> getLinkList() {
@@ -94,6 +98,7 @@ public class ParsingService {
             link.setInverseName(ls.getInverseName());
             link.setReferenceIntegrityCheck(ls.getIfReferenceIntegrityCheck());
             link.setAllowsNull(ls.getAllowsNull());
+            link.setParent(persistent);
             links.add(link);
         }
         return links;
@@ -105,7 +110,7 @@ public class ParsingService {
         for (int i = 0; i < nl.getLength(); i++) {
             FieldService fs =new FieldService(nl.item(i));
             queries.add(SolifeQuery.newSolifeQuery()
-                    .name(fs.getFieldName())
+                    .name(fs.getName())
                     .className(fs.getQueryClassName())
                     .identity(fs.getIdentity())
                     .resultType(fs.getResultType())
@@ -122,7 +127,7 @@ public class ParsingService {
             FieldService fs =new FieldService(nl.item(i));
             f.setName(fs.getName());
             f.setAllowsNull(fs.getIfAllowsNull());
-            f.setDbname(fs.getName());
+            f.setDbname(getTableName(fs.getName()));
             f.setDbtype(fs.getDbType());
             f.setDbsize(fs.getDbSize());
             f.setDefaultValue(fs.getDefaultValue());
@@ -168,8 +173,38 @@ public class ParsingService {
         return null;
     }
 
-    private String getTableName() {
-        return getClassName().replaceAll("([A-Z])", "_$1").toLowerCase();
+    private String getTableName(String name) {
+        if (moreThanOneUpperCaseLetter(name))
+        {
+            String newName = name.replaceAll("([A-Z])", "_$1").toLowerCase();
+            correctDBname(newName);
+            return newName;
+        }
+        else
+        {
+            String newName = name.toLowerCase();
+            correctDBname(newName);
+            return newName;
+        }
+    }
+    private static boolean moreThanOneUpperCaseLetter(String s) {
+        return s.codePoints().filter(c-> c>='A' && c<='Z').count()>1;
+    }
+    private static void correctDBname(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (i!=0 && i+1<s.length())
+            {
+                //TODO : external_i_d
+                char prevch = s.charAt(i-1);
+                int prevasciivalue = (int)prevch;
+                char nextch = s.charAt(i+1);
+                int nextasciivalue = (int)nextch;
+                if (prevasciivalue==95 && nextasciivalue ==95)
+                {
+                    s.substring(0,i+1);
+                }
+            }
+        }
     }
 
     private String getClassName()

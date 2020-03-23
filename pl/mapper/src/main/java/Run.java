@@ -82,6 +82,7 @@ public class Run {
         System.out.println(p.getCodes().size());
         ////creating persistent
         createProjectPersistentFiles(projectPersistenceFiles,ps);
+        System.out.println(p.getCodes().size());
 
     }
 

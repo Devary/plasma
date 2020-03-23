@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="database" />
-        <module name="mapper" />
+        <module name="com.vermeg.plasma.database" />
+        <module name="com.vermeg.plasma.mapper" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.vermeg.plasma" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

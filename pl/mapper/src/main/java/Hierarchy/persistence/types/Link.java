@@ -1,7 +1,9 @@
 package Hierarchy.persistence.types;
 
-public class Link extends Field {
+import Hierarchy.persistence.Persistent;
 
+public class Link extends Field {
+    private Persistent parent;
     private String collectionType ;
     private String elementType;
     private String referenceIntegrityCheck;
@@ -43,5 +45,13 @@ public class Link extends Field {
 
     public void setInverseName(String inverseName) {
         this.inverseName = inverseName;
+    }
+
+    public Persistent getParent() {
+        return parent;
+    }
+
+    public void setParent(Persistent parent) {
+        this.parent = parent;
     }
 }
