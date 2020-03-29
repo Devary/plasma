@@ -39,7 +39,6 @@ public class AbstractFile implements IAbstractFile {
         this.path = path;
     }
 
-    ///TODO : create constructor without params
     public AbstractFile() {
     }
 
