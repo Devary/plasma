@@ -84,6 +84,7 @@ public class ParsingService {
                 .queries(getQueryList())
                 .links(getLinkList())
                 .build();
+
         return persistent;
     }
 
@@ -91,13 +92,13 @@ public class ParsingService {
         NodeList nl = ParsingService.getElement("link",xmlDocument);
         ArrayList<Link> links = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
-            LinkService ls =new LinkService(nl.item(i), xmlDocument);
+            LinkService ls =new LinkService(nl.item(i));
             Link link = new Link();
             link.setCollectionType(ls.getCollectionType());
             link.setElementType(ls.getElementType());
             link.setInverseName(ls.getInverseName());
             link.setReferenceIntegrityCheck(ls.getIfReferenceIntegrityCheck());
-            link.setAllowsNull(ls.getAllowsNull());
+            link.setAllowNulls(ls.getAllowsNull());
             link.setParent(persistent);
             links.add(link);
         }
@@ -126,7 +127,7 @@ public class ParsingService {
             Field f = new Field();
             FieldService fs =new FieldService(nl.item(i));
             f.setName(fs.getName());
-            f.setAllowsNull(fs.getIfAllowsNull());
+            f.setAllowNulls(fs.getIfAllowsNull());
             f.setDbname(getTableName(fs.getName()));
             f.setDbtype(fs.getDbType());
             f.setDbsize(fs.getDbSize());
@@ -173,8 +174,8 @@ public class ParsingService {
         return null;
     }
 
-    private String getTableName(String name) {
-        if (moreThanOneUpperCaseLetter(name))
+    public static String getTableName(String name) {
+        if (moreThanZeroUpperCaseLetter(name))
         {
             String newName = name.replaceAll("([A-Z])", "_$1").toLowerCase();
             correctDBname(newName);
@@ -187,8 +188,8 @@ public class ParsingService {
             return newName;
         }
     }
-    private static boolean moreThanOneUpperCaseLetter(String s) {
-        return s.codePoints().filter(c-> c>='A' && c<='Z').count()>1;
+    private static boolean moreThanZeroUpperCaseLetter(String s) {
+        return s.codePoints().filter(c-> c>='A' && c<='Z').count()>0;
     }
     private static void correctDBname(String s) {
         for (int i = 0; i < s.length(); i++) {

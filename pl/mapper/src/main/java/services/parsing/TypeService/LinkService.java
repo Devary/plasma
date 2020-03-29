@@ -7,14 +7,12 @@ import services.parsing.ParsingService;
 
 public class LinkService extends ParsingService{
     Node node;
-    private Document xmlDocument;
     private boolean checkForObjects;
     private ProjectFile projectFile = null;
 
-    public LinkService(Node node,Document xmlDocument) {
+    public LinkService(Node node) {
         this.node = node;
-        this.xmlDocument = xmlDocument;
-        this.checkForObjects = true;
+        this.checkForObjects = false;
         this.projectFile= getFile();
 
     }
@@ -50,7 +48,7 @@ public class LinkService extends ParsingService{
     }
 
     public boolean getAllowsNull() {
-        return Boolean.parseBoolean(createNodeAndCheckForExistence("allowsNull"));
+        return Boolean.parseBoolean(createNodeAndCheckForExistence("allowNulls"));
     }
     private String createNodeAndCheckForExistence(String nodeName) {
         Node node = this.node

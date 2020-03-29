@@ -29,7 +29,18 @@ public class FieldService extends ParsingService{
         return createNodeAndCheckForExistence("fieldName");
     }
     public String getDbName() {
-        return createNodeAndCheckForExistence("dbname");
+        String dbname = createNodeAndCheckForExistence("dbname");
+        if (dbname != null)
+        {
+            return dbname;
+        }
+        else
+        {
+            if (getName()!= null)
+            return ParsingService.getTableName(getName())+"_CODEID".toUpperCase();
+            else
+                return null;
+        }
     }
     public String getDbType() {
         return createNodeAndCheckForExistence("dbtype");

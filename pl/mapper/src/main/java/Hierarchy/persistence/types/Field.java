@@ -7,7 +7,7 @@ public class Field implements IField {
     private String dbname;
     private String dbsize;
     private String defaultValue;
-    private boolean allowsNull= false;
+    private boolean allowNulls = false;
 
 
     public String getName() {
@@ -34,12 +34,12 @@ public class Field implements IField {
         this.dbname = dbname;
     }
 
-    public boolean isAllowsNull() {
-        return allowsNull;
+    public boolean isAllowNulls() {
+        return allowNulls;
     }
 
-    public void setAllowsNull(boolean allowsNull) {
-        this.allowsNull = allowsNull;
+    public void setAllowNulls(boolean allowNulls) {
+        this.allowNulls = allowNulls;
     }
 
     public String getDefaultValue() {

@@ -50,11 +50,11 @@ public class Run {
     public static void createProjectPersistentFiles(ArrayList<ProjectFile> projectPersistenceFiles,ParsingService ps)
     {
         System.out.println("Processing Object creation");
-        try {
+        /*try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         ArrayList<Persistent> persistents = new ArrayList<>();
         for (ProjectFile projectFile:projectPersistenceFiles)
         {
