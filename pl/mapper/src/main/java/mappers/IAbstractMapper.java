@@ -1,3 +1,5 @@
+package mappers;
+
 import files.AbstractFile;
 
 import java.util.HashMap;

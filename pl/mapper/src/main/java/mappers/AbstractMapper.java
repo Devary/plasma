@@ -1,9 +1,15 @@
-import files.AbstractFile;
+package mappers;
 
+import files.AbstractFile;
+import projects.ProjectFile;
+import projects.ProjectImpl;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,10 +18,12 @@ import java.util.stream.Stream;
 public class AbstractMapper implements IAbstractMapper{
     public HashMap<Integer, AbstractFile> files = null;
     public String projectPath = null;
+    public ProjectImpl project;
 
-    public AbstractMapper(String projectPath) {
+    public AbstractMapper(ProjectImpl project) {
         this.files = new HashMap<Integer, AbstractFile>();
         this.projectPath = projectPath;
+        this.project = project;
     }
 
 
@@ -61,5 +69,27 @@ public class AbstractMapper implements IAbstractMapper{
         {
             this.files.put(this.files.size()+1,abstractFile);
         }
+    }
+    public ArrayList<ProjectFile> getProjectPersistenceFiles() {
+
+        ArrayList<ProjectFile> projectPersistenceFiles = new ArrayList<>();
+        try (Stream<Path> walk = Files.walk(Paths.get(project.getMainDirectory().getPath()))) {
+
+            List<String> result = walk.map(Path::toString)
+                    .filter(f -> f.endsWith(".persistence")).collect(Collectors.toList());
+            result.forEach(x->{
+                File f = new File(x);
+                ProjectFile pf = new ProjectFile();
+                pf.setExtension("persistence");
+                pf.setName(f.getName());
+                pf.setPath(f.getPath());
+                pf.setProject(project);
+                projectPersistenceFiles.add(pf);
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return projectPersistenceFiles;
     }
 }

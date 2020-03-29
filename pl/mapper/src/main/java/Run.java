@@ -2,6 +2,7 @@ import Exceptions.FileCreationException;
 import Hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.IAbstractFile;
+import mappers.AbstractMapper;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.ParsingService;
@@ -42,6 +43,8 @@ public class Run {
         for (ProjectFile x : projectFiles) {
             System.out.println(x.getPath());
         }*/
+        AbstractMapper abstractMapper = new AbstractMapper(project);
+        project.setProjectPersistenceFiles(abstractMapper.getProjectPersistenceFiles());
         ArrayList<ProjectFile> projectPersistenceFiles = project.getProjectPersistenceFiles();
         for (ProjectFile x : projectPersistenceFiles) {
             //System.out.println(x.getName());
