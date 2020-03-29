@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.vermeg.plasma.database" />
+        <module name="comvermegplasmagroovyutils" />
         <module name="com.vermeg.plasma.mapper" />
       </profile>
     </annotationProcessing>
@@ -14,6 +15,7 @@
       <module name="com.vermeg.plasma" target="1.8" />
       <module name="com.vermeg.plasma.database" target="1.8" />
       <module name="com.vermeg.plasma.mapper" target="1.8" />
+      <module name="comvermegplasmagroovyutils" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

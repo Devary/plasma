@@ -11,6 +11,7 @@
     <modules>
         <module>mapper</module>
         <module>database</module>
+        <module>com.vermeg.plasma.groovy-utils</module>
     </modules>
     <dependencies>
         <dependency>
@@ -23,7 +24,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -46,5 +47,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>

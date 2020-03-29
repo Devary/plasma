@@ -1,26 +1,11 @@
-import Exceptions.ErrorCodes;
 import Exceptions.FileCreationException;
-import Hierarchy.Classes.JavaClass;
 import Hierarchy.persistence.Persistent;
-import Hierarchy.persistence.types.SolifeQuery;
-import com.intellij.openapi.application.ApplicationStarter;
-import com.intellij.openapi.project.Project;
 import files.AbstractFile;
 import files.IAbstractFile;
-import org.jetbrains.annotations.TestOnly;
-import org.junit.Before;
-import org.junit.Test;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-import projects.IProject;
 import projects.ProjectFile;
 import projects.ProjectImpl;
-import projects.Solife;
 import services.parsing.ParsingService;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Run {
@@ -96,7 +81,7 @@ public class Run {
     }
     public static IAbstractFile createAbstractFile()
     {
-        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is").build();
+        return AbstractFile.newAbstractFile().path("C:/SolifePlasma").name("is").build();
     }
     public static void createProjectPersistentFiles(ArrayList<ProjectFile> projectPersistenceFiles,ParsingService ps)
     {

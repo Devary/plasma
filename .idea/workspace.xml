@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ade153b-cc68-44a6-a970-ca29588045d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intellij.plugin/intellij.plugin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intellij.plugin/resources/META-INF/plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intellij.plugin/src/Starter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intellij.plugin/src/org/intellij/sdk/action/PopupDialogAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/TypeService/JsonParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/target/database-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/database-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/Hierarchy/persistence/types/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/Hierarchy/persistence/types/Link.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/ParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/ParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Hierarchy/persistence/types/SolifeQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/Hierarchy/persistence/types/SolifeQuery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/META-INF/mapper.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/projects/VFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/projects/VFS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/mapper-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/mapper-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whitebox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/whitebox/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +63,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="429" />
-    <option name="y" value="243" />
-    <option name="width" value="814" />
-    <option name="height" value="867" />
+    <option name="x" value="1592" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -117,16 +141,17 @@
       <updated>1584101349774</updated>
       <workItem from="1584212835284" duration="78000" />
       <workItem from="1584213104697" duration="22000" />
+      <workItem from="1584830547569" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100000" />
+    <option name="totallyTimeSpent" value="114000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="1592" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18251929" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18532526" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -140,7 +165,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.5437416" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33163264" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32974428" />
       <window_info anchor="bottom" id="Docker" order="10" />
@@ -151,7 +176,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.33354756" />
+      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.33282906" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
     </layout>
