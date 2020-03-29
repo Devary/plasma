@@ -21,10 +21,15 @@ public class AbstractMapper implements IAbstractMapper{
     public String projectPath = null;
     public ProjectImpl project;
 
-    public AbstractMapper(ProjectImpl project) {
+
+
+    public ArrayList<ProjectFile> projectFiles = new ArrayList<>();
+
+    public AbstractMapper(ProjectImpl project,String fileType) {
         this.files = new HashMap<Integer, AbstractFile>();
         this.projectPath = projectPath;
         this.project = project;
+        getProjectFilesByType(fileType);
     }
 
 
@@ -44,10 +49,10 @@ public class AbstractMapper implements IAbstractMapper{
             e.printStackTrace();
         }
     }
-
-    public void getPersistenceFiles() {
-
+    public ArrayList<ProjectFile> getProjectFiles() {
+        return projectFiles;
     }
+
 
     public HashMap<Integer, AbstractFile> getFiles() {
         return files;
@@ -71,18 +76,8 @@ public class AbstractMapper implements IAbstractMapper{
             this.files.put(this.files.size()+1,abstractFile);
         }
     }
-    public ArrayList<ProjectFile> projectFileAdapter(AbstractFile file)
-    {
-            return getProjectFilesByType(file.getExtension());
-    }
-    public ArrayList<ProjectFile> projectFileAdapter(String fileType)
-    {
-        return getProjectFilesByType(fileType);
-    }
 
-    public ArrayList<ProjectFile> getProjectFilesByType(String fileType) {
-
-        ArrayList<ProjectFile> projectPersistenceFiles = new ArrayList<>();
+    private void getProjectFilesByType(String fileType) {
         try (Stream<Path> walk = Files.walk(Paths.get(project.getMainDirectory().getPath()))) {
 
             List<String> result = walk.map(Path::toString)
@@ -94,12 +89,11 @@ public class AbstractMapper implements IAbstractMapper{
                 pf.setName(f.getName());
                 pf.setPath(f.getPath());
                 pf.setProject(project);
-                projectPersistenceFiles.add(pf);
+                projectFiles.add(pf);
             });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return projectPersistenceFiles;
     }
 }

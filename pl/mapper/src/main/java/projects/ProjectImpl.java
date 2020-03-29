@@ -19,6 +19,9 @@ public class ProjectImpl extends AbstractProject implements IProject {
 
 
     private ArrayList<ProjectFile> projectPersistenceFiles = new ArrayList<>();
+
+
+    private ArrayList<ProjectFile> projectJavaFiles = new ArrayList<>();
     @Override
     public ArrayList<ProjectFile> getProjectFiles() {
 
@@ -44,6 +47,14 @@ public class ProjectImpl extends AbstractProject implements IProject {
 
     public void setProjectPersistenceFiles(ArrayList<ProjectFile> projectPersistenceFiles) {
         this.projectPersistenceFiles = projectPersistenceFiles;
+    }
+
+    public ArrayList<ProjectFile> getProjectJavaFiles() {
+        return projectJavaFiles;
+    }
+
+    public void setProjectJavaFiles(ArrayList<ProjectFile> projectJavaFiles) {
+        this.projectJavaFiles = projectJavaFiles;
     }
 
 }

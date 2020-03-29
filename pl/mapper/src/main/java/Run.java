@@ -1,4 +1,5 @@
 import Exceptions.FileCreationException;
+import Hierarchy.Classes.JavaClass;
 import Hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.FileTypes;
@@ -6,6 +7,7 @@ import files.IAbstractFile;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
 import projects.ProjectImpl;
+import services.parsing.JavaClassesParsingService;
 import services.parsing.ParsingService;
 
 import java.util.ArrayList;
@@ -14,14 +16,34 @@ public class Run {
 
 
     public static void main(String[] strings) throws FileCreationException {
-
-        processPersistence();
+        processJavaClasses();
+        //processPersistence();
     }
 
+    private static void processJavaClasses() {
+        ProjectImpl project = createProject();
+        AbstractMapper abstractMapper = new AbstractMapper(project,FileTypes.JAVACLASS);
+        project.setProjectJavaFiles(abstractMapper.getProjectFiles());
+        ArrayList<ProjectFile> projectJavaFiles = project.getProjectJavaFiles();
+
+        ////Example of one file#############################
+        JavaClassesParsingService ps = new JavaClassesParsingService(project,projectJavaFiles.get(0));
+        JavaClass p = ps.getJavaClass();
+        System.out.println(p.getClassName());
+
+        //#########################################################
+
+
+
+
+        ////creating persistent
+        //createProjectPersistentFiles(projectPersistenceFiles,ps);
+        //System.out.println(p.getCodes().size());
+    }
     private static void processPersistence() {
         ProjectImpl project = createProject();
-        AbstractMapper abstractMapper = new AbstractMapper(project);
-        project.setProjectPersistenceFiles(abstractMapper.getProjectFilesByType(FileTypes.PERSISTENCE));
+        AbstractMapper abstractMapper = new AbstractMapper(project,FileTypes.PERSISTENCE);
+        project.setProjectPersistenceFiles(abstractMapper.getProjectFiles());
         ArrayList<ProjectFile> projectPersistenceFiles = project.getProjectPersistenceFiles();
         ParsingService ps = new ParsingService(projectPersistenceFiles.get(0));
         Persistent p = ps.buildPersistentFromXML();

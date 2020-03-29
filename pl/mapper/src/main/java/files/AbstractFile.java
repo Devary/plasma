@@ -1,5 +1,10 @@
 package files;
 
+import Hierarchy.Classes.JavaClass;
+import Hierarchy.Classes.types.Declaration;
+import Hierarchy.Classes.types.Function;
+import Hierarchy.persistence.Persistent;
+
 import java.util.ArrayList;
 
 public class AbstractFile implements IAbstractFile {
@@ -133,6 +138,12 @@ public class AbstractFile implements IAbstractFile {
         private ArrayList<AbstractFile> children;
         private String name;
         private String extension;
+        private String className;
+        private ArrayList<Function> functions;
+        private ArrayList<JavaClass> implementations;
+        private ArrayList<JavaClass> heritances;
+        private ArrayList<Declaration> declarations;
+        private Persistent persistent;
 
         private Builder() {
         }
@@ -178,6 +189,36 @@ public class AbstractFile implements IAbstractFile {
 
         public Builder extension(String extension) {
             this.extension = extension;
+            return this;
+        }
+
+        public Builder className(String className) {
+            this.className = className;
+            return this;
+        }
+
+        public Builder functions(ArrayList<Function> functions) {
+            this.functions = functions;
+            return this;
+        }
+
+        public Builder implementations(ArrayList<JavaClass> implementations) {
+            this.implementations = implementations;
+            return this;
+        }
+
+        public Builder heritances(ArrayList<JavaClass> heritances) {
+            this.heritances = heritances;
+            return this;
+        }
+
+        public Builder declarations(ArrayList<Declaration> declarations) {
+            this.declarations = declarations;
+            return this;
+        }
+
+        public Builder persistent(Persistent persistent) {
+            this.persistent = persistent;
             return this;
         }
     }

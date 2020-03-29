@@ -217,9 +217,9 @@ public class ParsingService {
         return createNodeAndCheckForExistence("class","mapping");
     }
 
-    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)
+    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)throws Exception
     {
-        String filePathAndName = this.file.getProject().getBasePath()+"/created_classes/"+file.getName();
+        /*String filePathAndName = this.file.getProject().getBasePath()+"/created_classes/"+file.getName();
         FileWriter writer = null;
         try {
             writer = new FileWriter(filePathAndName);
@@ -254,7 +254,8 @@ public class ParsingService {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return null;
+        return null;*/
+        return Class.forName("ok");
     }
 
 }

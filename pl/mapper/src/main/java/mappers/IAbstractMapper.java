@@ -8,6 +8,5 @@ public interface IAbstractMapper {
 
     public void initProject();
     public void getAllFiles();
-    public void getPersistenceFiles();
 
 }

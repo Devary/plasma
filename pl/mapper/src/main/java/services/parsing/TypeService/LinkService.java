@@ -63,8 +63,5 @@ public class LinkService extends ParsingService{
         return null != node;
     }
 
-    @Override
-    public Class loadClassFromTargetProject(ProjectFile projectFile, String classPath) {
-        return super.loadClassFromTargetProject(projectFile, classPath);
-    }
+
 }
