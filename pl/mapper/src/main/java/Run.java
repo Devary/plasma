@@ -1,6 +1,7 @@
 import Exceptions.FileCreationException;
 import Hierarchy.persistence.Persistent;
 import files.AbstractFile;
+import files.FileTypes;
 import files.IAbstractFile;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
@@ -12,57 +13,18 @@ import java.util.ArrayList;
 public class Run {
 
 
-    public String getCommandName() {
-        return null;
-    }
-
-    public void premain(String[] strings) {
-
-    }
-
     public static void main(String[] strings) throws FileCreationException {
-        /*IAbstractFile f = Persistent.newPersistent().className("BillingSettings").isPersistent(true).mappingType("hierarchical").name("BillingSettings").tableName("bill_sett").build();
-        AbstractFile af = AbstractFile.newAbstractFile().url("ddd").path("rezf").name("zsfrr").isValid(true).extension("persistence").build();
-        SolifeQuery sq = SolifeQuery.SolifeQueryBuilder.aSolifeQuery().withClassName("frfzf").build();
-        ArrayList<SolifeQuery> solifeQueries = new ArrayList<>();
-        solifeQueries.add(sq);
 
-        Persistent per = Persistent.newPersistent().className("ok").queries(new ArrayList<SolifeQuery>(solifeQueries)).build();
+        processPersistence();
+    }
 
-        System.out.println(per.toString());
-        throw new FileCreationException(ErrorCodes.FILE_CREATION_EXCEPTION);
-
-         */
-
-
-        ///TODO : create project
+    private static void processPersistence() {
         ProjectImpl project = createProject();
-        //System.out.println(project.getName());
-        //getProjectFiles test
-        /*ArrayList<ProjectFile> projectFiles = project.getProjectFiles();
-        for (ProjectFile x : projectFiles) {
-            System.out.println(x.getPath());
-        }*/
         AbstractMapper abstractMapper = new AbstractMapper(project);
-        project.setProjectPersistenceFiles(abstractMapper.getProjectPersistenceFiles());
+        project.setProjectPersistenceFiles(abstractMapper.getProjectFilesByType(FileTypes.PERSISTENCE));
         ArrayList<ProjectFile> projectPersistenceFiles = project.getProjectPersistenceFiles();
-        for (ProjectFile x : projectPersistenceFiles) {
-            //System.out.println(x.getName());
-        }
-        //System.out.println(projectPersistenceFiles.get(0).getFileContent());
-
-
-        //// test parsing system
-        /*try {
-            boolean doc = ParsingService.parse(projectPersistenceFiles.get(0));
-            System.out.println(ParsingService.getElement("class",doc).item(0).getAttributes().getNamedItem("name").getNodeValue());
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-        }*/
-        /////IMPORTANT : creating persistent object :
         ParsingService ps = new ParsingService(projectPersistenceFiles.get(0));
         Persistent p = ps.buildPersistentFromXML();
-
         System.out.println(p.getClassName());
         System.out.println(p.getFields().size());
         System.out.println(p.getLinks().size());
@@ -71,7 +33,6 @@ public class Run {
         ////creating persistent
         createProjectPersistentFiles(projectPersistenceFiles,ps);
         System.out.println(p.getCodes().size());
-
     }
 
     public static ProjectImpl createProject()

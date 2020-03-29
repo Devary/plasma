@@ -1,6 +1,7 @@
 package mappers;
 
 import files.AbstractFile;
+import files.FileTypes;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 
@@ -70,17 +71,26 @@ public class AbstractMapper implements IAbstractMapper{
             this.files.put(this.files.size()+1,abstractFile);
         }
     }
-    public ArrayList<ProjectFile> getProjectPersistenceFiles() {
+    public ArrayList<ProjectFile> projectFileAdapter(AbstractFile file)
+    {
+            return getProjectFilesByType(file.getExtension());
+    }
+    public ArrayList<ProjectFile> projectFileAdapter(String fileType)
+    {
+        return getProjectFilesByType(fileType);
+    }
+
+    public ArrayList<ProjectFile> getProjectFilesByType(String fileType) {
 
         ArrayList<ProjectFile> projectPersistenceFiles = new ArrayList<>();
         try (Stream<Path> walk = Files.walk(Paths.get(project.getMainDirectory().getPath()))) {
 
             List<String> result = walk.map(Path::toString)
-                    .filter(f -> f.endsWith(".persistence")).collect(Collectors.toList());
+                    .filter(f -> f.endsWith(fileType)).collect(Collectors.toList());
             result.forEach(x->{
                 File f = new File(x);
                 ProjectFile pf = new ProjectFile();
-                pf.setExtension("persistence");
+                pf.setExtension(fileType.replace(".",""));
                 pf.setName(f.getName());
                 pf.setPath(f.getPath());
                 pf.setProject(project);

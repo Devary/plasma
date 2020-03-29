@@ -12,6 +12,7 @@ public class AbstractFile implements IAbstractFile {
     private ArrayList<AbstractFile> children;
     private String name;
     private String extension;
+    private ArrayList<FileCreationException> exceptions;
 
     private AbstractFile(Builder builder) {
         this.url = builder.url;
@@ -24,6 +25,13 @@ public class AbstractFile implements IAbstractFile {
         this.extension = builder.extension;
     }
 
+    public ArrayList<FileCreationException> getExceptions() {
+        return exceptions;
+    }
+
+    public void addException(FileCreationException exception) {
+        this.exceptions.add(exception);
+    }
     public static AbstractFile getInstance() {
         return new AbstractFile();
     }
@@ -85,7 +93,35 @@ public class AbstractFile implements IAbstractFile {
     }
 
     public void setExtension(String extension) {
-        this.extension = extension;
+        if (checkFileExtentionIntegrity(extension))
+        {
+            this.extension = extension;
+        }
+        else
+        {
+            StringBuilder details = new StringBuilder();
+            details.append("adding ")
+                    .append(extension)
+                    .append(" file ")
+                    .append("is not a known extention");
+            createException(ErrorCodes.EXTENSION_TYPE_EXCEPTION,details);
+            this.extension = null;
+        }
+        /// TODO : add logger
+    }
+
+    private void createException(String exceptionTitle, StringBuilder details) {
+        FileCreationException fileCreationException = new FileCreationException(exceptionTitle,details.toString());
+        addException(fileCreationException);
+    }
+
+    private boolean checkFileExtentionIntegrity(String extension) {
+        for (String fileType:FileTypes.ALL_CODES)
+        {
+            if (fileType.equals("."+extension))
+                return true;
+        }
+        return false;
     }
 
 
