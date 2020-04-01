@@ -1,13 +1,18 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package Hierarchy.Classes;
 
 import Hierarchy.Classes.types.Declaration;
 import Hierarchy.Classes.types.Function;
 import Hierarchy.persistence.Persistent;
 import files.AbstractFile;
+import projects.ProjectFile;
 
 import java.util.ArrayList;
 
-public class JavaClass implements IJavaClass {
+public class JavaClass extends ProjectFile implements IJavaClass {
 
     public String className;
     public ArrayList<Function> functions;
@@ -15,6 +20,7 @@ public class JavaClass implements IJavaClass {
     public ArrayList<JavaClass> heritances;
     public ArrayList<Declaration> declarations;
     public Persistent persistent;
+    public String classType;
 
     private JavaClass(Builder builder) {
         this.className = builder.className;
@@ -23,6 +29,8 @@ public class JavaClass implements IJavaClass {
         this.heritances = builder.heritances;
         this.declarations = builder.declarations;
         this.persistent = builder.persistent;
+        this.classType = builder.classType;
+
     }
 
     public static Builder newJavaClass() {
@@ -115,7 +123,15 @@ public class JavaClass implements IJavaClass {
         return null;
     }
 
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
     public static final class Builder {
+        public String classType;
         private String className;
         private ArrayList<Function> functions;
         private ArrayList<JavaClass> implementations;
@@ -132,6 +148,10 @@ public class JavaClass implements IJavaClass {
 
         public Builder className(String className) {
             this.className = className;
+            return this;
+        }
+        public Builder classType(String classType) {
+            this.classType = classType;
             return this;
         }
 

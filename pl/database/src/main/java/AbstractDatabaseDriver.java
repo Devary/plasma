@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 import java.sql.*;
 
 public class AbstractDatabaseDriver {

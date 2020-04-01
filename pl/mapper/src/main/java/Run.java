@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 import Exceptions.FileCreationException;
 import Hierarchy.Classes.JavaClass;
 import Hierarchy.persistence.Persistent;
@@ -27,12 +31,11 @@ public class Run {
         ArrayList<ProjectFile> projectJavaFiles = project.getProjectJavaFiles();
 
         ////Example of one file#############################
-        JavaClassesParsingService ps = new JavaClassesParsingService(project,projectJavaFiles.get(0));
-        JavaClass p = ps.getJavaClass();
-        System.out.println(p.getClassName());
+        JavaClassesParsingService ps ;
+
 
         //#########################################################
-
+        createJavaObjectFiles(projectJavaFiles);
 
 
 
@@ -88,6 +91,22 @@ public class Run {
 
         }
         System.out.println("FINISHED :: "+persistents.size()+" Objects created !");
+
+    }
+    public static void createJavaObjectFiles(ArrayList<ProjectFile> projectJavaFiles)
+    {
+        System.out.println("Processing Object creation");
+
+        ArrayList<JavaClass> javaClasses = new ArrayList<>();
+        for (ProjectFile projectFile:projectJavaFiles)
+        {
+
+            JavaClassesParsingService ps = new JavaClassesParsingService(projectFile);
+            JavaClass javaClass = ps.getJavaClass();
+            javaClasses.add(javaClass);
+            System.out.println(javaClass.getClassName()+" built successfully !");
+        }
+        System.out.println("FINISHED :: "+javaClasses.size()+" Objects created !");
 
     }
 

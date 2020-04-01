@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package Exceptions;
 
 import java.io.PrintStream;

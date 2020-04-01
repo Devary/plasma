@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package Hierarchy.persistence;
 
 import Hierarchy.persistence.types.Code;
@@ -5,10 +9,11 @@ import files.AbstractFile;
 import Hierarchy.persistence.types.Field;
 import Hierarchy.persistence.types.Link;
 import Hierarchy.persistence.types.SolifeQuery;
+import projects.ProjectFile;
 
 import java.util.ArrayList;
 
-public class Persistent implements IPersistent {
+public class Persistent extends ProjectFile implements IPersistent {
 
     private String className;
     private String name;

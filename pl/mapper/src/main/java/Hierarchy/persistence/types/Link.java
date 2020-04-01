@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package Hierarchy.persistence.types;
 
 import Hierarchy.persistence.Persistent;

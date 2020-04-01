@@ -1,9 +1,14 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package mappers;
 
 import files.AbstractFile;
 import files.FileTypes;
 import projects.ProjectFile;
 import projects.ProjectImpl;
+import services.processing.AbstractProcess;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +25,7 @@ public class AbstractMapper implements IAbstractMapper{
     public HashMap<Integer, AbstractFile> files = null;
     public String projectPath = null;
     public ProjectImpl project;
+    public AbstractProcess process;
 
 
 
@@ -95,5 +101,22 @@ public class AbstractMapper implements IAbstractMapper{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ProjectImpl getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectImpl project) {
+        this.project = project;
+    }
+
+
+    public void setProcess(AbstractProcess process) {
+        this.process = process;
+    }
+
+    public AbstractProcess getProcess() {
+        return process;
     }
 }

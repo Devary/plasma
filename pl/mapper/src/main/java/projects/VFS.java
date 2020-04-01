@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package projects;
 
 import com.intellij.openapi.vfs.VirtualFile;

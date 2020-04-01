@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Fakher Hammami | Plasma Project
+ */
+
 package services.parsing.TypeService;
 
 import Hierarchy.persistence.types.Link;
