@@ -21,6 +21,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public ArrayList<Declaration> declarations;
     public Persistent persistent;
     public String classType;
+    public boolean isInnerClass;
 
     private JavaClass(Builder builder) {
         this.className = builder.className;
@@ -30,6 +31,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         this.declarations = builder.declarations;
         this.persistent = builder.persistent;
         this.classType = builder.classType;
+        this.isInnerClass = builder.isInnerClass;
 
     }
 
@@ -132,6 +134,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     }
     public static final class Builder {
         public String classType;
+        public boolean isInnerClass;
         private String className;
         private ArrayList<Function> functions;
         private ArrayList<JavaClass> implementations;
@@ -172,6 +175,10 @@ public class JavaClass extends ProjectFile implements IJavaClass {
 
         public Builder declarations(ArrayList<Declaration> declarations) {
             this.declarations = declarations;
+            return this;
+        }
+        public Builder isInnerClass(boolean isInnerClass) {
+            this.isInnerClass = isInnerClass;
             return this;
         }
 

@@ -1,73 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="com.vermeg.plasma.webservices:war" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="541e3db9-408d-45d0-a727-79c53b653c90" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Etudiant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/PlasmaClassComposition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/IAbstractProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/ProcessingTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="ca953b51-9955-48fe-8866-58f1b1488977" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/descriptors/ClassDescriptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/test.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/test.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/gdsl/jenkins.gdsl" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/gdsl/jenkins.gdsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/AbstractPlasmaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/AbstractPlasmaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/ErrorCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/ErrorCodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/FileCreationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Exceptions/FileCreationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Filters/PersistenceFilesFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Filters/PersistenceFilesFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Filters/VirtualFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Filters/VirtualFileFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/IJavaClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/IJavaClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/types/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/types/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/types/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/types/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/IPersistent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/IPersistent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/Persistent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/Persistent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Code.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/IField.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/IField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/SolifeQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/SolifeQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/IServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/IServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/AbstractFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/AbstractFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/ErrorCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/ErrorCodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/FileCreationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/FileCreationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/FileTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/FileTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/IAbstractFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/IAbstractFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/mappers/AbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/mappers/AbstractMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/mappers/IAbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/mappers/IAbstractMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/AbstractProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/AbstractProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/IProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/IProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/Solife.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/Solife.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/SolifeConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/SolifeConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/VFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/VFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/WS/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/WS/TestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/FieldService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/FieldService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/JsonParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/JsonParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/AbstractMapper.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/AbstractPlasmaException.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Exceptions/AbstractPlasmaException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" afterDir="false" />
@@ -92,81 +39,130 @@
       <change beforePath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/classes/" />
-    <ignored path="$PROJECT_DIR$/com.vermeg.plasma.webservices/target/" />
-    <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/database/target/" />
     <ignored path="$PROJECT_DIR$/mapper/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/target/" />
+    <ignored path="$PROJECT_DIR$/com.vermeg.plasma.webservices/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
-  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+            <state relative-caret-position="528">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Etudiant.java">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/descriptors/ClassDescriptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+            <state relative-caret-position="80">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+            <state relative-caret-position="183">
+              <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/PlasmaClassComposition.java">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            <state relative-caret-position="188">
+              <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#275#276#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#364#374#0" expanded="true" />
-                <element signature="e#441#442#0" expanded="true" />
-                <element signature="e#473#474#0" expanded="true" />
+                <element signature="e#7687#7688#0" expanded="true" />
+                <element signature="e#7750#7751#0" expanded="true" />
+                <element signature="e#9649#9650#0" expanded="true" />
+                <element signature="e#9681#9682#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#155#156#0" expanded="true" />
+                <element signature="e#185#186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-80">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Singleton" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>@</find>
+      <find>public</find>
+      <find>line</find>
     </findStrings>
+    <replaceStrings>
+      <replace>private</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -174,22 +170,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Entity/Etudiant.java" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/EtudiantService.java" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/ClassCompositionService.java" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/PlasmaClassCompositionService.java" />
-        <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/PlasmaClassComposition.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/Run.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" />
+        <option value="$PROJECT_DIR$/database/pom.xml" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/descriptors/Test.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/descriptors/ClassDescriptor.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaInnerClass.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaClass.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="jdkForImporter" value="13.0.2" />
-        <option name="vmOptionsForImporter" value="-Xmx2000m" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -212,10 +206,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1511" />
-    <option name="y" value="106" />
-    <option name="width" value="1178" />
-    <option name="height" value="628" />
+    <option name="x" value="429" />
+    <option name="y" value="243" />
+    <option name="width" value="814" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,6 +218,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,25 +229,25 @@
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.webservices" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.webservices" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.webservices" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.webservices" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -260,32 +255,77 @@
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.webservices" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="descriptors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Hierarchy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Hierarchy" type="462c0819:PsiDirectoryNode" />
+              <item name="Classes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585866264482" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Entity" />
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Sandboxes\plasma\pl\com.vermeg.plasma.webservices\src\main\java" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="services.processing" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -300,224 +340,318 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JBoss Server.JBoss 18.0.1.Final">
-    <configuration name="JBoss 18.0.1.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 18.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8015/com.vermeg.plasma.webservices-1.0-SNAPSHOT" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="com.vermeg.plasma.webservices:war">
-          <settings />
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="SERVER" />
-        <option name="BINDING_SET_NAME" value="" />
-        <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="main-server-group" />
-        <option name="USERNAME" value="" />
-        <option name="CREDENTIAL_ALIAS" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="JBoss" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50040" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
+  <component name="RunManager" selected="Application.MainProcess">
+    <configuration name="MainProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainProcess" />
+      <module name="com.vermeg.plasma.mapper" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="com.vermeg.plasma.webservices:war" />
-        </option>
       </method>
     </configuration>
-    <configuration name="JBoss 19.0.0.Final remote" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 19.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="PORT" value="8019" />
-      <option name="LOCAL" value="false" />
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8019/com.vermeg.plasma.webservices-1.0-SNAPSHOT" />
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
-      <deployment>
-        <artifact name="com.vermeg.plasma.webservices:war">
-          <settings DEPLOYMENT_METHOD="Staging" />
-        </artifact>
-      </deployment>
-      <server-settings>
-        <data>
-          <option name="serverGroup" value="" />
-          <option name="stagingRemotePath" value="" />
-          <option name="transportStagingTarget">
-            <TransportTarget>
-              <option name="id" value="18b812bb-71cd-4c82-9a4c-3dd16f2604b9" />
-              <id>18b812bb-71cd-4c82-9a4c-3dd16f2604b9</id>
-            </TransportTarget>
-          </option>
-          <server-group />
-          <transport-target>
-            <TransportTarget>
-              <option name="id" value="18b812bb-71cd-4c82-9a4c-3dd16f2604b9" />
-              <id>18b812bb-71cd-4c82-9a4c-3dd16f2604b9</id>
-            </TransportTarget>
-          </transport-target>
-          <staging-path />
-        </data>
-      </server-settings>
-      <predefined_log_file enabled="true" id="JBoss" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50548" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
+    <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Run" />
+      <module name="com.vermeg.plasma.mapper" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="com.vermeg.plasma.webservices:war" />
-        </option>
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JBoss Server.JBoss 18.0.1.Final" />
-      <item itemvalue="JBoss Server.JBoss 19.0.0.Final remote" />
-    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainProcess" />
+        <item itemvalue="Application.Run" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="541e3db9-408d-45d0-a727-79c53b653c90" name="Default Changelist" comment="" />
-      <created>1585661074474</created>
+      <changelist id="ca953b51-9955-48fe-8866-58f1b1488977" name="Default Changelist" comment="" />
+      <created>1584963524675</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585661074474</updated>
-      <workItem from="1585661078587" duration="8102000" />
+      <updated>1584963524675</updated>
+      <workItem from="1584963528088" duration="2291000" />
+      <workItem from="1585739727868" duration="20518000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1584964556972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584964556972</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8102000" />
+    <option name="totallyTimeSpent" value="22809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1592" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info id="Web" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3139183" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.141258" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Application Servers" weight="0.32916668" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Docker" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2840136" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.58666664" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4588889" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" visible="true" weight="0.35627836" />
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="JSF" />
-      <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="CDI" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Bean Validation" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.6772429" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="classname==null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java</url>
+          <line>104</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="line.startsWith(&quot;public class LifeAssuredSumAtRiskCache&quot;)" language="JAVA" />
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java</url>
+          <line>239</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java</url>
+          <line>91</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>line.startsWith(&quot;public class LifeAssuredSumAtRiskCache&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>line.startsWith(&quot;public class&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>classTypeParams!=null</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>classname==null</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Entity/Etudiant.java">
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Etudiant.java">
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        <state relative-caret-position="1152">
+          <caret line="72" column="88" selection-start-line="72" selection-start-column="88" selection-end-line="72" selection-end-column="88" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml">
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Hierarchy/persistence/types/Link.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+        <state relative-caret-position="224">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#1366#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java">
+    <entry file="file://$PROJECT_DIR$/database/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        <state relative-caret-position="416">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/PlasmaClassComposition.java">
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        <state relative-caret-position="-80">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#155#156#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/descriptors/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/descriptors/dcd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/descriptors/qdcqd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/descriptors/ClassDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaInnerClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#275#276#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#364#374#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#262#263#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Hierarchy/Classes/JavaClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="e#7687#7688#0" expanded="true" />
+            <element signature="e#7750#7751#0" expanded="true" />
+            <element signature="e#9649#9650#0" expanded="true" />
+            <element signature="e#9681#9682#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -526,7 +660,7 @@
     <states>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.8.0_211</last-edited>
+          <last-edited>1.8 (2)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -539,7 +673,7 @@
     </states>
   </component>
   <component name="mavenExecuteGoalHistory">
-    <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices" />
+    <option value="$PROJECT_DIR$" />
     <option value="clean install" />
   </component>
 </project>

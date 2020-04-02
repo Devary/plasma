@@ -46,7 +46,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
         {
             JavaClassesParsingService ps = new JavaClassesParsingService(projectFile);
             JavaClass javaClass = ps.getJavaClass();
-
+            if (javaClass.getClassName()!=null)
             javaClasses.add(javaClass);
             System.out.println(javaClass.getClassName()+" built successfully !");
         }

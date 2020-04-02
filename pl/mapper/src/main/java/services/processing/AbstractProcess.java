@@ -40,7 +40,7 @@ public class AbstractProcess implements IAbstractProcess {
     @Override
     public ProjectImpl createProject() {
         ProjectImpl project = new ProjectImpl();
-        project.setBasePath("C:/SolifePlasma/is");
+        project.setBasePath("C:\\sandboxes\\solife_6_1_2_CLV23_FP\\is");
         project.setMainDirectory((AbstractFile)createAbstractFile());
         project.setName("SOLIFE");
         return project;
@@ -48,7 +48,7 @@ public class AbstractProcess implements IAbstractProcess {
 
     @Override
     public IAbstractFile createAbstractFile() {
-        return AbstractFile.newAbstractFile().path("C:/SolifePlasma").name("is").build();
+        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is").build();
     }
 
     @Override

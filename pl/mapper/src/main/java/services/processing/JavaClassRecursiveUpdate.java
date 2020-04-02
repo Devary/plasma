@@ -55,29 +55,50 @@ public class JavaClassRecursiveUpdate {
         {
             return;
         }
-        Iterator<JavaClass> iter = javaClass.getHeritances().iterator();
-        while (iter.hasNext()) {
-            JavaClass jc = iter.next();
+        ArrayList<JavaClass> newList = new ArrayList<>();
+        for (JavaClass jc : javaClass.getHeritances()) {
             JavaClass found = find(jc);
 
-            if (found!=null)
-            {
-                iter.remove();
-                javaClass.getHeritances().add(found);
+            if (found != null) {
+                newList.add(found);
+            } else {
+                newList.add(jc);
             }
-
         }
-
+        javaClass.setHeritances(newList);
     }
 
     private JavaClass find(JavaClass jc) {
-         for (JavaClass javaClass:this.javaclasses)
-         {
-             if (javaClass.getClassName().equals(jc.getClassName()))
-             {
-                 return javaClass;
-             }
-         }
-         return null;
+       if (jc.getClassName()!=null)
+       {
+           for (JavaClass javaClass:this.javaclasses)
+           {
+               if (javaClass.getClassName()!=null)
+               {
+                   if (javaClass.getClassName().equals(jc.getClassName()))
+                   {
+                       return javaClass;
+                   }
+               }
+               else
+               {
+                   try {
+                       throw  new JavaClassObjectNotFoundException("class with NULL classname");
+                   } catch (JavaClassObjectNotFoundException e) {
+                       e.printStackTrace();
+                   }
+               }
+
+           }
+       }
+       else
+       {
+           try {
+               throw  new JavaClassObjectNotFoundException("class with NULL classname");
+           } catch (JavaClassObjectNotFoundException e) {
+               e.printStackTrace();
+           }
+       }
+       return null;
     }
 }
