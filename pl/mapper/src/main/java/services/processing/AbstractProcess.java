@@ -11,10 +11,13 @@ import files.IAbstractFile;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
 import projects.ProjectImpl;
+import services.reporting.Report;
 
 import java.util.ArrayList;
 
 public class AbstractProcess implements IAbstractProcess {
+
+    private final Report report;
 
     public ArrayList<JavaClass> getJavaClasses() {
         return javaClasses;
@@ -29,18 +32,18 @@ public class AbstractProcess implements IAbstractProcess {
     private ArrayList<Persistent> persistents = new ArrayList<>();
     ProjectImpl project ;
 
-    public AbstractProcess(String processingType) {
-        ProjectImpl project = createProject();
+    public AbstractProcess(String processingType, String basePath, Report report) {
+        ProjectImpl project = createProject(basePath);
         AbstractMapper abstractMapper = new AbstractMapper(project, processingType);
         project.setProjectJavaFiles(abstractMapper.getProjectFiles());
-        ArrayList<ProjectFile> projectJavaFiles = project.getProjectJavaFiles();
+        this.report = report;
         this.project = project;
     }
 
     @Override
-    public ProjectImpl createProject() {
+    public ProjectImpl createProject(String basePath) {
         ProjectImpl project = new ProjectImpl();
-        project.setBasePath("C:\\sandboxes\\solife_6_1_2_CLV23_FP\\is");
+        project.setBasePath(basePath);
         project.setMainDirectory((AbstractFile)createAbstractFile());
         project.setName("SOLIFE");
         return project;
@@ -52,7 +55,7 @@ public class AbstractProcess implements IAbstractProcess {
     }
 
     @Override
-    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles) {
+    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
 
         return null;
     }
@@ -63,18 +66,18 @@ public class AbstractProcess implements IAbstractProcess {
         if (processingType.equals(ProcessingTypes.JAVACLASS))
         {
             abstractProcess= new JavaClassesCreationProcess();
-            javaClasses.addAll(abstractProcess.createObjectFiles(projectFiles));
+            javaClasses.addAll(abstractProcess.createObjectFiles(projectFiles, this.report));
 
         }
         else if (processingType.equals(ProcessingTypes.PERSISTENT))
         {
             abstractProcess= new PersistenceObjectsCreationProcess();
-            persistents.addAll(abstractProcess.createObjectFiles(projectFiles));
+            persistents.addAll(abstractProcess.createObjectFiles(projectFiles,this.report));
         }
         else{
             //TODO : must be checked
             //should never happen for now
-            abstractProcess = new AbstractProcess(ProcessingTypes.JAVACLASS);
+            return;
         }
 
     }

@@ -9,6 +9,7 @@ import files.IAbstractFile;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.ParsingService;
+import services.reporting.Report;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +27,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
     }
 
     @Override
-    public ProjectImpl createProject() {
+    public ProjectImpl createProject(String basePath) {
         return null;
     }
 
@@ -36,7 +37,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
     }
 
     @Override
-    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectPersistenceFiles) {
+    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectPersistenceFiles, Report report) {
         System.out.println("Processing Object creation");
         /*try {
             Thread.sleep(10000);

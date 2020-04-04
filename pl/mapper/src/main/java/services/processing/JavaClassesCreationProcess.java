@@ -5,11 +5,11 @@
 package services.processing;
 
 import Hierarchy.Classes.JavaClass;
-import Hierarchy.persistence.Persistent;
 import files.IAbstractFile;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.JavaClassesParsingService;
+import services.reporting.Report;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +28,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
     }
 
     @Override
-    public ProjectImpl createProject() {
+    public ProjectImpl createProject(String basePath) {
         return null;
     }
 
@@ -38,13 +38,13 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
     }
 
     @Override
-    public ArrayList<JavaClass> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles) {
+    public ArrayList<JavaClass> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
         System.out.println("Processing Object creation");
 
         ArrayList<JavaClass> javaClasses = new ArrayList<>();
         for (ProjectFile projectFile:projectJavaFiles)
         {
-            JavaClassesParsingService ps = new JavaClassesParsingService(projectFile);
+            JavaClassesParsingService ps = new JavaClassesParsingService(projectFile,report);
             JavaClass javaClass = ps.getJavaClass();
             if (javaClass.getClassName()!=null)
             javaClasses.add(javaClass);

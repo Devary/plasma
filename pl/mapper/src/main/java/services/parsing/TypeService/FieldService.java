@@ -7,15 +7,17 @@ package services.parsing.TypeService;
 import org.w3c.dom.Node;
 import projects.ProjectFile;
 import services.parsing.ParsingService;
+import services.reporting.Report;
 
 public class FieldService extends ParsingService{
-    Node node= null;
+    Node node;
     ProjectFile projectFile;
     public FieldService(Node node) {
         this.node = node;
         this.projectFile= getFile();
 
     }
+
     /// TODO : optimization node
     //                .getAttributes() must be replaced
     public String getShortTableName() {

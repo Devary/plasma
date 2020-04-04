@@ -7,6 +7,7 @@ package services.parsing;
 import Hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import projects.ProjectFile;
+import services.reporting.Report;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class JavaClassesParsingService {
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
 
-    public JavaClassesParsingService(ProjectFile projectFile) {
+    public JavaClassesParsingService(ProjectFile projectFile, Report report) {
         this.file = projectFile;
         String[] typesToParse =adaptParsingRange();
             parseContent(typesToParse);
@@ -29,6 +30,7 @@ public class JavaClassesParsingService {
                 ClassDescriptor.PUBLIC+" "+ClassDescriptor.CLASS,
                 ClassDescriptor.PUBLIC+" "+ClassDescriptor.INTERFACE,
                 ClassDescriptor.PUBLIC+" "+ClassDescriptor.ANNOTATION,
+                ClassDescriptor.PUBLIC+" "+ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
                 ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
                 ClassDescriptor.STATIC+" "+ClassDescriptor.CLASS,
                 ClassDescriptor.STRICTFP+" "+ClassDescriptor.CLASS,
@@ -75,14 +77,15 @@ public class JavaClassesParsingService {
                         }
                         System.out.println(header);
                         count++;
-                        int indexExtends = header.indexOf("extends");
-                        int indexImplements = header.indexOf("implements");
+
                         ///FIXME: need to find solution public final class ForgivingParameterHandlerStrategyRegistry<HC extends HardCode, STRATEGY> extends AbstractSpringHardCodeRegistry<HardCode, STRATEGY> implements HardCodeStrategyRegistry<HC, STRATEGY>  {
                         if(line.contains("<"))
                         {
-                            continue;
+                            header=cleanHeaderFromDiamond(header);
                         }
-                        if (!assertIsBetweenClassTypeAndImplIndexes(indexClassType,indexImplements,indexExtends)  /* && !isOriginalExtending(line)*/)
+                        int indexExtends = header.indexOf("extends");
+                        int indexImplements = header.indexOf("implements");
+                        if (indexImplements != -1 &&!assertIsBetweenIndexes(indexClassType,indexImplements,indexExtends)  /* && !isOriginalExtending(line)*/)
                         {
                             indexExtends=-1;
                         }
@@ -128,6 +131,14 @@ public class JavaClassesParsingService {
         } catch (IOException ex) {
             //exception Handling
         }
+    }
+
+    private StringBuilder cleanHeaderFromDiamond(StringBuilder header) {
+        StringBuilder newHeader = new StringBuilder();
+        String line = header.toString();
+        line = line.replaceAll("<(.*?)>","");
+        newHeader.append(line);
+        return newHeader;
     }
 
     private boolean isOriginalExtending(String line) {
@@ -184,8 +195,8 @@ public class JavaClassesParsingService {
         return newLine;
     }
 
-    private boolean assertIsBetweenClassTypeAndImplIndexes(int indexClassType, int indexImplements, int indexExtends) {
-        return (indexClassType < indexExtends) && (indexExtends < indexImplements);
+    private boolean assertIsBetweenIndexes(int leftSide, int rightSide, int target) {
+        return (leftSide < target) && (target < rightSide);
     }
 
     private void setClassType(String classType) {
