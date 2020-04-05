@@ -5,6 +5,7 @@
 package services.processing;
 
 import Hierarchy.Classes.JavaClass;
+import Hierarchy.persistence.Persistent;
 import files.FileTypes;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
@@ -18,20 +19,37 @@ import java.util.function.UnaryOperator;
 public class JavaClassRecursiveUpdate {
 
     private ArrayList<JavaClass> javaclasses;
+    private ArrayList<Persistent> persistences;
 
-    public JavaClassRecursiveUpdate(ArrayList<JavaClass> javaclasses) {
+    public JavaClassRecursiveUpdate(ArrayList<JavaClass> javaclasses,ArrayList<Persistent> persistences) {
         this.javaclasses = javaclasses;
+        this.persistences = persistences;
         update();
     }
 
     private void update()
      {
+         System.out.println("processing update...");
          for (JavaClass javaClass:javaclasses)
          {
              updateImpl(javaClass);
              updateExt(javaClass);
+             updatePersistent(javaClass);
+             System.out.println("Class: "+ javaClass.getClassName()+" Has been updated");
          }
+         System.out.println("UPDATE DONE !");
      }
+
+    private void updatePersistent(JavaClass javaClass) {
+        for (Persistent persistent : persistences) {
+            Persistent found = find(persistent,javaClass);
+
+            if (found != null) {
+                javaClass.setPersistent(persistent);
+                break;
+            }
+        }
+    }
 
     private void updateImpl(JavaClass javaClass) {
         if (javaClass.getImplementations()==null)
@@ -101,4 +119,38 @@ public class JavaClassRecursiveUpdate {
        }
        return null;
     }
+    private Persistent find(Persistent persistent,JavaClass javaClass) {
+        if (persistent.getClassName()!=null)
+        {
+            for (Persistent pers:this.persistences)
+            {
+                if (pers.getClassName()!=null)
+                {
+                    if (pers.getClassName().equals(javaClass.getClassName()))
+                    {
+                        return pers;
+                    }
+                }
+                else
+                {
+                    try {
+                        throw  new JavaClassObjectNotFoundException("class with NULL classname");
+                    } catch (JavaClassObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            try {
+                throw  new JavaClassObjectNotFoundException("class with NULL classname");
+            } catch (JavaClassObjectNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }

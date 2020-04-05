@@ -10,11 +10,16 @@ import projects.ProjectFile;
 import services.reporting.Report;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class JavaClassesParsingService {
     JavaClass javaClass = JavaClass.newJavaClass().build();
     ProjectFile file;
+    StringBuilder content = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
@@ -40,12 +45,12 @@ public class JavaClassesParsingService {
 
     private void parseContent(String[] classTypes) {
         File fileToRead = new File(file.getPath());
+        appendContent(fileToRead.getPath());
         int count = 0;
         try (FileReader fileStream = new FileReader(fileToRead);
              BufferedReader bufferedReader = new BufferedReader(fileStream)) {
             StringBuilder header = new StringBuilder();
             String line = null;
-
             while ((line = bufferedReader.readLine()) != null) {
                 if (!line.startsWith("//"))
                 {
@@ -78,7 +83,6 @@ public class JavaClassesParsingService {
                         System.out.println(header);
                         count++;
 
-                        ///FIXME: need to find solution public final class ForgivingParameterHandlerStrategyRegistry<HC extends HardCode, STRATEGY> extends AbstractSpringHardCodeRegistry<HardCode, STRATEGY> implements HardCodeStrategyRegistry<HC, STRATEGY>  {
                         if(line.contains("<"))
                         {
                             header=cleanHeaderFromDiamond(header);
@@ -111,6 +115,7 @@ public class JavaClassesParsingService {
                 }
 
             }
+            createJavaCloneFile();
             if (count == 0) {
                 int index = -1;
                 for (int i = 0; i < classTypes.length; i++) {
@@ -130,6 +135,32 @@ public class JavaClassesParsingService {
             //exception Handling
         } catch (IOException ex) {
             //exception Handling
+        }
+    }
+
+    private void createJavaCloneFile() throws IOException {
+        String projectPath = file.getProject().getBasePath();
+        String absPath= "C:/createdClasses/"+javaClass.getClassName()+".java";
+        File newFile = new File(absPath);
+        if (newFile.createNewFile())
+        {
+            FileOutputStream fos = new FileOutputStream(absPath);
+            fos.write(content.toString().getBytes());
+            fos.flush();
+            fos.close();
+            System.out.println("::::CLONE CREATED::::");
+        }
+    }
+
+    private void appendContent(String filePath) {
+        /// TODO : needs optimization , file reading twice
+        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
+        {
+            stream.forEach(s -> content.append(s).append("\n"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 

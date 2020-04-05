@@ -18,7 +18,7 @@ public class MainProcess {
     public static void main(String[] args) {
         //// processing java classes creation
         System.out.println(args.length);
-        String basePath = "C:\\solife_6_1_2_CLV23_FP";
+        String basePath = "C:\\Sandboxes\\solife_6_1_2_CLV23_FP";
         Report report = new Report();
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
         ProjectImpl project = abstractMapperJava.getProject();
@@ -39,10 +39,11 @@ public class MainProcess {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        JavaClassRecursiveUpdate jcru = new JavaClassRecursiveUpdate(abstractMapperJava.getProcess().getJavaClasses());
+        JavaClassRecursiveUpdate jcru = new JavaClassRecursiveUpdate(abstractMapperJava.getProcess().getJavaClasses(),abstractMapperPersistence.getProcess().getPersistents());
         System.out.println(abstractMapperJava.getProcess().getJavaClasses().size());
         System.out.println(abstractMapperPersistence.getProcess().getPersistents().size());
-
+        System.out.println(AbstractProcess.class.getDeclaredFields()[0]);
+        ///TODO : clone classes into the project and getdeclaredFields with Class.forName()
 
     }
 
