@@ -4,7 +4,7 @@
 
 package services.parsing;
 
-import Hierarchy.Classes.JavaClass;
+import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import projects.ProjectFile;
 import services.reporting.Report;
@@ -95,8 +95,12 @@ public class JavaClassesParsingService {
                         }
                         String classname;
                         ///getting class name
+                        indexOfOpeningAcco = header.indexOf("{");
+                        indexExtends = header.indexOf("extends");
+                        indexImplements = header.indexOf("implements");
                         if (indexExtends == -1 && indexImplements == -1) {
-                            classname = header.substring(indexClassType + classTypeLength, indexOfOpeningAcco - 1);
+                            int nbsp = nbspacesbeforeOpeningAcco(header,indexOfOpeningAcco);
+                            classname = header.substring(indexClassType + classTypeLength, indexOfOpeningAcco - nbsp);
 
                         } else if (indexImplements != -1 && indexExtends == -1) {
                             classname = header.substring(indexClassType + classTypeLength, indexImplements - 1);
@@ -138,6 +142,19 @@ public class JavaClassesParsingService {
         }
     }
 
+    private int nbspacesbeforeOpeningAcco(StringBuilder header, int indexOfOpeningAcco) {
+        int nb = 0;
+        int i= indexOfOpeningAcco-1;
+        StringBuilder sb = new StringBuilder();
+        if (header.toString().lastIndexOf(" ") == i)
+        {
+            nb++;
+            sb.append(header.toString().substring(0,header.toString().lastIndexOf(" "))).append("{");
+            nb+=nbspacesbeforeOpeningAcco(sb,indexOfOpeningAcco);
+        }
+        return nb;
+    }
+
     private void createJavaCloneFile() throws IOException {
         String projectPath = file.getProject().getBasePath();
         String absPath= "C:/createdClasses/"+javaClass.getClassName()+".java";
@@ -154,7 +171,7 @@ public class JavaClassesParsingService {
 
     private void appendContent(String filePath) {
         /// TODO : needs optimization , file reading twice
-        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
+        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.ISO_8859_1))
         {
             stream.forEach(s -> content.append(s).append("\n"));
         }

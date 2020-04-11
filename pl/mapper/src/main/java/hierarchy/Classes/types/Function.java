@@ -2,9 +2,9 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.Classes.types;
+package hierarchy.Classes.types;
 
-import Hierarchy.Classes.JavaClass;
+import hierarchy.Classes.JavaClass;
 
 import java.util.ArrayList;
 

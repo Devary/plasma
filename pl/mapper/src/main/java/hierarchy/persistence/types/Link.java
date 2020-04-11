@@ -2,9 +2,9 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.persistence.types;
+package hierarchy.persistence.types;
 
-import Hierarchy.persistence.Persistent;
+import hierarchy.persistence.Persistent;
 
 public class Link extends Field {
     private Persistent parent;

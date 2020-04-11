@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.persistence.types;
+package hierarchy.persistence.types;
 
 public class SolifeQuery  {
     private String className;

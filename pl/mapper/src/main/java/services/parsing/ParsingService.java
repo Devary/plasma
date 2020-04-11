@@ -4,11 +4,11 @@
 
 package services.parsing;
 
-import Hierarchy.persistence.Persistent;
-import Hierarchy.persistence.types.Code;
-import Hierarchy.persistence.types.Field;
-import Hierarchy.persistence.types.Link;
-import Hierarchy.persistence.types.SolifeQuery;
+import hierarchy.persistence.Persistent;
+import hierarchy.persistence.types.Code;
+import hierarchy.persistence.types.Field;
+import hierarchy.persistence.types.Link;
+import hierarchy.persistence.types.SolifeQuery;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -22,14 +22,8 @@ import services.parsing.TypeService.LinkService;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.security.CodeSource;
-import java.security.ProtectionDomain;
 import java.util.ArrayList;
 
 public class ParsingService {

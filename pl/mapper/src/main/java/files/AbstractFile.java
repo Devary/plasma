@@ -4,10 +4,10 @@
 
 package files;
 
-import Hierarchy.Classes.JavaClass;
-import Hierarchy.Classes.types.Declaration;
-import Hierarchy.Classes.types.Function;
-import Hierarchy.persistence.Persistent;
+import hierarchy.Classes.JavaClass;
+import hierarchy.Classes.types.Declaration;
+import hierarchy.Classes.types.Function;
+import hierarchy.persistence.Persistent;
 
 import java.util.ArrayList;
 

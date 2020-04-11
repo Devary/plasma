@@ -4,8 +4,7 @@
 
 package services.parsing.TypeService;
 
-import Hierarchy.persistence.types.Link;
-import org.json.JSONArray;
+import hierarchy.persistence.types.Link;
 import org.json.JSONObject;
 
 import java.io.File;

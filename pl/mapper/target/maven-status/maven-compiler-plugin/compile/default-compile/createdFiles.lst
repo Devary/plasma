@@ -4,6 +4,7 @@ Hierarchy\persistence\types\SolifeQuery.class
 files\AbstractFile$1.class
 files\AbstractFile$Builder.class
 services\parsing\TypeService\JsonParsingService.class
+services\reporting\Report.class
 IService.class
 Filters\VirtualFileFilter.class
 Hierarchy\Classes\IJavaClass.class
@@ -32,9 +33,9 @@ Hierarchy\persistence\types\Code.class
 projects\ProjectImpl.class
 files\FileTypes.class
 files\ErrorCodes.class
-Run.class
 mappers\AbstractMapper.class
 Exceptions\AbstractPlasmaException.class
+TestCases.class
 Hierarchy\persistence\IPersistent.class
 Hierarchy\persistence\types\SolifeQuery$Builder.class
 projects\ProjectFile.class

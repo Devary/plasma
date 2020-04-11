@@ -2,11 +2,11 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.Classes;
+package hierarchy.Classes;
 
-import Hierarchy.Classes.types.Declaration;
-import Hierarchy.Classes.types.Function;
-import Hierarchy.persistence.Persistent;
+import hierarchy.Classes.types.Declaration;
+import hierarchy.Classes.types.Function;
+import hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import projects.ProjectFile;
 

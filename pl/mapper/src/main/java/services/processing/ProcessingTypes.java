@@ -8,4 +8,5 @@ public enum ProcessingTypes {
     ;
     public static final String JAVACLASS = "JAVACLASS" ;
     public static final String PERSISTENT = "PERSISTENT";
+    public static final String PROPERTY = "PROPERTY";
 }

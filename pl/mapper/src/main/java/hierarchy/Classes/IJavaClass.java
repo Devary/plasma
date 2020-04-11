@@ -2,15 +2,14 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.persistence;
+package hierarchy.Classes;
 
 import files.AbstractFile;
 import files.IAbstractFile;
 
 import java.util.ArrayList;
 
-public interface IPersistent extends IAbstractFile {
-
+public interface IJavaClass extends IAbstractFile {
     @Override
     String getName();
 

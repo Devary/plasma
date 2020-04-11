@@ -2,13 +2,13 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-package Hierarchy.persistence;
+package hierarchy.persistence;
 
-import Hierarchy.persistence.types.Code;
+import hierarchy.persistence.types.Code;
 import files.AbstractFile;
-import Hierarchy.persistence.types.Field;
-import Hierarchy.persistence.types.Link;
-import Hierarchy.persistence.types.SolifeQuery;
+import hierarchy.persistence.types.Field;
+import hierarchy.persistence.types.Link;
+import hierarchy.persistence.types.SolifeQuery;
 import projects.ProjectFile;
 
 import java.util.ArrayList;

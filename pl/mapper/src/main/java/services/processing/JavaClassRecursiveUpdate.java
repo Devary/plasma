@@ -4,26 +4,22 @@
 
 package services.processing;
 
-import Hierarchy.Classes.JavaClass;
-import Hierarchy.persistence.Persistent;
-import files.FileTypes;
-import mappers.AbstractMapper;
-import projects.ProjectFile;
-import projects.ProjectImpl;
-import services.parsing.JavaClassesParsingService;
+import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.function.UnaryOperator;
+import java.util.Properties;
 
 public class JavaClassRecursiveUpdate {
 
+    private final ArrayList<Properties> properties;
     private ArrayList<JavaClass> javaclasses;
     private ArrayList<Persistent> persistences;
 
-    public JavaClassRecursiveUpdate(ArrayList<JavaClass> javaclasses,ArrayList<Persistent> persistences) {
+    public JavaClassRecursiveUpdate(ArrayList<JavaClass> javaclasses, ArrayList<Persistent> persistences, ArrayList<Properties> properties) {
         this.javaclasses = javaclasses;
         this.persistences = persistences;
+        this.properties = properties;
         update();
     }
 
@@ -48,6 +44,14 @@ public class JavaClassRecursiveUpdate {
                 javaClass.setPersistent(persistent);
                 break;
             }
+        }
+    }
+
+    private void updateCID(JavaClass javaClass) {
+        for (Properties property : properties) {
+            Properties found = find(property,javaClass);
+
+            //TODO : complete impl
         }
     }
 
@@ -129,6 +133,42 @@ public class JavaClassRecursiveUpdate {
                     if (pers.getClassName().equals(javaClass.getClassName()))
                     {
                         return pers;
+                    }
+                }
+                else
+                {
+                    try {
+                        throw  new JavaClassObjectNotFoundException("class with NULL classname");
+                    } catch (JavaClassObjectNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            try {
+                throw  new JavaClassObjectNotFoundException("class with NULL classname");
+            } catch (JavaClassObjectNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private Properties find(Properties properties,JavaClass javaClass) {
+        if (javaClass.getClassName()!=null)
+        {
+            for (Properties props:this.properties)
+            {
+
+                //TODO: find class name in a loaded properties File
+                if (props.keys()!=null)
+                {
+                    if (props.get(1).equals(javaClass.getClassName()))
+                    {
+                        return props;
                     }
                 }
                 else

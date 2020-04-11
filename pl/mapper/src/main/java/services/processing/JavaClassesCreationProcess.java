@@ -4,7 +4,7 @@
 
 package services.processing;
 
-import Hierarchy.Classes.JavaClass;
+import hierarchy.Classes.JavaClass;
 import files.IAbstractFile;
 import projects.ProjectFile;
 import projects.ProjectImpl;

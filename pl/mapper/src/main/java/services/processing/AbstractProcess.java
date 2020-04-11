@@ -4,8 +4,8 @@
 
 package services.processing;
 
-import Hierarchy.Classes.JavaClass;
-import Hierarchy.persistence.Persistent;
+import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.IAbstractFile;
 import mappers.AbstractMapper;
@@ -14,6 +14,7 @@ import projects.ProjectImpl;
 import services.reporting.Report;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class AbstractProcess implements IAbstractProcess {
 
@@ -30,6 +31,16 @@ public class AbstractProcess implements IAbstractProcess {
     }
 
     private ArrayList<Persistent> persistents = new ArrayList<>();
+
+    public ArrayList<Properties> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(ArrayList<Properties> properties) {
+        this.properties = properties;
+    }
+
+    private ArrayList<Properties> properties = new ArrayList<>();
     ProjectImpl project ;
 
     public AbstractProcess(String processingType, String basePath, Report report) {
@@ -73,6 +84,11 @@ public class AbstractProcess implements IAbstractProcess {
         {
             abstractProcess= new PersistenceObjectsCreationProcess();
             persistents.addAll(abstractProcess.createObjectFiles(projectFiles,this.report));
+        }
+        else if (processingType.equals(ProcessingTypes.PROPERTY))
+        {
+            abstractProcess= new PropertyFileCreationProcess();
+            properties.addAll(abstractProcess.createObjectFiles(projectFiles,this.report));
         }
         else{
             //TODO : must be checked
