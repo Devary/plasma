@@ -24,10 +24,15 @@
             <artifactId>openapi</artifactId>
             <version>7.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
         <java.version>13.0.2</java.version>
         <solife.test.dir>C:\SolifePlasma</solife.test.dir>
         <toolsDir>C:/tools</toolsDir>
@@ -36,40 +41,4 @@
         <mavenDirName>apache-maven-3.6.2</mavenDirName>
         <groovySdkDirName>apache-groovy-sdk-3.0.2</groovySdkDirName>
     </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.1</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>
-                                <argument>${solife.test.dir}</argument>
-                                <argument>${toolsDir}</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>mapper.MainProcess</mainClass>
-                    <arguments>
-                        <argument>argument1</argument>
-                        <argument>argument1</argument>
-                    </arguments>
-                    <!--<systemProperties>
-                        <systemProperty>
-                            <key>myproperty</key>
-                            <value>myvalue</value>
-                        </systemProperty>
-                    </systemProperties>-->
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -4,7 +4,7 @@
 
 package hierarchy.Classes;
 
-import hierarchy.Classes.types.Declaration;
+import hierarchy.Classes.types.JavaField;
 import hierarchy.Classes.types.Function;
 import hierarchy.persistence.Persistent;
 import files.AbstractFile;
@@ -18,7 +18,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public ArrayList<Function> functions;
     public ArrayList<JavaClass> implementations;
     public ArrayList<JavaClass> heritances;
-    public ArrayList<Declaration> declarations;
+    public ArrayList<JavaField> javaFields;
     public Persistent persistent;
     public String classType;
     public boolean isInnerClass;
@@ -28,7 +28,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         this.functions = builder.functions;
         this.implementations = builder.implementations;
         this.heritances = builder.heritances;
-        this.declarations = builder.declarations;
+        this.javaFields = builder.javaFields;
         this.persistent = builder.persistent;
         this.classType = builder.classType;
         this.isInnerClass = builder.isInnerClass;
@@ -79,6 +79,24 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public void setPersistent(Persistent persistent) {
         this.persistent = persistent;
     }
+
+
+    public ArrayList<JavaField> getJavaFields() {
+        return javaFields;
+    }
+
+    public void setJavaFields(ArrayList<JavaField> javaFields) {
+        this.javaFields = javaFields;
+    }
+
+    public boolean isInnerClass() {
+        return isInnerClass;
+    }
+
+    public void setInnerClass(boolean innerClass) {
+        isInnerClass = innerClass;
+    }
+
 
     @Override
     public String getName() {
@@ -139,7 +157,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         private ArrayList<Function> functions;
         private ArrayList<JavaClass> implementations;
         private ArrayList<JavaClass> heritances;
-        private ArrayList<Declaration> declarations;
+        private ArrayList<JavaField> javaFields;
         private Persistent persistent;
 
         private Builder() {
@@ -173,8 +191,8 @@ public class JavaClass extends ProjectFile implements IJavaClass {
             return this;
         }
 
-        public Builder declarations(ArrayList<Declaration> declarations) {
-            this.declarations = declarations;
+        public Builder declarations(ArrayList<JavaField> javaFields) {
+            this.javaFields = javaFields;
             return this;
         }
         public Builder isInnerClass(boolean isInnerClass) {

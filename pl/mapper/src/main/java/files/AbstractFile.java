@@ -5,7 +5,7 @@
 package files;
 
 import hierarchy.Classes.JavaClass;
-import hierarchy.Classes.types.Declaration;
+import hierarchy.Classes.types.JavaField;
 import hierarchy.Classes.types.Function;
 import hierarchy.persistence.Persistent;
 
@@ -146,7 +146,7 @@ public class AbstractFile implements IAbstractFile {
         private ArrayList<Function> functions;
         private ArrayList<JavaClass> implementations;
         private ArrayList<JavaClass> heritances;
-        private ArrayList<Declaration> declarations;
+        private ArrayList<JavaField> javaFields;
         private Persistent persistent;
 
         private Builder() {
@@ -216,8 +216,8 @@ public class AbstractFile implements IAbstractFile {
             return this;
         }
 
-        public Builder declarations(ArrayList<Declaration> declarations) {
-            this.declarations = declarations;
+        public Builder declarations(ArrayList<JavaField> javaFields) {
+            this.javaFields = javaFields;
             return this;
         }
 

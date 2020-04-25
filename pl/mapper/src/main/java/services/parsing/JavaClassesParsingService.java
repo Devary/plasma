@@ -4,16 +4,21 @@
 
 package services.parsing;
 
+import com.thoughtworks.qdox.JavaProjectBuilder;
+import com.thoughtworks.qdox.model.JavaField;
+import com.thoughtworks.qdox.model.JavaMethod;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import projects.ProjectFile;
 import services.reporting.Report;
 
+import javax.validation.constraints.Digits;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class JavaClassesParsingService {
@@ -21,6 +26,7 @@ public class JavaClassesParsingService {
     ProjectFile file;
     StringBuilder content = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
+    private final String plasmaGeneratedClassesDir =System.getProperty("user.dir")+"/mapper/src/main/java/plasma_generated_classes/";
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
 
@@ -119,7 +125,9 @@ public class JavaClassesParsingService {
                 }
 
             }
-            createJavaCloneFile();
+            //createJavaCloneFile();
+            parsingEx();
+
             if (count == 0) {
                 int index = -1;
                 for (int i = 0; i < classTypes.length; i++) {
@@ -155,9 +163,26 @@ public class JavaClassesParsingService {
         return nb;
     }
 
+    public void parsingEx()
+    {
+        JavaProjectBuilder builder = new JavaProjectBuilder();
+        builder.addSource(new StringReader(content.toString()));
+        com.thoughtworks.qdox.model.JavaClass cls = builder.getClassByName("com.blah.foo.MyClass");
+        List<JavaField> fields = cls.getFields();
+        List<JavaMethod> methods = cls.getMethods();
+        //Field
+        ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
+        for (JavaField field:fielnds)
+        {
+            String fname = field.getName();
+            String fType= field.getType().getName();
+            hierarchy.Classes.types.JavaField javaField = new hierarchy.Classes.types.JavaField(fname,fType);
+            javaFields.add(javaField);
+        }
+        javaClass.setJavaFields(javaFields);
+    }
     private void createJavaCloneFile() throws IOException {
-        String projectPath = file.getProject().getBasePath();
-        String absPath= "C:/createdClasses/"+javaClass.getClassName()+".java";
+        String absPath= plasmaGeneratedClassesDir+javaClass.getClassName()+".java";
         File newFile = new File(absPath);
         if (newFile.createNewFile())
         {

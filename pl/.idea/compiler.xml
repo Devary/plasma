@@ -7,13 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.vermeg.plasma.database" />
-        <module name="com.vermeg.plasma.webservices" />
         <module name="com.vermeg.plasma.groovy-utils" />
         <module name="com.vermeg.plasma.mapper" />
+        <module name="com.vermeg.plasma.webservices" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="com.vermeg.plasma" target="1.8" />
+      <module name="com.vermeg.plasma" target="1.9" />
       <module name="com.vermeg.plasma.database" target="1.8" />
       <module name="com.vermeg.plasma.groovy-utils" target="1.8" />
       <module name="com.vermeg.plasma.mapper" target="1.8" />

@@ -2,6 +2,8 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.InvalidDataException;
 import files.FileTypes;
 import mappers.AbstractMapper;
 import projects.ProjectImpl;
@@ -10,32 +12,37 @@ import services.processing.JavaClassRecursiveUpdate;
 import services.processing.ProcessingTypes;
 import services.reporting.Report;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+
 public class MainProcess {
-    private static String basePath = "C:\\Sandboxes\\solife_6_1_2_CLV23_FP";
+    private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
 
     public static void main(String[] args) {
 
 
-        //// processing java classes creation
+
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
 
 
-        //p1(abstractMapperJava);
+        p1(abstractMapperJava);
 
-        ///creating persistent
+        //creating persistent
         AbstractMapper abstractMapperPersistence = initAbstractMapper(ProcessingTypes.PERSISTENT,FileTypes.PERSISTENCE,basePath,report);
 
-        //p2(abstractMapperPersistence);
+        p2(abstractMapperPersistence);
 
-        ////properties
+        //properties
         AbstractMapper abstractMapperProperties = initAbstractMapper(ProcessingTypes.PROPERTY,FileTypes.PROPERTIES,basePath,report);
         p3(abstractMapperProperties);
         System.out.println("ok");
 
-        /// updating JAVACLASSES
-        //p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
-        ///TODO : clone classes into the project and getdeclaredFields with Class.forName()
+        // updating JAVACLASSES
+        p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
+        //TODO : clone classes into the project and getdeclaredFields with Class.forName()
 
     }
 
