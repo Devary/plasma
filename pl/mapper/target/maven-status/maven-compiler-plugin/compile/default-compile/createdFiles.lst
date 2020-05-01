@@ -48,8 +48,8 @@ Exceptions\AbstractPlasmaException.class
 hierarchy\persistence\Persistent.class
 TestCases.class
 projects\ProjectFile.class
-hierarchy\Classes\types\Declaration.class
 hierarchy\property\PropertiesFile.class
+hierarchy\Classes\types\JavaField.class
 services\parsing\TypeService\FieldService.class
 files\AbstractFile.class
 services\parsing\TypeService\LinkService.class

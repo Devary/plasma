@@ -18,6 +18,21 @@ public class Function {
     private boolean isVoid;
     private ArrayList<Function> usersOfThisMethode;
 
+    private Function(Builder builder) {
+        this.name = builder.name;
+        this.resultType = builder.resultType;
+        this.inputs = builder.inputs;
+        this.manipulatedObjects = builder.manipulatedObjects;
+        this.canReturnNull = builder.canReturnNull;
+        this.isService = builder.isService;
+        this.isVoid = builder.isVoid;
+        this.usersOfThisMethode = builder.usersOfThisMethode;
+    }
+
+    public static Builder newFunction() {
+        return new Builder();
+    }
+
     public String getName() {
         return name;
     }
@@ -82,78 +97,62 @@ public class Function {
         this.usersOfThisMethode = usersOfThisMethode;
     }
 
-    public static final class FunctionBuilder {
+
+    public static final class Builder {
         private String name;
         private JavaClass resultType;
         private ArrayList<JavaClass> inputs;
-        private boolean isVoid;
-        private  ArrayList<JavaClass> manipulatedObjects;
+        private ArrayList<JavaClass> manipulatedObjects;
         private boolean canReturnNull;
         private boolean isService;
+        private boolean isVoid;
         private ArrayList<Function> usersOfThisMethode;
 
-        private FunctionBuilder() {
+        private Builder() {
         }
 
-        private static FunctionBuilder aFunction() {
-            return new FunctionBuilder();
+        public Function build() {
+            return new Function(this);
         }
 
-        private FunctionBuilder withName(String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        private FunctionBuilder withResultType(JavaClass resultType) {
+        public Builder resultType(JavaClass resultType) {
             this.resultType = resultType;
             return this;
         }
 
-        private FunctionBuilder withInputs(ArrayList<JavaClass> inputs) {
+        public Builder inputs(ArrayList<JavaClass> inputs) {
             this.inputs = inputs;
             return this;
         }
 
-        private FunctionBuilder withIsVoid(boolean isVoid) {
-            this.isVoid = isVoid;
-            return this;
-        }
-
-        private FunctionBuilder withManipulatedObjects(ArrayList<JavaClass> manipulatedObjects) {
+        public Builder manipulatedObjects(ArrayList<JavaClass> manipulatedObjects) {
             this.manipulatedObjects = manipulatedObjects;
             return this;
         }
 
-        private FunctionBuilder withCanReturnNull(boolean canReturnNull) {
+        public Builder canReturnNull(boolean canReturnNull) {
             this.canReturnNull = canReturnNull;
             return this;
         }
 
-        private FunctionBuilder withIsService(boolean isService) {
+        public Builder isService(boolean isService) {
             this.isService = isService;
             return this;
         }
 
-        private FunctionBuilder withUsersOfThisMethode(ArrayList<Function> usersOfThisMethode) {
-            this.usersOfThisMethode = usersOfThisMethode;
+        public Builder isVoid(boolean isVoid) {
+            this.isVoid = isVoid;
             return this;
         }
 
-        public FunctionBuilder but() {
-            return aFunction().withName(name).withResultType(resultType).withInputs(inputs).withIsVoid(isVoid).withManipulatedObjects(manipulatedObjects).withCanReturnNull(canReturnNull).withIsService(isService).withUsersOfThisMethode(usersOfThisMethode);
-        }
-
-        public Function build() {
-            Function function = new Function();
-            function.setName(name);
-            function.setResultType(resultType);
-            function.setInputs(inputs);
-            function.setManipulatedObjects(manipulatedObjects);
-            function.setCanReturnNull(canReturnNull);
-            function.setUsersOfThisMethode(usersOfThisMethode);
-            function.isService = this.isService;
-            function.isVoid = this.isVoid;
-            return function;
+        public Builder usersOfThisMethode(ArrayList<Function> usersOfThisMethode) {
+            this.usersOfThisMethode = usersOfThisMethode;
+            return this;
         }
     }
 }

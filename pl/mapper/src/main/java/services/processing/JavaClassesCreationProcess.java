@@ -4,6 +4,7 @@
 
 package services.processing;
 
+import Exceptions.ClassNameNotFoundException;
 import hierarchy.Classes.JavaClass;
 import files.IAbstractFile;
 import projects.ProjectFile;
@@ -45,7 +46,12 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
         for (ProjectFile projectFile:projectJavaFiles)
         {
             i++;
-            JavaClassesParsingService ps = new JavaClassesParsingService(projectFile,report);
+            JavaClassesParsingService ps = null;
+            try {
+                ps = new JavaClassesParsingService(projectFile,report);
+            } catch (ClassNameNotFoundException e) {
+                e.printStackTrace();
+            }
             JavaClass javaClass = ps.getJavaClass();
             if (javaClass.getClassName()!=null)
             javaClasses.add(javaClass);

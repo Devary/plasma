@@ -4,11 +4,14 @@
 
 package services.parsing;
 
+import Exceptions.ClassNameNotFoundException;
+import Exceptions.ErrorCodes;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaMethod;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
+import hierarchy.Classes.types.Function;
 import projects.ProjectFile;
 import services.reporting.Report;
 
@@ -30,7 +33,7 @@ public class JavaClassesParsingService {
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
 
-    public JavaClassesParsingService(ProjectFile projectFile, Report report) {
+    public JavaClassesParsingService(ProjectFile projectFile, Report report) throws ClassNameNotFoundException {
         this.file = projectFile;
         String[] typesToParse =adaptParsingRange();
             parseContent(typesToParse);
@@ -49,7 +52,7 @@ public class JavaClassesParsingService {
         return types;
     }
 
-    private void parseContent(String[] classTypes) {
+    private void parseContent(String[] classTypes) throws ClassNameNotFoundException {
         File fileToRead = new File(file.getPath());
         appendContent(fileToRead.getPath());
         int count = 0;
@@ -57,6 +60,7 @@ public class JavaClassesParsingService {
              BufferedReader bufferedReader = new BufferedReader(fileStream)) {
             StringBuilder header = new StringBuilder();
             String line = null;
+            String classname = null;
             while ((line = bufferedReader.readLine()) != null) {
                 if (!line.startsWith("//"))
                 {
@@ -99,7 +103,6 @@ public class JavaClassesParsingService {
                         {
                             indexExtends=-1;
                         }
-                        String classname;
                         ///getting class name
                         indexOfOpeningAcco = header.indexOf("{");
                         indexExtends = header.indexOf("extends");
@@ -126,7 +129,13 @@ public class JavaClassesParsingService {
 
             }
             //createJavaCloneFile();
-            parsingEx();
+            if (classname!= null)
+            {
+                parsingEx(classname);
+            }
+            else {
+                throw new ClassNameNotFoundException(ErrorCodes.FILE_NAME_NOT_FOUND);
+            }
 
             if (count == 0) {
                 int index = -1;
@@ -163,16 +172,16 @@ public class JavaClassesParsingService {
         return nb;
     }
 
-    public void parsingEx()
+    public void parsingEx(String className)
     {
         JavaProjectBuilder builder = new JavaProjectBuilder();
         builder.addSource(new StringReader(content.toString()));
-        com.thoughtworks.qdox.model.JavaClass cls = builder.getClassByName("com.blah.foo.MyClass");
+        com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
         List<JavaField> fields = cls.getFields();
         List<JavaMethod> methods = cls.getMethods();
         //Field
         ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
-        for (JavaField field:fielnds)
+        for (JavaField field:fields)
         {
             String fname = field.getName();
             String fType= field.getType().getName();
@@ -180,6 +189,17 @@ public class JavaClassesParsingService {
             javaFields.add(javaField);
         }
         javaClass.setJavaFields(javaFields);
+        ArrayList<Function> javaMethods = new ArrayList<>();
+        for (JavaMethod jm:methods)
+        {
+            javaMethods.add(Function.newFunction()
+                    .name(jm.getName())
+                    /// TODO: update resultType with existing JAVACLASS in the process
+                    .resultType(null)
+                    .build()
+            );
+        }
+        javaClass.setFunctions(javaMethods);
     }
     private void createJavaCloneFile() throws IOException {
         String absPath= plasmaGeneratedClassesDir+javaClass.getClassName()+".java";
