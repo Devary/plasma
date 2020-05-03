@@ -56,8 +56,8 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
             if (javaClass.getClassName()!=null)
             javaClasses.add(javaClass);
             System.out.println(javaClass.getClassName()+" built successfully !");
-            if (javaClass.getJavaFields().size()>0)
-            break;
+            //if (javaClass.getJavaFields().size()>0)
+            //break;
         }
         System.out.println("FINISHED :: "+javaClasses.size()+" Objects created !");
         this.javaClasses = javaClasses;

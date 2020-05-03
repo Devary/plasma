@@ -42,7 +42,6 @@ public class MainProcess {
 
         // updating JAVACLASSES
         p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
-        //TODO : clone classes into the project and getdeclaredFields with Class.forName()
 
     }
 

@@ -165,17 +165,7 @@ public class Persistent extends ProjectFile implements IPersistent {
 
     @Override
     public String toString() {
-        return "Persistent{" +
-                "className='" + className + '\'' +
-                ", name='" + name + '\'' +
-                ", mappingType='" + mappingType + '\'' +
-                ", isPersistent=" + isPersistent +
-                ", tableName='" + tableName + '\'' +
-                ", shortTableName='" + shortTableName + '\'' +
-                ", fields=" + fields +
-                ", links=" + links +
-                ", queries=" + queries +
-                '}';
+        return "Persistent";
     }
 
 
@@ -248,5 +238,6 @@ public class Persistent extends ProjectFile implements IPersistent {
             return this;
         }
     }
+
 
 }

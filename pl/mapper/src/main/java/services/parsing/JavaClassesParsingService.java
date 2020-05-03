@@ -6,6 +6,7 @@ package services.parsing;
 
 import Exceptions.ClassNameNotFoundException;
 import Exceptions.ErrorCodes;
+import Exceptions.ParsingException;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaMethod;
@@ -15,7 +16,6 @@ import hierarchy.Classes.types.Function;
 import projects.ProjectFile;
 import services.reporting.Report;
 
-import javax.validation.constraints.Digits;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -129,9 +129,11 @@ public class JavaClassesParsingService {
 
             }
             //createJavaCloneFile();
+            parsePackage();
+            parseModule();
             if (classname!= null)
             {
-                parsingEx(classname);
+                parseBody(classname);
             }
             else {
                 throw new ClassNameNotFoundException(ErrorCodes.FILE_NAME_NOT_FOUND);
@@ -159,6 +161,20 @@ public class JavaClassesParsingService {
         }
     }
 
+    private void parseModule() {
+        ///TODO:
+    }
+
+    private void parsePackage() throws IOException {
+        String line = null;
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(content.toString()));
+            while ((line = bufferedReader.readLine()) != null) {
+            if (line.startsWith("package")) {
+                    javaClass.setContainingPackage(line.substring(7,line.lastIndexOf(";")));
+            }
+        }
+    }
+
     private int nbspacesbeforeOpeningAcco(StringBuilder header, int indexOfOpeningAcco) {
         int nb = 0;
         int i= indexOfOpeningAcco-1;
@@ -172,23 +188,19 @@ public class JavaClassesParsingService {
         return nb;
     }
 
-    public void parsingEx(String className)
+    public void parseBody(String className)
     {
         JavaProjectBuilder builder = new JavaProjectBuilder();
         builder.addSource(new StringReader(content.toString()));
         com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
-        List<JavaField> fields = cls.getFields();
-        List<JavaMethod> methods = cls.getMethods();
         //Field
-        ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
-        for (JavaField field:fields)
-        {
-            String fname = field.getName();
-            String fType= field.getType().getName();
-            hierarchy.Classes.types.JavaField javaField = new hierarchy.Classes.types.JavaField(fname,fType);
-            javaFields.add(javaField);
-        }
-        javaClass.setJavaFields(javaFields);
+        parseFields(cls);
+        //Methods
+        parseMethods(cls);
+    }
+
+    private void parseMethods(com.thoughtworks.qdox.model.JavaClass cls) {
+        List<JavaMethod> methods = cls.getMethods();
         ArrayList<Function> javaMethods = new ArrayList<>();
         for (JavaMethod jm:methods)
         {
@@ -201,6 +213,34 @@ public class JavaClassesParsingService {
         }
         javaClass.setFunctions(javaMethods);
     }
+
+    private void parseFields(com.thoughtworks.qdox.model.JavaClass cls) {
+        List<JavaField> fields = cls.getFields();
+        ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
+        hierarchy.Classes.types.JavaField javaField = null;
+        for (JavaField field:fields)
+        {
+            String fname = null;
+            String fType= null;
+            try {
+                fname = field.getName();
+                fType = field.getType().getName();
+                javaField = new hierarchy.Classes.types.JavaField(fname, fType);
+                javaFields.add(javaField);
+            } catch (Throwable t){
+                ////nothing
+                t.printStackTrace();
+            }
+            if (fname == null
+            || fType == null){
+                ///todo::
+
+            }
+
+        }
+        javaClass.setJavaFields(javaFields);
+    }
+
     private void createJavaCloneFile() throws IOException {
         String absPath= plasmaGeneratedClassesDir+javaClass.getClassName()+".java";
         File newFile = new File(absPath);

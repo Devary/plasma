@@ -21,6 +21,8 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public ArrayList<JavaField> javaFields;
     public Persistent persistent;
     public String classType;
+    public String module;
+    public String containingPackage;
     public boolean isInnerClass;
 
     private JavaClass(Builder builder) {
@@ -32,6 +34,8 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         this.persistent = builder.persistent;
         this.classType = builder.classType;
         this.isInnerClass = builder.isInnerClass;
+        this.module = builder.module;
+        this.containingPackage = builder.containingPackage;
 
     }
 
@@ -97,6 +101,21 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         isInnerClass = innerClass;
     }
 
+    public String getModule() {
+        return module;
+    }
+
+    public String getContainingPackage() {
+        return containingPackage;
+    }
+
+    public void setModule(String module) {
+        this.module = module;
+    }
+
+    public void setContainingPackage(String containingPackage) {
+        this.containingPackage = containingPackage;
+    }
 
     @Override
     public String getName() {
@@ -159,6 +178,8 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         private ArrayList<JavaClass> heritances;
         private ArrayList<JavaField> javaFields;
         private Persistent persistent;
+        public String module;
+        public String containingPackage;
 
         private Builder() {
         }
@@ -202,6 +223,14 @@ public class JavaClass extends ProjectFile implements IJavaClass {
 
         public Builder persistent(Persistent persistent) {
             this.persistent = persistent;
+            return this;
+        }
+        public Builder setModule(String module) {
+            this.module = module;
+            return this;
+        }
+        public Builder setContainingPackage(String containingPackage) {
+            this.containingPackage = containingPackage;
             return this;
         }
     }

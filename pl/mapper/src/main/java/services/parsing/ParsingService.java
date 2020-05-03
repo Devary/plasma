@@ -215,45 +215,4 @@ public class ParsingService {
         return createNodeAndCheckForExistence("class","mapping");
     }
 
-    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)throws Exception
-    {
-        /*String filePathAndName = this.file.getProject().getBasePath()+"/created_classes/"+file.getName();
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(filePathAndName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try{
-
-            File file = new File(projectFile.getProject().getBasePath());
-
-            URL url = file.toURI().toURL();
-            URL[] urls = new URL[]{url};
-
-            ClassLoader cl = new URLClassLoader(urls);
-            Class cls = cl.loadClass(classPath);
-            File newFile = new File(filePathAndName);
-            ProtectionDomain pDomain = cls.getProtectionDomain();
-            CodeSource cSource = pDomain.getCodeSource();
-            if (newFile.createNewFile())
-                if (writer != null) {
-                    writer.write(cSource.toString());
-                    writer.close();
-                }
-            return newFile.getClass();
-
-            //ProtectionDomain pDomain = cls.getProtectionDomain();
-            //CodeSource cSource = pDomain.getCodeSource();
-            //URL urlfrom = cSource.getLocation();
-            //System.out.println(urlfrom.getFile());
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return null;*/
-        return Class.forName("ok");
-    }
-
 }
