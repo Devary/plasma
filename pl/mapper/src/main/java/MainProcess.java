@@ -2,8 +2,6 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.InvalidDataException;
 import files.FileTypes;
 import mappers.AbstractMapper;
 import projects.ProjectImpl;
@@ -11,11 +9,6 @@ import services.processing.AbstractProcess;
 import services.processing.JavaClassRecursiveUpdate;
 import services.processing.ProcessingTypes;
 import services.reporting.Report;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 
 public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
