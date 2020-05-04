@@ -7,6 +7,5 @@ public class XpdlActivity {
     private String nameAttr;
     private Collection<XpdlImplementation> activities;
     private Collection<XpdlNodeGraphicsInfo> nodeGraphicsInfos;
-    private Collection<XpdlTransitionRestriction> nodeGraphicsInfos;
-    private
+    private Collection<XpdlTransitionRestriction> transitionRestrictions;
 }
