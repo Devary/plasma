@@ -3,6 +3,7 @@
  */
 
 import files.FileTypes;
+import hierarchy.Classes.JavaClass;
 import mappers.AbstractMapper;
 import projects.ProjectImpl;
 import services.processing.AbstractProcess;
@@ -10,14 +11,18 @@ import services.processing.JavaClassRecursiveUpdate;
 import services.processing.ProcessingTypes;
 import services.reporting.Report;
 
+import java.util.ArrayList;
+
 public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
 
-    public static void main(String[] args) {
+    public void setJavaClasses(ArrayList<JavaClass> javaClasses) {
+        this.javaClasses = javaClasses;
+    }
 
-
-
+    public ArrayList<JavaClass> javaClasses = null;
+    public  MainProcess(){
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
 
 
@@ -35,6 +40,8 @@ public class MainProcess {
 
         // updating JAVACLASSES
         p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
+
+        setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
 
     }
 
@@ -92,5 +99,9 @@ public class MainProcess {
         abstractMapper.setProject(project);
         abstractMapper.setProcess(abstractProcess);
         return abstractMapper;
+    }
+
+    public ArrayList<JavaClass> getJavaClasses() {
+        return this.javaClasses;
     }
 }

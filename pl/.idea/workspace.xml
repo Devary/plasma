@@ -7,20 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adeec5a3-0980-444d-8b18-1e5cc0190d3a" name="adding package to javaClass object" comment="[Missing] XPDL file composition">
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/Classes/types/Function.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/Classes/types/Function.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/projects/VFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/projects/VFS.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/DBProcess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/SolifeQueryEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/IModelEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <list id="541e3db9-408d-45d0-a727-79c53b653c90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/Classes/types/Function$FunctionBuilder.class" beforeDir="false" />
     </list>
@@ -50,93 +54,49 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlActivity.java">
+        <entry file="file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="51" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlTaskApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/ActualParameter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="434">
+              <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
               <folding>
-                <element signature="e#128#129#0" expanded="true" />
-                <element signature="e#160#161#0" expanded="true" />
-                <element signature="e#191#192#0" expanded="true" />
-                <element signature="e#218#219#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#main#0;class#AbstractDatabaseDriver#0" />
+                <element signature="method#connect#0;class#AbstractDatabaseDriver#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlDataField.java">
+        <entry file="file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="418">
+              <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="method#p4#0;class#MainProcess#0" />
+                <element signature="method#p2#0;class#MainProcess#0" />
+                <element signature="method#p1#0;class#MainProcess#0" />
+                <element signature="method#initAbstractMapper#0;class#MainProcess#0" />
+                <element signature="e#4164#4165#0" expanded="true" />
+                <element signature="e#4190#4191#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/src/main/java/DBProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#845#846#0" expanded="true" />
+                <element signature="e#879#880#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +106,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -158,7 +120,11 @@
       <find>public ParsingService</find>
       <find>toString</find>
       <find>[2</find>
+      <find>instanceof</find>
     </findStrings>
+    <replaceStrings>
+      <replace>.equals(</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -176,24 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/reporting/Report.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/FieldService.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/Run.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/TestCases.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/Exceptions/ErrorCodes.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/Exceptions/ParsingException.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/Exceptions/ClassNameNotFoundException.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/types/Function.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/Persistent.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" />
-        <option value="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" />
         <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlPackageHeader.java" />
         <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlRedefinableHeader.java" />
         <option value="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlExternalPackage.java" />
@@ -227,6 +175,24 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" />
         <option value="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java" />
+        <option value="$PROJECT_DIR$/database/pom.xml" />
+        <option value="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/IModelEngine.java" />
+        <option value="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/ModelEngine.java" />
+        <option value="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/Engines/AbstractEngine.java" />
+        <option value="$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/Engines/SolifeQueryEngine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/MysqlConnectionEnum.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/MysqlConnection.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/SolifeQueryEngine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/Engines/DBProcess.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/IModelEngine.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/DBProcess.java" />
+        <option value="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" />
+        <option value="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" />
       </list>
     </option>
   </component>
@@ -248,10 +214,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="x" value="276" />
+    <option name="y" value="-14" />
+    <option name="width" value="1178" />
+    <option name="height" value="628" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -294,6 +260,77 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Engines" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Engines" type="462c0819:PsiDirectoryNode" />
+              <item name="connections" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -304,7 +341,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XpdlCodeBooksParser-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sample-react" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -313,17 +350,18 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="hierarchy.xpdl.types" />
-      <recent name="hierarchy.xpdl.T" />
-      <recent name="Exceptions" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Sandboxes\plasma\pl\com.vermeg.plasma.webservices\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Entity" />
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Sandboxes\plasma\pl\com.vermeg.plasma.webservices\src\main\java" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Engines" />
+      <recent name="hierarchy.xpdl.types" />
+      <recent name="hierarchy.xpdl.T" />
+      <recent name="Exceptions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -338,7 +376,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager" selected="Application.AbstractDatabaseDriver">
+    <configuration name="AbstractDatabaseDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AbstractDatabaseDriver" />
+      <module name="com.vermeg.plasma.database" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="13.0.2" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -480,7 +525,13 @@
       <item itemvalue="JBoss Server.JBoss 18.0.1.Final" />
       <item itemvalue="JBoss Server.JBoss 19.0.0.Final remote" />
       <item itemvalue="Remote.Unnamed" />
+      <item itemvalue="Application.AbstractDatabaseDriver" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AbstractDatabaseDriver" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -498,7 +549,8 @@
       <workItem from="1585991946483" duration="599000" />
       <workItem from="1586016264069" duration="17089000" />
       <workItem from="1587854223298" duration="17737000" />
-      <workItem from="1588459894050" duration="3018000" />
+      <workItem from="1588459894050" duration="3084000" />
+      <workItem from="1589624842401" duration="18621000" />
     </task>
     <task id="LOCAL-00001" summary="creation of module webservices &amp; attach to wildfly 18.01">
       <created>1585739491598</created>
@@ -542,17 +594,24 @@
       <option name="project" value="LOCAL" />
       <updated>1588522588290</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[Missing] XPDL file composition">
+      <created>1588600275468</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588600275468</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49006000" />
+    <option name="totallyTimeSpent" value="67693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23264782" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17994858" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -562,9 +621,9 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.50277776" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.25416666" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.34444445" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.17083333" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.104166664" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.12083333" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.45555556" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -617,6 +676,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creation of module webservices &amp; attach to wildfly 18.01" />
@@ -637,596 +710,85 @@
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
           <line>45</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java</url>
-          <line>36</line>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/database/src/main/java/Engines/SolifeQueryEngine.java</url>
+          <line>18</line>
           <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java</url>
+          <line>11</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="jcru.javaclasses.get(2).persistent.mappingType" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>field.getModifiers()</expression-string>
+        <expression-string>statement.executeUpdate(&quot;truncate table queries&quot;);</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>field.getType()</expression-string>
+        <expression-string>((StatementImpl) statement).openResults</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>field.getType().getName()</expression-string>
+        <expression-string>((StatementImpl) statement).isClosed</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>field</expression-string>
+        <expression-string>statement.getConnection()</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>builder.getClasses().iterator().next().getCanonicalName()</expression-string>
+        <expression-string>statement.getConnection().isClosed();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>builder.getClasses()</expression-string>
+        <expression-string>statement.getConnection().isClosed()</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>builder.addSource(new StringReader(&quot;public interface Foo extends Bar {}\n&quot;));</expression-string>
+        <expression-string>statement.getConnection().isValid()</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>String source =&quot;package services.parsing;\n&quot; +
-        &quot;\n&quot; +
-        &quot;import Hierarchy.persistence.Persistent;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Code;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Field;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Link;\n&quot; +
-        &quot;import Hierarchy.persistence.types.SolifeQuery;\n&quot; +
-        &quot;import org.w3c.dom.Document;\n&quot; +
-        &quot;import org.w3c.dom.Node;\n&quot; +
-        &quot;import org.w3c.dom.NodeList;\n&quot; +
-        &quot;import org.xml.sax.InputSource;\n&quot; +
-        &quot;import org.xml.sax.SAXException;\n&quot; +
-        &quot;import projects.ProjectFile;\n&quot; +
-        &quot;import services.parsing.TypeService.FieldService;\n&quot; +
-        &quot;import services.parsing.TypeService.JsonParsingService;\n&quot; +
-        &quot;import services.parsing.TypeService.LinkService;\n&quot; +
-        &quot;\n&quot; +
-        &quot;import javax.xml.parsers.DocumentBuilder;\n&quot; +
-        &quot;import javax.xml.parsers.DocumentBuilderFactory;\n&quot; +
-        &quot;import javax.xml.parsers.ParserConfigurationException;\n&quot; +
-        &quot;import java.io.File;\n&quot; +
-        &quot;import java.io.FileWriter;\n&quot; +
-        &quot;import java.io.IOException;\n&quot; +
-        &quot;import java.io.StringReader;\n&quot; +
-        &quot;import java.net.URL;\n&quot; +
-        &quot;import java.net.URLClassLoader;\n&quot; +
-        &quot;import java.security.CodeSource;\n&quot; +
-        &quot;import java.security.ProtectionDomain;\n&quot; +
-        &quot;import java.util.ArrayList;\n&quot; +
-        &quot;\n&quot; +
-        &quot;public class BillingSettings extends Files,Test implements IPolicy {\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private static Document xmlDocument;\n&quot; +
-        &quot;    private JsonParsingService jsonParsingService;\n&quot; +
-        &quot;    private Persistent persistent = Persistent.newPersistent().build();\n&quot; +
-        &quot;    public ProjectFile getFile() {\n&quot; +
-        &quot;        return file;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public void setFile(ProjectFile file) {\n&quot; +
-        &quot;        this.file = file;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ProjectFile file;\n&quot; +
-        &quot;\n&quot; +
-        &quot;    static {\n&quot; +
-        &quot;        xmlDocument = null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ParsingService(ProjectFile file) {\n&quot; +
-        &quot;        this.file=file;\n&quot; +
-        &quot;        jsonParsingService = new JsonParsingService();\n&quot; +
-        &quot;        try {\n&quot; +
-        &quot;            parse();\n&quot; +
-        &quot;        } catch (ParserConfigurationException | SAXException | IOException e) {\n&quot; +
-        &quot;            e.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ParsingService() {\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public boolean parse() throws ParserConfigurationException, IOException, SAXException {\n&quot; +
-        &quot;        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();\n&quot; +
-        &quot;        DocumentBuilder builder = factory.newDocumentBuilder();\n&quot; +
-        &quot;        xmlDocument = builder.parse(new InputSource(new StringReader(file.getFileContent())));\n&quot; +
-        &quot;        return true;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    public static NodeList getElement(String elementName, Document doc)\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return doc.getElementsByTagName(elementName);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public Persistent buildPersistentFromXML()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        persistent = Persistent.newPersistent()\n&quot; +
-        &quot;                .className(getClassName())\n&quot; +
-        &quot;                .tableName(getTableName(getClassName()))\n&quot; +
-        &quot;                .isPersistent(Boolean.parseBoolean(getIsPersistent()))\n&quot; +
-        &quot;                .mappingType(getMappingType())\n&quot; +
-        &quot;                .shortTableName(getShortTableName())\n&quot; +
-        &quot;                .fields(getFieldList())\n&quot; +
-        &quot;                .codes(getCodeList())\n&quot; +
-        &quot;                .queries(getQueryList())\n&quot; +
-        &quot;                .links(getLinkList())\n&quot; +
-        &quot;                .build();\n&quot; +
-        &quot;        return persistent;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Link&gt; getLinkList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;link\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Link&gt; links = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            LinkService ls =new LinkService(nl.item(i), xmlDocument);\n&quot; +
-        &quot;            Link link = new Link();\n&quot; +
-        &quot;            link.setCollectionType(ls.getCollectionType());\n&quot; +
-        &quot;            link.setElementType(ls.getElementType());\n&quot; +
-        &quot;            link.setInverseName(ls.getInverseName());\n&quot; +
-        &quot;            link.setReferenceIntegrityCheck(ls.getIfReferenceIntegrityCheck());\n&quot; +
-        &quot;            link.setAllowsNull(ls.getAllowsNull());\n&quot; +
-        &quot;            link.setParent(persistent);\n&quot; +
-        &quot;            links.add(link);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return links;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;SolifeQuery&gt; getQueryList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;query\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;SolifeQuery&gt; queries = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            queries.add(SolifeQuery.newSolifeQuery()\n&quot; +
-        &quot;                    .name(fs.getName())\n&quot; +
-        &quot;                    .className(fs.getQueryClassName())\n&quot; +
-        &quot;                    .identity(fs.getIdentity())\n&quot; +
-        &quot;                    .resultType(fs.getResultType())\n&quot; +
-        &quot;                    .build());\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return queries;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Field&gt; getFieldList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;field\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Field&gt; fields = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            Field f = new Field();\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            f.setName(fs.getName());\n&quot; +
-        &quot;            f.setAllowsNull(fs.getIfAllowsNull());\n&quot; +
-        &quot;            f.setDbname(getTableName(fs.getName()));\n&quot; +
-        &quot;            f.setDbtype(fs.getDbType());\n&quot; +
-        &quot;            f.setDbsize(fs.getDbSize());\n&quot; +
-        &quot;            f.setDefaultValue(fs.getDefaultValue());\n&quot; +
-        &quot;            fields.add(f);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return fields;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Code&gt; getCodeList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;code\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Code&gt; codes = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            Code c = new Code();\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            c.setName(fs.getName());\n&quot; +
-        &quot;            c.setDbname(fs.getDbName());\n&quot; +
-        &quot;            codes.add(c);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return codes;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private String getShortTableName() {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;shortTableName\&quot;);\n&quot; +
-        &quot;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private boolean checkIfNodeExists(Node node) {\n&quot; +
-        &quot;        return null != node;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getIsPersistent() {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;persistent\&quot;);\n&quot; +
-        &quot;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String createNodeAndCheckForExistence(String elementName,String nodeName) {\n&quot; +
-        &quot;        Node node = ParsingService.getElement(elementName,xmlDocument)\n&quot; +
-        &quot;                .item(0)\n&quot; +
-        &quot;                .getAttributes()\n&quot; +
-        &quot;                .getNamedItem(nodeName);\n&quot; +
-        &quot;        if (checkIfNodeExists(node)) {\n&quot; +
-        &quot;            return node.getNodeValue();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getTableName(String name) {\n&quot; +
-        &quot;        if (moreThanOneUpperCaseLetter(name))\n&quot; +
-        &quot;        {\n&quot; +
-        &quot;            String newName = name.replaceAll(\&quot;([A-Z])\&quot;, \&quot;_$1\&quot;).toLowerCase();\n&quot; +
-        &quot;            correctDBname(newName);\n&quot; +
-        &quot;            return newName;\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        else\n&quot; +
-        &quot;        {\n&quot; +
-        &quot;            String newName = name.toLowerCase();\n&quot; +
-        &quot;            correctDBname(newName);\n&quot; +
-        &quot;            return newName;\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private static boolean moreThanOneUpperCaseLetter(String s) {\n&quot; +
-        &quot;        return s.codePoints().filter(c-&gt; c&gt;='A' &amp;&amp; c&lt;='Z').count()&gt;1;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private static void correctDBname(String s) {\n&quot; +
-        &quot;        for (int i = 0; i &lt; s.length(); i++) {\n&quot; +
-        &quot;            if (i!=0 &amp;&amp; i+1&lt;s.length())\n&quot; +
-        &quot;            {\n&quot; +
-        &quot;                //TODO : external_i_d\n&quot; +
-        &quot;                char prevch = s.charAt(i-1);\n&quot; +
-        &quot;                int prevasciivalue = (int)prevch;\n&quot; +
-        &quot;                char nextch = s.charAt(i+1);\n&quot; +
-        &quot;                int nextasciivalue = (int)nextch;\n&quot; +
-        &quot;                if (prevasciivalue==95 &amp;&amp; nextasciivalue ==95)\n&quot; +
-        &quot;                {\n&quot; +
-        &quot;                    s.substring(0,i+1);\n&quot; +
-        &quot;                }\n&quot; +
-        &quot;            }\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getClassName()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;name\&quot;);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private String getMappingType()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;mapping\&quot;);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        String filePathAndName = this.file.getProject().getBasePath()+\&quot;/created_classes/\&quot;+file.getName();\n&quot; +
-        &quot;        FileWriter writer = null;\n&quot; +
-        &quot;        try {\n&quot; +
-        &quot;            writer = new FileWriter(filePathAndName);\n&quot; +
-        &quot;        } catch (IOException e) {\n&quot; +
-        &quot;            e.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;\n&quot; +
-        &quot;        try{\n&quot; +
-        &quot;\n&quot; +
-        &quot;            File file = new File(projectFile.getProject().getBasePath());\n&quot; +
-        &quot;\n&quot; +
-        &quot;            URL url = file.toURI().toURL();\n&quot; +
-        &quot;            URL[] urls = new URL[]{url};\n&quot; +
-        &quot;\n&quot; +
-        &quot;            ClassLoader cl = new URLClassLoader(urls);\n&quot; +
-        &quot;            Class cls = cl.loadClass(classPath);\n&quot; +
-        &quot;            File newFile = new File(filePathAndName);\n&quot; +
-        &quot;            ProtectionDomain pDomain = cls.getProtectionDomain();\n&quot; +
-        &quot;            CodeSource cSource = pDomain.getCodeSource();\n&quot; +
-        &quot;            if (newFile.createNewFile())\n&quot; +
-        &quot;                if (writer != null) {\n&quot; +
-        &quot;                    writer.write(cSource.toString());\n&quot; +
-        &quot;                    writer.close();\n&quot; +
-        &quot;                }\n&quot; +
-        &quot;            return newFile.getClass();\n&quot; +
-        &quot;\n&quot; +
-        &quot;            //ProtectionDomain pDomain = cls.getProtectionDomain();\n&quot; +
-        &quot;            //CodeSource cSource = pDomain.getCodeSource();\n&quot; +
-        &quot;            //URL urlfrom = cSource.getLocation();\n&quot; +
-        &quot;            //System.out.println(urlfrom.getFile());\n&quot; +
-        &quot;\n&quot; +
-        &quot;        }catch(Exception ex){\n&quot; +
-        &quot;            ex.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;}\n&quot;;
-builder.addSource(new StringReader(source));
-builder.getSources()</expression-string>
+        <expression-string>statement.getConnection().commit();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>String source =&quot;package services.parsing;\n&quot; +
-        &quot;\n&quot; +
-        &quot;import Hierarchy.persistence.Persistent;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Code;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Field;\n&quot; +
-        &quot;import Hierarchy.persistence.types.Link;\n&quot; +
-        &quot;import Hierarchy.persistence.types.SolifeQuery;\n&quot; +
-        &quot;import org.w3c.dom.Document;\n&quot; +
-        &quot;import org.w3c.dom.Node;\n&quot; +
-        &quot;import org.w3c.dom.NodeList;\n&quot; +
-        &quot;import org.xml.sax.InputSource;\n&quot; +
-        &quot;import org.xml.sax.SAXException;\n&quot; +
-        &quot;import projects.ProjectFile;\n&quot; +
-        &quot;import services.parsing.TypeService.FieldService;\n&quot; +
-        &quot;import services.parsing.TypeService.JsonParsingService;\n&quot; +
-        &quot;import services.parsing.TypeService.LinkService;\n&quot; +
-        &quot;\n&quot; +
-        &quot;import javax.xml.parsers.DocumentBuilder;\n&quot; +
-        &quot;import javax.xml.parsers.DocumentBuilderFactory;\n&quot; +
-        &quot;import javax.xml.parsers.ParserConfigurationException;\n&quot; +
-        &quot;import java.io.File;\n&quot; +
-        &quot;import java.io.FileWriter;\n&quot; +
-        &quot;import java.io.IOException;\n&quot; +
-        &quot;import java.io.StringReader;\n&quot; +
-        &quot;import java.net.URL;\n&quot; +
-        &quot;import java.net.URLClassLoader;\n&quot; +
-        &quot;import java.security.CodeSource;\n&quot; +
-        &quot;import java.security.ProtectionDomain;\n&quot; +
-        &quot;import java.util.ArrayList;\n&quot; +
-        &quot;\n&quot; +
-        &quot;public class BillingSettings extends Files,Test implements IPolicy {\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private static Document xmlDocument;\n&quot; +
-        &quot;    private JsonParsingService jsonParsingService;\n&quot; +
-        &quot;    private Persistent persistent = Persistent.newPersistent().build();\n&quot; +
-        &quot;    public ProjectFile getFile() {\n&quot; +
-        &quot;        return file;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public void setFile(ProjectFile file) {\n&quot; +
-        &quot;        this.file = file;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ProjectFile file;\n&quot; +
-        &quot;\n&quot; +
-        &quot;    static {\n&quot; +
-        &quot;        xmlDocument = null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ParsingService(ProjectFile file) {\n&quot; +
-        &quot;        this.file=file;\n&quot; +
-        &quot;        jsonParsingService = new JsonParsingService();\n&quot; +
-        &quot;        try {\n&quot; +
-        &quot;            parse();\n&quot; +
-        &quot;        } catch (ParserConfigurationException | SAXException | IOException e) {\n&quot; +
-        &quot;            e.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public ParsingService() {\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public boolean parse() throws ParserConfigurationException, IOException, SAXException {\n&quot; +
-        &quot;        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();\n&quot; +
-        &quot;        DocumentBuilder builder = factory.newDocumentBuilder();\n&quot; +
-        &quot;        xmlDocument = builder.parse(new InputSource(new StringReader(file.getFileContent())));\n&quot; +
-        &quot;        return true;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    public static NodeList getElement(String elementName, Document doc)\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return doc.getElementsByTagName(elementName);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public Persistent buildPersistentFromXML()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        persistent = Persistent.newPersistent()\n&quot; +
-        &quot;                .className(getClassName())\n&quot; +
-        &quot;                .tableName(getTableName(getClassName()))\n&quot; +
-        &quot;                .isPersistent(Boolean.parseBoolean(getIsPersistent()))\n&quot; +
-        &quot;                .mappingType(getMappingType())\n&quot; +
-        &quot;                .shortTableName(getShortTableName())\n&quot; +
-        &quot;                .fields(getFieldList())\n&quot; +
-        &quot;                .codes(getCodeList())\n&quot; +
-        &quot;                .queries(getQueryList())\n&quot; +
-        &quot;                .links(getLinkList())\n&quot; +
-        &quot;                .build();\n&quot; +
-        &quot;        return persistent;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Link&gt; getLinkList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;link\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Link&gt; links = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            LinkService ls =new LinkService(nl.item(i), xmlDocument);\n&quot; +
-        &quot;            Link link = new Link();\n&quot; +
-        &quot;            link.setCollectionType(ls.getCollectionType());\n&quot; +
-        &quot;            link.setElementType(ls.getElementType());\n&quot; +
-        &quot;            link.setInverseName(ls.getInverseName());\n&quot; +
-        &quot;            link.setReferenceIntegrityCheck(ls.getIfReferenceIntegrityCheck());\n&quot; +
-        &quot;            link.setAllowsNull(ls.getAllowsNull());\n&quot; +
-        &quot;            link.setParent(persistent);\n&quot; +
-        &quot;            links.add(link);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return links;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;SolifeQuery&gt; getQueryList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;query\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;SolifeQuery&gt; queries = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            queries.add(SolifeQuery.newSolifeQuery()\n&quot; +
-        &quot;                    .name(fs.getName())\n&quot; +
-        &quot;                    .className(fs.getQueryClassName())\n&quot; +
-        &quot;                    .identity(fs.getIdentity())\n&quot; +
-        &quot;                    .resultType(fs.getResultType())\n&quot; +
-        &quot;                    .build());\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return queries;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Field&gt; getFieldList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;field\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Field&gt; fields = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            Field f = new Field();\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            f.setName(fs.getName());\n&quot; +
-        &quot;            f.setAllowsNull(fs.getIfAllowsNull());\n&quot; +
-        &quot;            f.setDbname(getTableName(fs.getName()));\n&quot; +
-        &quot;            f.setDbtype(fs.getDbType());\n&quot; +
-        &quot;            f.setDbsize(fs.getDbSize());\n&quot; +
-        &quot;            f.setDefaultValue(fs.getDefaultValue());\n&quot; +
-        &quot;            fields.add(f);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return fields;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private ArrayList&lt;Code&gt; getCodeList() {\n&quot; +
-        &quot;        NodeList nl = ParsingService.getElement(\&quot;code\&quot;,xmlDocument);\n&quot; +
-        &quot;        ArrayList&lt;Code&gt; codes = new ArrayList&lt;&gt;();\n&quot; +
-        &quot;        for (int i = 0; i &lt; nl.getLength(); i++) {\n&quot; +
-        &quot;            Code c = new Code();\n&quot; +
-        &quot;            FieldService fs =new FieldService(nl.item(i));\n&quot; +
-        &quot;            c.setName(fs.getName());\n&quot; +
-        &quot;            c.setDbname(fs.getDbName());\n&quot; +
-        &quot;            codes.add(c);\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return codes;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private String getShortTableName() {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;shortTableName\&quot;);\n&quot; +
-        &quot;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private boolean checkIfNodeExists(Node node) {\n&quot; +
-        &quot;        return null != node;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getIsPersistent() {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;persistent\&quot;);\n&quot; +
-        &quot;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String createNodeAndCheckForExistence(String elementName,String nodeName) {\n&quot; +
-        &quot;        Node node = ParsingService.getElement(elementName,xmlDocument)\n&quot; +
-        &quot;                .item(0)\n&quot; +
-        &quot;                .getAttributes()\n&quot; +
-        &quot;                .getNamedItem(nodeName);\n&quot; +
-        &quot;        if (checkIfNodeExists(node)) {\n&quot; +
-        &quot;            return node.getNodeValue();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getTableName(String name) {\n&quot; +
-        &quot;        if (moreThanOneUpperCaseLetter(name))\n&quot; +
-        &quot;        {\n&quot; +
-        &quot;            String newName = name.replaceAll(\&quot;([A-Z])\&quot;, \&quot;_$1\&quot;).toLowerCase();\n&quot; +
-        &quot;            correctDBname(newName);\n&quot; +
-        &quot;            return newName;\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        else\n&quot; +
-        &quot;        {\n&quot; +
-        &quot;            String newName = name.toLowerCase();\n&quot; +
-        &quot;            correctDBname(newName);\n&quot; +
-        &quot;            return newName;\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private static boolean moreThanOneUpperCaseLetter(String s) {\n&quot; +
-        &quot;        return s.codePoints().filter(c-&gt; c&gt;='A' &amp;&amp; c&lt;='Z').count()&gt;1;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private static void correctDBname(String s) {\n&quot; +
-        &quot;        for (int i = 0; i &lt; s.length(); i++) {\n&quot; +
-        &quot;            if (i!=0 &amp;&amp; i+1&lt;s.length())\n&quot; +
-        &quot;            {\n&quot; +
-        &quot;                //TODO : external_i_d\n&quot; +
-        &quot;                char prevch = s.charAt(i-1);\n&quot; +
-        &quot;                int prevasciivalue = (int)prevch;\n&quot; +
-        &quot;                char nextch = s.charAt(i+1);\n&quot; +
-        &quot;                int nextasciivalue = (int)nextch;\n&quot; +
-        &quot;                if (prevasciivalue==95 &amp;&amp; nextasciivalue ==95)\n&quot; +
-        &quot;                {\n&quot; +
-        &quot;                    s.substring(0,i+1);\n&quot; +
-        &quot;                }\n&quot; +
-        &quot;            }\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    private String getClassName()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;name\&quot;);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;    private String getMappingType()\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        return createNodeAndCheckForExistence(\&quot;class\&quot;,\&quot;mapping\&quot;);\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;    public Class loadClassFromTargetProject(ProjectFile projectFile,String classPath)\n&quot; +
-        &quot;    {\n&quot; +
-        &quot;        String filePathAndName = this.file.getProject().getBasePath()+\&quot;/created_classes/\&quot;+file.getName();\n&quot; +
-        &quot;        FileWriter writer = null;\n&quot; +
-        &quot;        try {\n&quot; +
-        &quot;            writer = new FileWriter(filePathAndName);\n&quot; +
-        &quot;        } catch (IOException e) {\n&quot; +
-        &quot;            e.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;\n&quot; +
-        &quot;        try{\n&quot; +
-        &quot;\n&quot; +
-        &quot;            File file = new File(projectFile.getProject().getBasePath());\n&quot; +
-        &quot;\n&quot; +
-        &quot;            URL url = file.toURI().toURL();\n&quot; +
-        &quot;            URL[] urls = new URL[]{url};\n&quot; +
-        &quot;\n&quot; +
-        &quot;            ClassLoader cl = new URLClassLoader(urls);\n&quot; +
-        &quot;            Class cls = cl.loadClass(classPath);\n&quot; +
-        &quot;            File newFile = new File(filePathAndName);\n&quot; +
-        &quot;            ProtectionDomain pDomain = cls.getProtectionDomain();\n&quot; +
-        &quot;            CodeSource cSource = pDomain.getCodeSource();\n&quot; +
-        &quot;            if (newFile.createNewFile())\n&quot; +
-        &quot;                if (writer != null) {\n&quot; +
-        &quot;                    writer.write(cSource.toString());\n&quot; +
-        &quot;                    writer.close();\n&quot; +
-        &quot;                }\n&quot; +
-        &quot;            return newFile.getClass();\n&quot; +
-        &quot;\n&quot; +
-        &quot;            //ProtectionDomain pDomain = cls.getProtectionDomain();\n&quot; +
-        &quot;            //CodeSource cSource = pDomain.getCodeSource();\n&quot; +
-        &quot;            //URL urlfrom = cSource.getLocation();\n&quot; +
-        &quot;            //System.out.println(urlfrom.getFile());\n&quot; +
-        &quot;\n&quot; +
-        &quot;        }catch(Exception ex){\n&quot; +
-        &quot;            ex.printStackTrace();\n&quot; +
-        &quot;        }\n&quot; +
-        &quot;        return null;\n&quot; +
-        &quot;    }\n&quot; +
-        &quot;\n&quot; +
-        &quot;}\n&quot;;
-builder.addSource(new StringReader(source));
-builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot;).getMethods();</expression-string>
+        <expression-string>connect();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.mysql.jdbc.StatementImpl</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
@@ -1249,162 +811,6 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/ProcessingTypes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/thoughtworks/qdox/qdox/2.0.0/qdox-2.0.0.jar!/com/thoughtworks/qdox/JavaProjectBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-          <folding>
-            <element signature="e#2316#2317#0" expanded="true" />
-            <element signature="e#2381#2382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/thoughtworks/qdox/qdox/2.0.0/qdox-2.0.0.jar!/com/thoughtworks/qdox/parser/impl/Parser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="388" column="33" selection-start-line="388" selection-start-column="33" selection-end-line="388" selection-end-column="33" />
-          <folding>
-            <element signature="e#58830#58831#0" expanded="true" />
-            <element signature="e#58921#58922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/thoughtworks/qdox/qdox/2.0.0/qdox-2.0.0-sources.jar!/com/thoughtworks/qdox/JavaProjectBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/TestCases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Exceptions/ErrorCodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Exceptions/ParsingException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#158#159#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#974#975#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="e#1184#1185#0" expanded="true" />
-            <element signature="e#1223#1224#0" expanded="true" />
-            <element signature="e#1301#1302#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1578#1579#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#1721#1722#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
-            <element signature="e#1895#1896#0" expanded="true" />
-            <element signature="e#1942#1943#0" expanded="true" />
-            <element signature="e#2006#2007#0" expanded="true" />
-            <element signature="e#2050#2051#0" expanded="true" />
-            <element signature="e#2129#2130#0" expanded="true" />
-            <element signature="e#2176#2177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/Exceptions/ClassNameNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#153#154#0" expanded="true" />
-            <element signature="e#190#191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/types/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1142">
-          <caret line="100" column="2" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
-          <folding>
-            <element signature="e#952#953#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
-            <element signature="e#2860#2861#0" expanded="true" />
-            <element signature="e#2909#2910#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="115" column="52" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="52" />
-          <folding>
-            <element signature="e#2572#2573#0" expanded="true" />
-            <element signature="e#2601#2602#0" expanded="true" />
-            <element signature="e#2751#2752#0" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2831#2832#0" expanded="true" />
-            <element signature="e#2867#2868#0" expanded="true" />
-            <element signature="e#2933#2934#0" expanded="true" />
-            <element signature="e#2991#2992#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassRecursiveUpdate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/Persistent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1412,21 +818,6 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
           <folding>
             <element signature="e#3566#3567#0" expanded="true" />
             <element signature="e#3599#3600#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="40" column="68" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#p3#0;class#MainProcess#0" />
-            <element signature="method#p4#0;class#MainProcess#0" />
-            <element signature="method#p2#0;class#MainProcess#0" />
-            <element signature="method#p1#0;class#MainProcess#0" />
-            <element signature="method#initAbstractMapper#0;class#MainProcess#0" />
           </folding>
         </state>
       </provider>
@@ -1686,6 +1077,23 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1720,16 +1128,6 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1737,24 +1135,156 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="390">
           <caret line="44" column="51" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml">
+    <entry file="file://$PROJECT_DIR$/database/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="359">
+          <caret line="45" selection-start-line="44" selection-start-column="19" selection-end-line="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.analyzer/src/main/java/SolifeNode.java">
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/MysqlConnectionEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/MysqlConnectionEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" lean-forward="true" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/ModelEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#1157#1158#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/mappers/AbstractMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="33" />
+          <folding>
+            <element signature="e#1751#1752#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/SolifeQueryEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/IModelEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#AbstractDatabaseDriver#0" />
+            <element signature="method#connect#0;class#AbstractDatabaseDriver#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper/src/main/java/MainProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="method#p4#0;class#MainProcess#0" />
+            <element signature="method#p2#0;class#MainProcess#0" />
+            <element signature="method#p1#0;class#MainProcess#0" />
+            <element signature="method#initAbstractMapper#0;class#MainProcess#0" />
+            <element signature="e#4164#4165#0" expanded="true" />
+            <element signature="e#4190#4191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/src/main/java/DBProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1845,7 +1375,7 @@ builder.getSources().iterator().next().getClassByName(&quot;BillingSettings&quot
     </states>
   </component>
   <component name="mavenExecuteGoalHistory">
-    <option value="$PROJECT_DIR$" />
+    <option value="$PROJECT_DIR$/database" />
     <option value="clean install" />
     <option value="exec:java -Dexec.mainClass=&quot;mapper.MainProcess&quot;  -Dexec.args=&quot;argument1 arg2&quot;" />
     <option value="exec:java -Dexec.mainClass=&quot;mapper.MainProcess&quot;  -Dexec.args=&quot;argument1&quot;" />
