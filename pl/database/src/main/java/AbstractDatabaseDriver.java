@@ -4,6 +4,7 @@
 
 import Engines.connections.MysqlConnection;
 import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 import hierarchy.persistence.types.SolifeQuery;
 
 import java.sql.*;
@@ -56,7 +57,14 @@ public class AbstractDatabaseDriver {
         connect();
         connectSQL();
         MainProcess mainProcess = new MainProcess();
-        ArrayList<JavaClass> javaClasses = mainProcess.getJavaClasses();
+        ArrayList<Persistent> pers = mainProcess.getPeristents();
+        ArrayList<JavaClass> javaClasses = new ArrayList<>();
+        /*pers.forEach(persistent -> {
+            JavaClass jc = new JavaClass(persistent);
+            javaClasses.add(jc);
+        });*/
+        /// depracted
+        javaClasses = mainProcess.getJavaClasses();
         DBProcess.init(javaClasses);
     }
 }

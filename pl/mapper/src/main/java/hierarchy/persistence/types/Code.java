@@ -23,4 +23,9 @@ public class Code implements IField {
     public void setDbname(String dbName) {
         this.DbName = dbName;
     }
+
+    public String getDbName() {
+        return DbName;
+    }
+
 }

@@ -41,19 +41,30 @@ public class DBProcess {
 
     private static void creationProcess(ArrayList<JavaClass> javaClasses) {
         ModelEngine modelEngine = new ModelEngine();
-
+        int i = 0;
         for (JavaClass javaClass:javaClasses){
             ///starting with java class
-            modelEngine.store(javaClass);
             if (javaClass.getPersistent() != null){
                 Persistent p  = javaClass.getPersistent();
-                modelEngine.store(p);
                 subProcess(p.getFields(),modelEngine);
                 subProcess(p.getCodes(),modelEngine);
                 subProcess(p.getLinks(),modelEngine);
                 subProcess(p.getQueries(),modelEngine);
+                modelEngine.store(p);
             }
+            modelEngine.store(javaClass);
+            i++;
+            showGlobalProcessing(i,javaClasses.size());
         }
+    }
+
+    private static void showGlobalProcessing(int i, int jcsize) {
+        if (i==jcsize){
+            System.out.println("100%");
+        }else {
+            System.out.println((100*i)/jcsize);
+        }
+
     }
 
     private static void subProcess(Object objects, ModelEngine modelEngine) {

@@ -4,6 +4,7 @@
 
 import files.FileTypes;
 import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 import mappers.AbstractMapper;
 import projects.ProjectImpl;
 import services.processing.AbstractProcess;
@@ -22,6 +23,16 @@ public class MainProcess {
     }
 
     public ArrayList<JavaClass> javaClasses = null;
+
+    public void setPeristents(ArrayList<Persistent> peristents) {
+        this.peristents = peristents;
+    }
+
+    public ArrayList<Persistent> getPeristents() {
+        return peristents;
+    }
+
+    public ArrayList<Persistent> peristents = null;
     public  MainProcess(){
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
 
@@ -42,6 +53,7 @@ public class MainProcess {
         p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
 
         setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
+        setPeristents(abstractMapperPersistence.getProcess().getPersistents());
 
     }
 

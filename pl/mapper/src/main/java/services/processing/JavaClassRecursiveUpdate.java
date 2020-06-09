@@ -41,7 +41,7 @@ public class JavaClassRecursiveUpdate {
             Persistent found = find(persistent,javaClass);
 
             if (found != null) {
-                javaClass.setPersistent(persistent);
+                javaClass.setPersistent(found);
                 break;
             }
         }
