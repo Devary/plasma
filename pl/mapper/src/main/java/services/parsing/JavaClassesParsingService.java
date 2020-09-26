@@ -29,6 +29,7 @@ public class JavaClassesParsingService {
     JavaClass javaClass = JavaClass.newJavaClass().build();
     ProjectFile file;
     StringBuilder content = new StringBuilder();
+    StringBuilder newCleanContent = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
     private final String plasmaGeneratedClassesDir =System.getProperty("user.dir")+"/mapper/src/main/java/plasma_generated_classes/";
 
