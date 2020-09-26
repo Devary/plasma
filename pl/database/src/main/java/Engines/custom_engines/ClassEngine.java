@@ -33,8 +33,13 @@ public class ClassEngine extends Engine implements AbstractEngine {
             javaClass.getHeritances().forEach(h -> {
 
             });
-            Integer classId = fluent.find(DatabaseGlobalAttributes.CLASS_TABLE_NAME,javaClass.getPersistent());
-            query.append(","+classId);
+            boolean hasPersistent = javaClass.getPersistent() != null;
+            if (hasPersistent){
+                Integer classId = fluent.find(DatabaseGlobalAttributes.CLASS_TABLE_NAME,javaClass.getPersistent());
+                query.append(","+classId);
+            }else {
+                query.append(",null");
+            }
         }else {
             query.append(",null");
         }
