@@ -18,6 +18,9 @@ public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
 
+    public static void main(String[] args){
+        new MainProcess();
+    }
     public void setJavaClasses(ArrayList<JavaClass> javaClasses) {
         this.javaClasses = javaClasses;
     }
