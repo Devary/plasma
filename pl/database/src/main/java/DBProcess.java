@@ -1,5 +1,6 @@
 import Engines.PlasmaObjectTableName;
 import Engines.connections.MysqlConnection;
+import Engines.connections.OracleConnection;
 import hierarchy.Classes.JavaClass;
 import hierarchy.persistence.Persistent;
 import hierarchy.persistence.types.Code;
@@ -90,12 +91,12 @@ public class DBProcess {
         // here we will truncate all the plasma tables
         StringBuilder q = new StringBuilder().append("DELETE FROM ");
         ArrayList<Object> objects = getAllObjectTypes();
-        Connection c = MysqlConnection.getInstance().getConnection();
+        Connection c = OracleConnection.getInstance().getConnection();
         System.out.println("############## TRUNCATING TABLES ##############");
         System.out.println("_______________________________________________");
         for (Object obj:objects){
             String tableName = PlasmaObjectTableName.getTableNameFor(obj);
-            String query = q.toString()+tableName+";";
+            String query = q.toString()+tableName;
             int numberOfRows = 0;
             try {
                 Statement statement = c.createStatement();
@@ -103,8 +104,8 @@ public class DBProcess {
                 while (resultSet.next()) {
                     numberOfRows = resultSet.getInt(1);
                 }
-                statement.executeUpdate(query);
-                System.out.println("** (!) **  Table "+tableName+" : "+numberOfRows+" are deleted !");
+                //statement.executeUpdate(query);
+                //System.out.println("** (!) **  Table "+tableName+" : "+numberOfRows+" are deleted !");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

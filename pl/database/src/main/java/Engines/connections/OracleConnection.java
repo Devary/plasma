@@ -1,22 +1,27 @@
 package Engines.connections;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class MysqlConnection implements AbstractConnection{
-    private static MysqlConnection instance;
+public class OracleConnection implements AbstractConnection{
+    private static OracleConnection instance;
     private Connection connection;
     private Statement statement;
-    private MysqlConnection() {
+    private OracleConnection() {
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
             connection = DriverManager.getConnection(
-                    "ssss","root","");
+                    "jdbc:oracle:thin:@localhost:1521:orcl","plasma","plasma");
             statement = connection.createStatement();
+
         }catch(Exception e){ System.out.println(e);}
     }
-    public static MysqlConnection getInstance(){
+    public static OracleConnection getInstance(){
         if(instance == null){
-            instance = new MysqlConnection();
+            instance = new OracleConnection();
         }
         return instance;
     }
@@ -29,7 +34,7 @@ public class MysqlConnection implements AbstractConnection{
     }
     @Override
     public void closeConnection() throws SQLException {
-       connection.close();
+        connection.close();
     }
     @Override
     public Statement getStatement() {

@@ -19,7 +19,7 @@ public class PersistencesEngine extends Engine implements AbstractEngine {
         }else{
             query.append(",null");
         }
-            query.append(",true");
+            query.append(",1");
         if (persistent.getTableName()!=null){
             query.append(",'"+persistent.getTableName()+"'");
         }else{

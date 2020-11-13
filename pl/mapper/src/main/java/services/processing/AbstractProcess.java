@@ -62,7 +62,7 @@ public class AbstractProcess implements IAbstractProcess {
 
     @Override
     public IAbstractFile createAbstractFile() {
-        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP_TEST").name("is\\modules").build();
+        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is\\modules").build();
     }
 
     @Override

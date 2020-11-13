@@ -17,11 +17,11 @@ public class LinksEngine extends Engine implements AbstractEngine {
         query.append("null");
         query.append(",null");
         if (link.getReferenceIntegrityCheck() == null){
-            query.append(",true");
+            query.append(",1");
         }else {
             query.append(","+link.getReferenceIntegrityCheck());
         }
-        query.append(",'"+link.getInverseName()+"');");
+        query.append(",'"+link.getInverseName()+"')");
         Statement st = super.getStatement();
         try {
             st.executeUpdate(query.toString());
