@@ -7,32 +7,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adeec5a3-0980-444d-8b18-1e5cc0190d3a" name="adding package to javaClass object" comment="correction database column name issue">
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/AbstractConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/OracleConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/resources/params.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/resources/tables.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.github/workflows/mavenpublish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/workflows/mavenpublish.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/test.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/test.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/Etudiant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/src/main/java/RestActivator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/DBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DBProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/PlasmaObjectTableName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/connections/AbstractConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/AbstractConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/LinksEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/LinksEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/connections/OracleConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/OracleConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/CodesEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/CodesEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/DatabaseGlobalAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/DatabaseGlobalAttributes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/Fluent.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/Fluent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/PersistencesEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/PersistencesEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/AbstractPlasmaException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/FileCreationException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Filters/PersistenceFilesFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/projects/SolifeConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/projects/VFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/projects/VFS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/resources/params.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/resources/params.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/resources/tables.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/resources/tables.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/Filters/PersistenceFilesFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/Filters/PersistenceFilesFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/IntellijService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/IntellijService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/FileTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/FileTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/files/IAbstractFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/files/IAbstractFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/types/JavaField.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/types/JavaField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/mappers/IAbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/mappers/IAbstractMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/AbstractProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/AbstractProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/IProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/IProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/ProjectFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/Solife.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/Solife.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/SolifeConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/projects/SolifeConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/PropertyParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/PropertyParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/IAbstractProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/IAbstractProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassObjectNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/ProcessingTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/ProcessingTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/intellij.plugin/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij.plugin/META-INF/plugin.xml" afterDir="false" />
     </list>
     <list id="541e3db9-408d-45d0-a727-79c53b653c90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" afterDir="false" />
@@ -79,26 +98,6 @@
         <item name="plasma" type="feb32156:DbDataSourceImpl" />
         <item name="PLASMA: schema" type="3abd1b6a:OraImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="plasma" type="feb32156:DbDataSourceImpl" />
-        <item name="PLASMA: schema" type="3abd1b6a:OraImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="plasma" type="feb32156:DbDataSourceImpl" />
-        <item name="PLASMA: schema" type="3abd1b6a:OraImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="CODES: table" type="942f455b:OraImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="plasma" type="feb32156:DbDataSourceImpl" />
-        <item name="PLASMA: schema" type="3abd1b6a:OraImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="HIBERNATE_UNIQUE_KEY: table" type="942f455b:OraImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -108,34 +107,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/Fluent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/ClassEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-              <folding>
-                <element signature="e#2144#2145#0" expanded="true" />
-                <element signature="e#2172#2173#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="das://3dcd6785-b3ee-48e4-b390-24f862944c73/schema/PLASMA/table/CODES">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="dbeb5f07-ca40-4597-a46e-8123e6a8a2f2">
+            <state projectRestartId="1db860de-d237-45d1-8f4c-7d071974ef66">
               <filtering />
             </state>
           </provider>
@@ -144,13 +118,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="das://3dcd6785-b3ee-48e4-b390-24f862944c73/schema/PLASMA/table/CLASSES">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="dbeb5f07-ca40-4597-a46e-8123e6a8a2f2">
+            <state projectRestartId="1db860de-d237-45d1-8f4c-7d071974ef66">
               <filtering />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3dcd6785-b3ee-48e4-b390-24f862944c73/console_3.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -160,10 +134,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="17" selection-start-line="23" selection-start-column="3" selection-end-line="33" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/src/main/resources/params.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="24" selection-start-column="18" selection-end-column="24" />
+              <caret column="22" selection-start-column="18" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -295,7 +287,6 @@
         <option value="$PROJECT_DIR$/database/src/main/java/PropertiesExtractor.java" />
         <option value="$PROJECT_DIR$/database/src/main/resources/params.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/database/pom.xml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3dcd6785-b3ee-48e4-b390-24f862944c73/console.sql" />
         <option value="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" />
         <option value="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" />
@@ -309,6 +300,7 @@
         <option value="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" />
         <option value="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/LinksEngine.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3dcd6785-b3ee-48e4-b390-24f862944c73/console_3.sql" />
+        <option value="$PROJECT_DIR$/database/pom.xml" />
       </list>
     </option>
   </component>
@@ -340,8 +332,8 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="196" />
-    <option name="y" value="-23" />
+    <option name="x" value="183" />
+    <option name="y" value="-30" />
     <option name="width" value="1178" />
     <option name="height" value="628" />
   </component>
@@ -351,6 +343,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -366,93 +360,12 @@
             <path>
               <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.groovy-utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.groovy-utils" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="com.vermeg.plasma.groovy-utils" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Engines" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Engines" type="462c0819:PsiDirectoryNode" />
-              <item name="connections" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="com.vermeg.plasma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -766,6 +679,10 @@
       <workItem from="1601777283447" duration="2244000" />
       <workItem from="1602836817328" duration="6997000" />
       <workItem from="1604738140887" duration="870000" />
+      <workItem from="1605305286684" duration="1392000" />
+      <workItem from="1606589001741" duration="2099000" />
+      <workItem from="1606592919189" duration="1228000" />
+      <workItem from="1611821660505" duration="588000" />
     </task>
     <task id="LOCAL-00001" summary="creation of module webservices &amp; attach to wildfly 18.01">
       <created>1585739491598</created>
@@ -837,11 +754,18 @@
       <option name="project" value="LOCAL" />
       <updated>1601148567865</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="correction database column name issue">
+      <created>1605305320687</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605305320687</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105291000" />
+    <option name="totallyTimeSpent" value="110598000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -853,10 +777,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="196" y="-23" width="1178" height="628" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.077120826" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32110912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -875,7 +799,7 @@
       <window_info anchor="bottom" id="Application Servers" order="8" sideWeight="0.49807197" weight="0.32916668" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49871466" weight="0.44027779" />
       <window_info anchor="bottom" id="Docker" order="10" sideWeight="0.4993573" weight="0.32916668" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.47943446" side_tool="true" visible="true" weight="0.6597222" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.47943446" side_tool="true" visible="true" weight="0.18644068" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49807197" weight="0.45277777" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
@@ -887,7 +811,7 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="JSF" order="6" />
-      <window_info anchor="right" id="Database" order="7" visible="true" weight="0.22557841" />
+      <window_info active="true" anchor="right" id="Database" order="7" visible="true" weight="0.16189624" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="CDI" order="10" />
@@ -1145,9 +1069,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/mapper/src/main/java/hierarchy/xpdl/types/XpdlTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1338,20 +1259,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1480,6 +1387,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/gr.jenkinsFile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/ClassEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -1493,15 +1403,36 @@
     </entry>
     <entry file="das://3dcd6785-b3ee-48e4-b390-24f862944c73/schema/PLASMA/table/CODES">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="dbeb5f07-ca40-4597-a46e-8123e6a8a2f2">
+        <state projectRestartId="1db860de-d237-45d1-8f4c-7d071974ef66">
           <filtering />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://3dcd6785-b3ee-48e4-b390-24f862944c73/schema/PLASMA/table/CLASSES">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="1db860de-d237-45d1-8f4c-7d071974ef66">
+          <filtering />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3dcd6785-b3ee-48e4-b390-24f862944c73/console_3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="47" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="17" selection-start-line="23" selection-start-column="3" selection-end-line="33" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/src/main/resources/params.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="24" selection-start-column="18" selection-end-column="24" />
+          <caret column="22" selection-start-column="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1541,17 +1472,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://3dcd6785-b3ee-48e4-b390-24f862944c73/schema/PLASMA/table/CLASSES">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="dbeb5f07-ca40-4597-a46e-8123e6a8a2f2">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3dcd6785-b3ee-48e4-b390-24f862944c73/console_3.sql">
+    <entry file="file://$PROJECT_DIR$/database/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="47" selection-start-column="47" selection-end-column="47" />
+        <state relative-caret-position="302">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
         </state>
       </provider>
     </entry>
