@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2020. Fakher Hammami | Plasma Project
+  -->
+
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>Plasma</name>
+  <version>1.0</version>
+  <vendor email="fhammami@vermeg.com" url="http://www.vermeg.com">VERMEG</vendor>
+
+  <description>Plasma class classifier plug-in : we need this plugin system to describe every class in the project</description>
+
+  <change-notes>
+    creating and manipulating Solife java classes
+    to get methods and store them
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <action class="org.intellij.sdk.action.PopupDialogAction" id="org.intellij.sdk.action.PopupDialogAction" project-type="JAVA" description="Plasma plugin">
+      <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>
+      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+    </action>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>

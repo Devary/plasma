@@ -17,18 +17,9 @@
         <module>database</module>
         <module>com.vermeg.plasma.groovy-utils</module>
         <module>com.vermeg.plasma.webservices</module>
+        <module>com.vermeg.plasma.analyzer</module>
     </modules>
     <dependencies>
-        <dependency>
-            <groupId>com.intellij</groupId>
-            <artifactId>openapi</artifactId>
-            <version>7.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>1.9</maven.compiler.source>

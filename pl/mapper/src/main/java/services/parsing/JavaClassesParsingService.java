@@ -22,12 +22,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class JavaClassesParsingService {
     JavaClass javaClass = JavaClass.newJavaClass().build();
     ProjectFile file;
     StringBuilder content = new StringBuilder();
+    StringBuilder newCleanContent = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
     private final String plasmaGeneratedClassesDir =System.getProperty("user.dir")+"/mapper/src/main/java/plasma_generated_classes/";
 
@@ -62,6 +64,10 @@ public class JavaClassesParsingService {
             String line = null;
             String classname = null;
             while ((line = bufferedReader.readLine()) != null) {
+                if (line == null )
+                {
+                    continue;
+                }
                 if (!line.startsWith("//"))
                 {
                     ArrayList<Integer> classTypeParams = getClassTypeParams(line,classTypes);
@@ -131,13 +137,8 @@ public class JavaClassesParsingService {
             //createJavaCloneFile();
             parsePackage();
             parseModule();
-            if (classname!= null)
-            {
-                parseBody(classname);
-            }
-            else {
-                throw new ClassNameNotFoundException(ErrorCodes.FILE_NAME_NOT_FOUND);
-            }
+            parseBody();
+
 
             if (count == 0) {
                 int index = -1;
@@ -188,15 +189,46 @@ public class JavaClassesParsingService {
         return nb;
     }
 
-    public void parseBody(String className)
+    public void parseBody()
     {
+        cleanContent(content);
+        boolean isEligible =  IsEligibleToBeParsed(newCleanContent);
+        if (!isEligible){
+            return;
+        }
         JavaProjectBuilder builder = new JavaProjectBuilder();
-        builder.addSource(new StringReader(content.toString()));
-        com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
-        //Field
-        parseFields(cls);
-        //Methods
-        parseMethods(cls);
+        System.out.println(newCleanContent.toString());
+        try{
+            builder.addSource(new StringReader(newCleanContent.toString()));
+            com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
+            //Field
+            parseFields(cls);
+            //Methods
+            parseMethods(cls);
+        }catch (Exception pe){
+            System.out.println(pe.fillInStackTrace());
+        }
+
+    }
+
+    private boolean IsEligibleToBeParsed(StringBuilder newCleanContent) {
+        // count number of lines , must be > 0
+        long nbLines = new BufferedReader(new StringReader(newCleanContent.toString()))
+                .lines().count();
+        return nbLines > 0;
+    }
+
+    private void cleanContent(StringBuilder content) {
+        new BufferedReader(new StringReader(content.toString()))
+                .lines().forEach(this::cleanComments);
+
+    }
+
+    private void cleanComments(String s) {
+        if (!s.startsWith("//"))
+        {
+            newCleanContent.append(s);
+        }
     }
 
     private void parseMethods(com.thoughtworks.qdox.model.JavaClass cls) {

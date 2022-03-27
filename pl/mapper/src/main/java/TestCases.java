@@ -15,12 +15,12 @@ public class TestCases {
         //System.out.println(m.matches());
         final StringBuffer b = new StringBuffer(line.length());
         while (m.find())
-            m.appendReplacement(b,line);
+            m.appendReplacement(b, line);
         System.out.println(m.groupCount());
-
-
 
 
     }
 
 }
+
+

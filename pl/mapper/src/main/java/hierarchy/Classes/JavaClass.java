@@ -25,6 +25,10 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public String containingPackage;
     public boolean isInnerClass;
 
+    public JavaClass(Persistent persistent) {
+        this.persistent = persistent;
+    }
+
     private JavaClass(Builder builder) {
         this.className = builder.className;
         this.functions = builder.functions;

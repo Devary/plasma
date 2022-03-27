@@ -2,9 +2,9 @@
  * Copyright (c) 2020. Fakher Hammami | Plasma Project
  */
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.InvalidDataException;
 import files.FileTypes;
+import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 import mappers.AbstractMapper;
 import projects.ProjectImpl;
 import services.processing.AbstractProcess;
@@ -12,19 +12,31 @@ import services.processing.JavaClassRecursiveUpdate;
 import services.processing.ProcessingTypes;
 import services.reporting.Report;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
+import java.util.ArrayList;
 
 public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        new MainProcess();
+    }
+    public void setJavaClasses(ArrayList<JavaClass> javaClasses) {
+        this.javaClasses = javaClasses;
+    }
 
+    public ArrayList<JavaClass> javaClasses = null;
 
+    public void setPeristents(ArrayList<Persistent> peristents) {
+        this.peristents = peristents;
+    }
 
+    public ArrayList<Persistent> getPeristents() {
+        return peristents;
+    }
+
+    public ArrayList<Persistent> peristents = null;
+    public  MainProcess(){
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
 
 
@@ -42,6 +54,9 @@ public class MainProcess {
 
         // updating JAVACLASSES
         p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
+
+        setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
+        setPeristents(abstractMapperPersistence.getProcess().getPersistents());
 
     }
 
@@ -99,5 +114,9 @@ public class MainProcess {
         abstractMapper.setProject(project);
         abstractMapper.setProcess(abstractProcess);
         return abstractMapper;
+    }
+
+    public ArrayList<JavaClass> getJavaClasses() {
+        return this.javaClasses;
     }
 }
