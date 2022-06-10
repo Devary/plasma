@@ -10,6 +10,7 @@ import Exceptions.ParsingException;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaMethod;
+import com.thoughtworks.qdox.model.JavaType;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import hierarchy.Classes.types.Function;
@@ -40,7 +41,8 @@ public class JavaClassesParsingService {
     public JavaClassesParsingService(ProjectFile projectFile, Report report) throws ClassNameNotFoundException {
         this.file = projectFile;
         String[] typesToParse = adaptParsingRange();
-        parseContent(typesToParse);
+        //parseContent(typesToParse);
+        newProcess();
     }
 
     private String[] adaptParsingRange() {
@@ -90,23 +92,29 @@ public class JavaClassesParsingService {
                     String[] splits = toSplit.split(",");
                     ArrayList<JavaClass> implsClasses = new ArrayList();
                     ArrayList<JavaClass> extClasses = new ArrayList();
-                    for (String spl:splits){
+                    for (String spl : splits) {
                         implsClasses.add(createJavaClassWithNameTest(spl));
                     }
                     String className;
-                    if (indexExtends<0){
+                    if (indexExtends < 0) {
                         className = line.substring(line.indexOf("class") + 5, indexImplements).trim();
-                    }else{
+                    } else {
                         className = line.substring(line.indexOf("class") + 5, indexExtends).trim();
                     }
                     extendedClass = line.trim().substring(indexExtends + EXTENDS.length(), indexImplements);
-                    if (!extendedClass.equals("")){
+                    ArrayList<Integer> classTypeParams = getClassTypeParams(line, classTypes);
+                    setClassType(classTypes[classTypeParams.get(0)]);
+                    if (!extendedClass.equals("")) {
                         extClasses.add(createJavaClassWithNameTest(extendedClass));
                         javaClass.setHeritances(extClasses);
                     }
                     javaClass.setClassName(className);
                     javaClass.setImplementations(implsClasses);
-                    break;
+                    setClassType(classTypes[classTypeParams.get(0)]);
+                    parsePackage();
+                    parseModule();
+                    parseBody();
+                    //break;
 
                 }
 
@@ -230,15 +238,32 @@ public class JavaClassesParsingService {
 
     public void parseBody() {
         cleanContent(content);
-        boolean isEligible = IsEligibleToBeParsed(newCleanContent);
+        boolean isEligible = IsEligibleToBeParsed(content);
         if (!isEligible) {
             return;
         }
         JavaProjectBuilder builder = new JavaProjectBuilder();
-        System.out.println(newCleanContent.toString());
         try {
-            builder.addSource(new StringReader(newCleanContent.toString()));
+            builder.addSource(new StringReader(content.toString()));
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
+            System.out.println("Processing on class :"+cls.getName());
+            getClassType(cls);
+            if (cls.getImplements().isEmpty()) {
+                return;
+            }
+            javaClass.setName(cls.getName());
+            javaClass.setClassName(cls.getName());
+            javaClass.setClassType(getClassType(cls));
+            ArrayList<JavaClass> implsClasses = new ArrayList();
+            ArrayList<JavaClass> extClasses = new ArrayList();
+
+            for (JavaType jc : cls.getImplements()) {
+                implsClasses.add(createJavaClassWithNameTest(jc.getBinaryName()));
+            }
+            javaClass.setContainingPackage(cls.getPackageName());
+            javaClass.setImplementations(implsClasses);
+            extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            javaClass.setHeritances(extClasses);
             //Field
             parseFields(cls);
             //Methods
@@ -247,6 +272,19 @@ public class JavaClassesParsingService {
             System.out.println(pe.fillInStackTrace());
         }
 
+    }
+
+    private String getClassType(com.thoughtworks.qdox.model.JavaClass cls) {
+        if (cls.isAnnotation()) {
+            return "ANNOTATION";
+        }
+        if (cls.isInterface()) {
+            return "INTERFACE";
+        }
+        if (cls.isEnum()) {
+            return "ENUM";
+        }
+        return "CLASS";
     }
 
     private boolean IsEligibleToBeParsed(StringBuilder newCleanContent) {
@@ -433,6 +471,8 @@ public class JavaClassesParsingService {
     }
 
     private JavaClass createJavaClassWithNameTest(String name) {
+        String[] splits = name.split("\\.");
+        name = splits[splits.length-1];
         return JavaClass.newJavaClass().className(name).build();
     }
 
@@ -452,5 +492,11 @@ public class JavaClassesParsingService {
 
     public JavaClass getJavaClass() {
         return javaClass;
+    }
+
+    public void newProcess(){
+        File fileToRead = new File(file.getPath());
+        appendContent(fileToRead.getPath());
+        parseBody();
     }
 }

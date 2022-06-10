@@ -28,7 +28,7 @@
         <module>api</module>
         <module>app</module>
         <module>core</module>
-        <module>test</module>
+<!--        <module>test</module>-->
     </modules>
 
     <scm>

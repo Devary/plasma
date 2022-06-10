@@ -26,6 +26,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
         return javaClasses;
     }
 
+    private int id = -1;
     private Connection conn = null;
 
     private final String url = "jdbc:postgresql://localhost:5432/test";
@@ -78,20 +79,94 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
                 e.printStackTrace();
             }
             JavaClass javaClass = ps.getJavaClass();
-            if (javaClass.getClassName() != null)
+            if (javaClass.getClassName() != null) {
                 javaClasses.add(javaClass);
+            }
             System.out.println(javaClass.getClassName() + " built successfully !");
             //if (javaClass.getJavaFields().size()>0)
             //break;
-            if (i == max){
-                break;
-            }
+            //if (i == max){
+            //    break;
+            //}
         }
         System.out.println("FINISHED :: " + javaClasses.size() + " Objects created !");
         this.javaClasses = javaClasses;
         connect();
         seedToDatabase();
+        createPivotRelations(javaClasses);
         return javaClasses;
+    }
+
+    private void createPivotRelations(ArrayList<JavaClass> javaClasses) {
+        for (JavaClass javaClass : javaClasses) {
+            try {
+                if (javaClass.getImplementations() != null) {
+                    for (JavaClass impl : javaClass.getImplementations()) {
+                        generatePivotBetween(javaClass, impl, "impl");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        for (JavaClass javaClass : javaClasses) {
+            try {
+                if (javaClass.getHeritances() != null) {
+                    for (JavaClass impl : javaClass.getHeritances()) {
+                        generatePivotBetween(javaClass, impl, null);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void generatePivotBetween(JavaClass javaClass, JavaClass target, String pivotType) {
+        int sourceId = javaClass.getId();
+        int targetId = getTargetId(target.getClassName());
+        if (targetId != -1) {
+            persistPivot(sourceId, targetId, pivotType);
+        }
+
+    }
+
+    private int getTargetId(String className) {
+        StringBuilder insertion = new StringBuilder("SELECT ID FROM JAVA_CLASS WHERE \"className\" = '" + className + "' and \"classType\" = 'CLASS'");
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(insertion.toString());
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return -1;
+    }
+
+    private void persistPivot(int sourceId, int targetId, String pivotType) {
+        String tableName = "public.class_inherit_pivot";
+        StringBuilder insertion = new StringBuilder("INSERT INTO " + tableName + " (class_id, created_at, inherit_id) VALUES (?, ?, ?)");
+        if (pivotType != null && pivotType.equals("impl")) {
+            tableName = "public.class_implements_pivot";
+            insertion = new StringBuilder("INSERT INTO " + tableName + " (class_id, created_at, implement_id) VALUES (?, ?, ?)");
+        }
+        try {
+            java.util.Date date = new Date();
+
+            Timestamp timestamp2 = new Timestamp(date.getTime());
+            PreparedStatement statement = conn.prepareStatement(insertion.toString());
+            statement.setInt(1, sourceId);
+            statement.setTimestamp(2, timestamp2);
+            statement.setInt(3, targetId);
+
+            int update = statement.executeUpdate();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void seedToDatabase() {
@@ -104,42 +179,65 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
         StringBuilder insertion = new StringBuilder("INSERT INTO public.java_class " +
                 "(\"className\", \"classType\", implements, inherit, created_at, updated_at, persistent_id)" +
                 " VALUES ( ?, ?, ?, ?, ?, ?, ?)");
+        if (id != -1) {
+            id = getMaxId("java_class");
+        }
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
-            statement.setString(1,javaClass.getClassName());
-            statement.setString(2,javaClass.getClassType().toUpperCase());
+            statement.setString(1, javaClass.getClassName());
+            statement.setString(2, javaClass.getClassType().toUpperCase());
             StringBuilder subs = new StringBuilder();
-            if (javaClass.getImplementations() != null && !javaClass.getImplementations().isEmpty()){
-                for (JavaClass impl:javaClass.getImplementations()){
+            if (javaClass.getImplementations() != null && !javaClass.getImplementations().isEmpty()) {
+                for (JavaClass impl : javaClass.getImplementations()) {
                     subs.append(impl.getClassName());
                     subs.append(',');
                 }
-                statement.setString(3,subs.toString());
-            }else{
-                statement.setString(3,null);
+                statement.setString(3, subs.toString());
+            } else {
+                statement.setString(3, null);
 
             }
-            if (javaClass.getHeritances() != null && !javaClass.getHeritances().isEmpty()){
-                for (JavaClass her:javaClass.getHeritances()){
+            if (javaClass.getHeritances() != null && !javaClass.getHeritances().isEmpty()) {
+                for (JavaClass her : javaClass.getHeritances()) {
                     subs.append(her.getClassName());
-                    subs.append(',');
                 }
-                statement.setString(4,subs.toString());
-            }else{
-                statement.setString(4,null);
+                statement.setString(4, subs.toString());
+            } else {
+                statement.setString(4, null);
 
             }
 
             java.util.Date date = new Date();
             Timestamp timestamp2 = new Timestamp(date.getTime());
-            statement.setTimestamp(5,timestamp2);
-            statement.setTimestamp(6,null);
-            statement.setTimestamp(7,null);
+            statement.setTimestamp(5, timestamp2);
+            statement.setTimestamp(6, null);
+            statement.setTimestamp(7, null);
             int update = statement.executeUpdate();
+            if (update == 1) {
+                if (id == -1) {
+                    id = getMaxId("java_class");
+                }
+                javaClass.setId(id);
+            }
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
+    }
+
+    private int getMaxId(String tableName) {
+        StringBuilder insertion = new StringBuilder("SELECT max(id) from " + tableName);
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(insertion.toString());
+            if (rs != null && rs.next()) {
+                return rs.getInt(1);
+            }
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return -1;
     }
 }

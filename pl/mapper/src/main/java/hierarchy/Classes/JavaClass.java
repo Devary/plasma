@@ -24,6 +24,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public String module;
     public String containingPackage;
     public boolean isInnerClass;
+    private int id=-1;
 
     public JavaClass(Persistent persistent) {
         this.persistent = persistent;
@@ -173,6 +174,15 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public void setClassType(String classType) {
         this.classType = classType;
     }
+
+    public void setId(int anInt) {
+        this.id = anInt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public static final class Builder {
         public String classType;
         public boolean isInnerClass;

@@ -22,7 +22,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
     private Collection<Persistent> persistents;
     private Connection conn = null;
-
+    long id=-1;
     public Collection<Persistent> getPersistents() {
         return persistents;
     }
@@ -117,7 +117,8 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
     }
 
     private void seedToDb(Persistent persistent) {
-        long id = seedPersistent(persistent);
+        seedPersistent(persistent);
+        int id = getMaxId("persistent");
         if (!persistent.getLinks().isEmpty()) {
             SeedLinks(persistent, id);
         }
@@ -220,10 +221,11 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
                 "updated_at) VALUES (?,?,?,?,?,?)");
         Date date = new Date();
         Timestamp timestamp2 = new Timestamp(date.getTime());
-        long id = -1;
+        //if (id == -1) {
+        //    id = getMaxId("persistent");
+        //}
+        connect();
         try {
-            connect();
-
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
             statement.setString(1,persistent.getName());
             statement.setString(2,persistent.getMappingType().toUpperCase());
@@ -232,27 +234,28 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
             statement.setTimestamp(5,timestamp2);
             statement.setTimestamp(6,null);
             int update = statement.executeUpdate();
-            ResultSet rs = statement.getGeneratedKeys();
-            while (rs.next()) {
-                id = rs.getInt(1);
-            }
-            if (id == -1){
-                Statement statement1 = conn.createStatement();
-                rs = statement1.executeQuery("SELECT max(id) from persistent");
-                while (rs.next()) {
-                    id = rs.getInt(1);
-                }
-                statement1.close();
-            }
             statement.close();
-            rs.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         return id;
     }
-
+    private int getMaxId(String tableName) {
+        connect();
+        StringBuilder insertion = new StringBuilder("SELECT max(id) from " + tableName);
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(insertion.toString());
+            if (rs != null && rs.next()) {
+                return rs.getInt(1);
+            }
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return -1;
+    }
     private void SeedFields(Persistent persistent, long persistentId) {
         connect();
 

@@ -55,102 +55,25 @@
         <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:pl" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:mapper" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:database" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="961974a8-db56-44b6-8cf2-c24ccb151737" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/MultiThreadingProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/PersistentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/extraction/IStatementExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/extraction/StatementExtractorImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/scalaHelper.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/DBConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/PostgresqlConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/src/main/resources/postgre.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/AbstractEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/DBConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/Engine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/PlasmaObjectTableName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/PropertiesExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/connections/AbstractConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/connections/MysqlConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/connections/OracleConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/connections/PostgresqlConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/ClassEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/CodesEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/DatabaseGlobalAttributes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/FieldsEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/Fluent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/LinksEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/PersistencesEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/validation/IValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/validation/PersistentValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/validation/ValidatorImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/resources/params.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/resources/postgre.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/resources/tables.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="961974a8-db56-44b6-8cf2-c24ccb151737" name="Default Changelist" comment="upgrade :  fix issues concerns real solife project parsing + Jira algorithm service">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.analyzer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/classes/test.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.groovy-utils/src/main/java/gdsl/jenkins.gdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.webservices/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DBProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/AbstractEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/connections/MysqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Engines/custom_engines/SolifeQueryEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/IModelEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/IModelEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/ModelEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/resources/params.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/resources/params.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/IntellijService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.vermeg.plasma.jira/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/com.vermeg.plasma.jira/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/MainProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/Persistent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/Persistent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/types/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/types/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/types/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/persistence/types/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/mappers/AbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/mappers/AbstractMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/projects/VFS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/hierarchy/Classes/JavaClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/JavaClassesParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/ParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/PropertyParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/PropertyParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/FieldService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/FieldService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/parsing/TypeService/LinkService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/IAbstractProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/IAbstractProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Exceptions/ErrorCodes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/Classes/types/Function$FunctionBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/Persistent$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/Persistent$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/Persistent.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/Persistent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/types/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/classes/Hierarchy/persistence/types/Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/classes/projects/VFS.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
-    <list id="08bc53f8-5838-4c8a-8c3e-2a2a13becd7a" name="perform mapping" comment="">
-      <change afterPath="$PROJECT_DIR$/mapper/src/main/java/mappers/ExcludedFileNames.java" afterDir="false" />
-    </list>
+    <list id="08bc53f8-5838-4c8a-8c3e-2a2a13becd7a" name="perform mapping" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -363,7 +286,7 @@
       <workItem from="1653871029956" duration="25459000" />
       <workItem from="1654096032991" duration="33261000" />
       <workItem from="1654653053520" duration="20175000" />
-      <workItem from="1654790724157" duration="17573000" />
+      <workItem from="1654790724157" duration="39295000" />
     </task>
     <task id="LOCAL-00001" summary="upgrade :  fix issues concerns real solife project parsing">
       <created>1601148489139</created>
@@ -379,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601148827199</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="upgrade :  fix issues concerns real solife project parsing + Jira algorithm service">
+      <created>1654828454610</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654828454610</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +343,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upgrade :  fix issues concerns real solife project parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="upgrade :  fix issues concerns real solife project parsing" />
+    <MESSAGE value="upgrade :  fix issues concerns real solife project parsing + Jira algorithm service" />
+    <option name="LAST_COMMIT_MESSAGE" value="upgrade :  fix issues concerns real solife project parsing + Jira algorithm service" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2334" y="174" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1653869946187">
@@ -429,66 +360,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="434" width="380" height="172" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790803593" />
-    <state x="2685" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1654802773706">
+    <state x="2685" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1654882490626">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1653854320187" />
-    <state x="2685" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654802773706" />
-    <state x="2275" y="113" width="1256" height="927" key="#xdebugger.evaluate" timestamp="1654825199575">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2685" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654882490626" />
+    <state x="164" y="20" width="1256" height="927" key="#xdebugger.evaluate" timestamp="1654895983914">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="350" y="219" width="1287" height="694" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1653847954010" />
-    <state x="2275" y="113" width="1256" height="927" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654825199575" />
-    <state width="1745" height="466" key="DebuggerActiveHint" timestamp="1654827641562">
+    <state x="164" y="20" width="1256" height="927" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654895983914" />
+    <state width="1745" height="466" key="DebuggerActiveHint" timestamp="1654894834375">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="671" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654345284186" />
-    <state width="1745" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827641562" />
+    <state width="1745" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654894834375" />
     <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1654396952310">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1651054268815" />
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654396952310" />
-    <state width="1877" height="496" key="GridCell.Tab.0.bottom" timestamp="1654827584596">
+    <state width="1877" height="346" key="GridCell.Tab.0.bottom" timestamp="1654896720512">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="496" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827584596" />
-    <state width="1877" height="496" key="GridCell.Tab.0.center" timestamp="1654827584595">
+    <state width="1877" height="346" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896720512" />
+    <state width="1877" height="346" key="GridCell.Tab.0.center" timestamp="1654896720511">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="496" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827584595" />
-    <state width="1877" height="496" key="GridCell.Tab.0.left" timestamp="1654827584595">
+    <state width="1877" height="346" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896720511" />
+    <state width="1877" height="346" key="GridCell.Tab.0.left" timestamp="1654896720511">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="496" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827584595" />
-    <state width="1877" height="496" key="GridCell.Tab.0.right" timestamp="1654827584595">
+    <state width="1877" height="346" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896720511" />
+    <state width="1877" height="346" key="GridCell.Tab.0.right" timestamp="1654896720511">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="496" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827584595" />
-    <state width="1877" height="202" key="GridCell.Tab.1.bottom" timestamp="1654827368444">
+    <state width="1877" height="346" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896720511" />
+    <state width="1877" height="346" key="GridCell.Tab.1.bottom" timestamp="1654896698238">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="202" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827368444" />
-    <state width="1877" height="202" key="GridCell.Tab.1.center" timestamp="1654827368443">
+    <state width="1877" height="346" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896698238" />
+    <state width="1877" height="346" key="GridCell.Tab.1.center" timestamp="1654896698238">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="202" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827368443" />
-    <state width="1877" height="202" key="GridCell.Tab.1.left" timestamp="1654827368443">
+    <state width="1877" height="346" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896698238" />
+    <state width="1877" height="346" key="GridCell.Tab.1.left" timestamp="1654896698238">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677978" />
-    <state width="1877" height="202" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827368443" />
-    <state width="1877" height="202" key="GridCell.Tab.1.right" timestamp="1654827368444">
+    <state width="1877" height="346" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896698238" />
+    <state width="1877" height="346" key="GridCell.Tab.1.right" timestamp="1654896698238">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="210" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654790677979" />
-    <state width="1877" height="202" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654827368444" />
+    <state width="1877" height="346" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896698238" />
     <state width="1877" height="276" key="GridCell.Tab.10.bottom" timestamp="1653870040535">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -750,20 +681,32 @@
     </state>
     <state x="490" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1653846924665" />
     <state x="2410" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654396680683" />
+    <state x="2104" y="86" key="MergeDialog" timestamp="1654828756087">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2104" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654828756087" />
+    <state x="2518" y="281" key="MultipleFileMergeDialog" timestamp="1654828762085">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2518" y="281" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654828762085" />
     <state x="2381" y="164" key="SettingsEditor" timestamp="1654396044597">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1653846788402" />
     <state x="2381" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654396044597" />
-    <state x="2601" y="261" width="540" height="524" key="StructurePopup" timestamp="1654783550810">
+    <state x="2601" y="261" width="570" height="524" key="StructurePopup" timestamp="1654888334520">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2601" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654783550810" />
-    <state width="968" height="354" key="XDebugger.FullValuePopup" timestamp="1654801687225">
+    <state x="2601" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654888334520" />
+    <state x="2472" y="239" key="Vcs.Push.Dialog.v2" timestamp="1654828822430">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654828822430" />
+    <state width="968" height="354" key="XDebugger.FullValuePopup" timestamp="1654894675486">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1654344880007" />
-    <state width="968" height="354" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654801687225" />
+    <state width="968" height="354" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654894675486" />
     <state x="2605" y="481" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1654396024129">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -786,14 +729,14 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2723" y="277" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654564747435" />
-    <state x="2536" y="240" width="672" height="677" key="run.anything.popup" timestamp="1654396332502">
+    <state x="2536" y="240" width="672" height="677" key="run.anything.popup" timestamp="1654876598575">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2536" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654396332502" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1654783460605">
+    <state x="2536" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654876598575" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1654879560921">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654783460605" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654879560921" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -810,13 +753,8 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java</url>
-          <line>28</line>
+          <line>34</line>
           <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/database/src/main/java/AbstractDatabaseDriver.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/database/src/main/java/Engines/PropertiesExtractor.java</url>
@@ -835,7 +773,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
-          <line>127</line>
+          <line>128</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -851,19 +789,19 @@
         <line-breakpoint type="java-line">
           <condition expression="persistentId == -1" language="JAVA" />
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
-          <line>287</line>
+          <line>290</line>
           <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <condition expression="id == -1" language="JAVA" />
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
-          <line>179</line>
+          <line>180</line>
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <condition expression="id==-1" language="JAVA" />
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
-          <line>252</line>
+          <line>241</line>
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -901,18 +839,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
           <line>107</line>
-          <option name="timeStamp" value="149" />
+          <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/ParsingService.java</url>
@@ -939,6 +867,57 @@
           <url>file://$PROJECT_DIR$/com.vermeg.plasma.jira/app/src/main/java/com/atlassian/jira/rest/client/app/Processor.java</url>
           <line>40</line>
           <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../repository/com/thoughtworks/qdox/qdox/2.0.0/qdox-2.0.0.jar!/com/thoughtworks/qdox/parser/ParseException.class</url>
+          <line>13</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/JavaClassesCreationProcess.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <condition expression="projectFile.getName().equals(&quot;EndorsedPolicy.persistence&quot;)" language="JAVA" />
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/AbstractProcess.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="217" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
+          <line>295</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mapper/src/main/java/services/processing/PersistenceObjectsCreationProcess.java</url>
+          <line>238</line>
+          <option name="timeStamp" value="223" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

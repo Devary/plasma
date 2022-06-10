@@ -14,7 +14,10 @@ import projects.ProjectImpl;
 import services.reporting.Report;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class AbstractProcess implements IAbstractProcess {
 
@@ -83,8 +86,14 @@ public class AbstractProcess implements IAbstractProcess {
         }
         else if (processingType.equals(ProcessingTypes.PERSISTENT))
         {
+            //for target folder
+            String separator = "\\";
+            ArrayList<ProjectFile> newProjectFiles = (ArrayList<ProjectFile>) projectFiles.stream().filter(projectFile -> {
+                String[] splits = projectFile.getPath().split(Pattern.quote(separator));
+                return Arrays.asList(splits).contains("target");
+            }).collect(Collectors.toList());
             abstractProcess= new PersistenceObjectsCreationProcess();
-            persistents.addAll(abstractProcess.createObjectFiles(projectFiles,this.report));
+            persistents.addAll(abstractProcess.createObjectFiles(newProjectFiles,this.report));
         }
         else if (processingType.equals(ProcessingTypes.PROPERTY))
         {

@@ -20,6 +20,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.vermeg.plasma.database" target="1.8" />
+      <module name="com.vermeg.plasma.groovy-utils" target="1.8" />
+      <module name="jira-rest-java-client-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
