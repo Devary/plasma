@@ -45,8 +45,9 @@ public class AbstractProcess implements IAbstractProcess {
 
     public AbstractProcess(String processingType, String basePath, Report report) {
         ProjectImpl project = createProject(basePath);
-        AbstractMapper abstractMapper = new AbstractMapper(project, processingType);
-        project.setProjectJavaFiles(abstractMapper.getProjectFiles());
+        //todo:to be checked
+        //AbstractMapper abstractMapper = new AbstractMapper(project, processingType);
+        //project.setProjectJavaFiles(abstractMapper.getProjectFiles());
         this.report = report;
         this.project = project;
     }
@@ -62,7 +63,7 @@ public class AbstractProcess implements IAbstractProcess {
 
     @Override
     public IAbstractFile createAbstractFile() {
-        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is\\modules").build();
+        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_3_x").name("is\\modules").build();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class AbstractProcess implements IAbstractProcess {
         return null;
     }
 
-    public void adaptProcess(ArrayList<ProjectFile> projectFiles,String processingType) throws ClassNotFoundException {
+    public void adaptProcess(ArrayList<ProjectFile> projectFiles,String processingType) throws Exception {
         IAbstractProcess abstractProcess;
 
         if (processingType.equals(ProcessingTypes.JAVACLASS))
@@ -95,6 +96,6 @@ public class AbstractProcess implements IAbstractProcess {
             //should never happen for now
             return;
         }
-
+        System.out.println("Init completed for : "+ processingType);
     }
 }

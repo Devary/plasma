@@ -19,7 +19,7 @@ public class DBProcess {
 
     private ArrayList<JavaClass> javaClasses;
 
-    public static void init(ArrayList<JavaClass> javaClasses) {
+    public static void init(ArrayList<JavaClass> javaClasses)  throws SQLException {
         javaClasses = javaClasses;
         /*if (!javaClasses.isEmpty()){
             filterJavaClassesByPersistenceExistence();
@@ -34,13 +34,13 @@ public class DBProcess {
         javaClasses = getJavaClasses().stream().filter(jc -> jc.getPersistent()!= null).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public static void globalProcess(ArrayList<JavaClass> javaClasses){
+    public static void globalProcess(ArrayList<JavaClass> javaClasses)  throws SQLException {
         preProcess(javaClasses);
         creationProcess(javaClasses);
         postProcess(javaClasses);
     }
 
-    private static void creationProcess(ArrayList<JavaClass> javaClasses) {
+    private static void creationProcess(ArrayList<JavaClass> javaClasses) throws SQLException {
         ModelEngine modelEngine = new ModelEngine();
         int i = 0;
         for (JavaClass javaClass:javaClasses){
@@ -68,10 +68,12 @@ public class DBProcess {
 
     }
 
-    private static void subProcess(Object objects, ModelEngine modelEngine) {
+    private static void subProcess(Object objects, ModelEngine modelEngine) throws SQLException{
         ArrayList<Object> myobjs= (ArrayList<Object>) objects;
         if (!myobjs.isEmpty()){
-            myobjs.forEach(modelEngine::store);
+                for (Object myobj : myobjs) {
+                    modelEngine.store(myobj);
+                }
         }
     }
 

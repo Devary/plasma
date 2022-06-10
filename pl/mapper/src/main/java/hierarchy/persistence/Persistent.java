@@ -10,6 +10,9 @@ import hierarchy.persistence.types.Field;
 import hierarchy.persistence.types.Link;
 import hierarchy.persistence.types.SolifeQuery;
 import projects.ProjectFile;
+import services.processing.validation.IValidator;
+import services.processing.validation.PersistentValidator;
+import services.processing.validation.ValidatorImpl;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ public class Persistent extends ProjectFile implements IPersistent {
     private ArrayList<Link> links;
     private ArrayList<SolifeQuery> queries;
     private ArrayList<Code> codes;
+    private String table;
 
 
     private Persistent(Builder builder) {
@@ -38,6 +42,8 @@ public class Persistent extends ProjectFile implements IPersistent {
         this.links = builder.links;
         this.queries = builder.queries;
         this.codes = builder.codes;
+        this.table = builder.table;
+
     }
 
     public static Builder newPersistent() {
@@ -46,7 +52,7 @@ public class Persistent extends ProjectFile implements IPersistent {
 
     
     public String getName() {
-        return null;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -74,7 +80,8 @@ public class Persistent extends ProjectFile implements IPersistent {
 
     
     public boolean isValid() {
-        return false;
+        ValidatorImpl validator = new PersistentValidator();
+        return validator.validate(this);
     }
 
     
@@ -163,9 +170,17 @@ public class Persistent extends ProjectFile implements IPersistent {
         this.codes = codes;
     }
 
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
     @Override
     public String toString() {
-        return "Persistent";
+        return this.name;
     }
 
 
@@ -180,6 +195,7 @@ public class Persistent extends ProjectFile implements IPersistent {
         private ArrayList<Link> links;
         private ArrayList<SolifeQuery> queries;
         private ArrayList<Code> codes;
+        private String table;
 
         private Builder() {
         }
@@ -235,6 +251,11 @@ public class Persistent extends ProjectFile implements IPersistent {
 
         public Builder codes(ArrayList<Code> codeList) {
             this.codes = codeList;
+            return this;
+        }
+
+        public Builder table(String table) {
+            this.table = table;
             return this;
         }
     }

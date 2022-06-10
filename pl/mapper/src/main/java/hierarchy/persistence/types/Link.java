@@ -12,12 +12,19 @@ public class Link extends Field {
     private String elementType;
     private String referenceIntegrityCheck;
     private String inverseName;
-
+    private String name;
+    private String dbtype;
+    private String dbname;
 
     @Override
     public String getName() {
-        return super.getName();
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public String getCollectionType() {
         return collectionType;
@@ -57,5 +64,25 @@ public class Link extends Field {
 
     public void setParent(Persistent parent) {
         this.parent = parent;
+    }
+
+    @Override
+    public String getDbtype() {
+        return dbtype;
+    }
+
+    @Override
+    public void setDbtype(String dbtype) {
+        this.dbtype = dbtype;
+    }
+
+    @Override
+    public String getDbname() {
+        return dbname;
+    }
+
+    @Override
+    public void setDbname(String dbname) {
+        this.dbname = dbname;
     }
 }

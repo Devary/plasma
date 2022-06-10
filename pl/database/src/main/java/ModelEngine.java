@@ -1,3 +1,4 @@
+import Engines.Engine;
 import Engines.custom_engines.*;
 import hierarchy.Classes.JavaClass;
 import hierarchy.persistence.Persistent;
@@ -5,10 +6,12 @@ import hierarchy.persistence.types.Code;
 import hierarchy.persistence.types.Link;
 import hierarchy.persistence.types.SolifeQuery;
 
+import java.sql.SQLException;
+
 public class ModelEngine implements IModelEngine{
 
     @Override
-    public boolean store(Object obj) {
+    public boolean store(Object obj) throws SQLException {
         if (obj instanceof SolifeQuery){
             SolifeQueryEngine sqe = new SolifeQueryEngine();
             sqe.create(obj);

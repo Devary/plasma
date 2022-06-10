@@ -1,6 +1,5 @@
 package services.parsing;
 
-import com.intellij.openapi.util.MultiValuesMap;
 import hierarchy.property.PropertiesFile;
 import projects.ProjectFile;
 

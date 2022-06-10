@@ -11,6 +11,7 @@ public class Field implements IField {
     private String dbname;
     private String dbsize;
     private String defaultValue;
+    private String dbscale;
     private boolean allowNulls = false;
 
 
@@ -60,5 +61,13 @@ public class Field implements IField {
 
     public void setDbsize(String dbsize) {
         this.dbsize = dbsize;
+    }
+
+    public String getDbscale() {
+        return dbscale;
+    }
+
+    public void setDbscale(String dbscale) {
+        this.dbscale = dbscale;
     }
 }

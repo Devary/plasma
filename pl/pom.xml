@@ -14,16 +14,19 @@
     <version>1.2.0</version>
     <modules>
         <module>mapper</module>
-        <module>database</module>
-        <module>com.vermeg.plasma.groovy-utils</module>
+        <!--        <module>database</module>
+
+                <module>com.vermeg.plasma.groovy-utils</module>
+        -->
         <module>com.vermeg.plasma.webservices</module>
         <module>com.vermeg.plasma.analyzer</module>
+        <module>com.vermeg.plasma.jira</module>
     </modules>
     <dependencies>
     </dependencies>
     <properties>
-        <maven.compiler.source>1.9</maven.compiler.source>
-        <maven.compiler.target>1.9</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>13.0.2</java.version>
         <solife.test.dir>C:\SolifePlasma</solife.test.dir>
         <toolsDir>C:/tools</toolsDir>

@@ -72,10 +72,12 @@ public class ParsingService {
     public Persistent buildPersistentFromXML()
     {
         persistent = Persistent.newPersistent()
+                .name(getName()) // to improve
                 .className(getClassName())
                 .tableName(getTableName(getClassName()))
                 .isPersistent(Boolean.parseBoolean(getIsPersistent()))
                 .mappingType(getMappingType())
+                .table(getTable())
                 .shortTableName(getShortTableName())
                 .fields(getFieldList())
                 .codes(getCodeList())
@@ -86,18 +88,26 @@ public class ParsingService {
         return persistent;
     }
 
+    private String getName() {
+        return createNodeAndCheckForExistence("class","name");
+
+    }
+
     private ArrayList<Link> getLinkList() {
         NodeList nl = ParsingService.getElement("link",xmlDocument);
         ArrayList<Link> links = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
             LinkService ls =new LinkService(nl.item(i));
             Link link = new Link();
+            link.setName(ls.getName());
             link.setCollectionType(ls.getCollectionType());
             link.setElementType(ls.getElementType());
             link.setInverseName(ls.getInverseName());
             link.setReferenceIntegrityCheck(ls.getIfReferenceIntegrityCheck());
             link.setAllowNulls(ls.getAllowsNull());
             link.setParent(persistent);
+            link.setDbname(ls.getDbName());
+            link.setDbtype(ls.getDbType());
             links.add(link);
         }
         return links;
@@ -130,6 +140,7 @@ public class ParsingService {
             f.setDbtype(fs.getDbType());
             f.setDbsize(fs.getDbSize());
             f.setDefaultValue(fs.getDefaultValue());
+            f.setDbscale(fs.getDbScale());
             fields.add(f);
         }
         return fields;
@@ -149,6 +160,10 @@ public class ParsingService {
     }
     private String getShortTableName() {
         return createNodeAndCheckForExistence("class","shortTableName");
+
+    }
+    private String getTable() {
+        return createNodeAndCheckForExistence("class","table");
 
     }
 

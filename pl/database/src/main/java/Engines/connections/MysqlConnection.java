@@ -10,7 +10,7 @@ public class MysqlConnection implements AbstractConnection{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "ssss","root","");
+                    "","root","");
             statement = connection.createStatement();
         }catch(Exception e){ System.out.println(e);}
     }

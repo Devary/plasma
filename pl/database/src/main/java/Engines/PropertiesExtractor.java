@@ -49,4 +49,8 @@ public class PropertiesExtractor {
         }
         return prop;
     }
+    public static String getConnectionType() throws IOException {
+        return PropertiesExtractor.getPropValue("params", "database.driver");
+
+    }
 }
