@@ -5,12 +5,11 @@
 package services.parsing;
 
 import Exceptions.ClassNameNotFoundException;
-import Exceptions.ErrorCodes;
-import Exceptions.ParsingException;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaType;
+import com.thoughtworks.qdox.model.impl.DefaultJavaParameterizedType;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import hierarchy.Classes.types.Function;
@@ -23,8 +22,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -246,11 +243,11 @@ public class JavaClassesParsingService {
         try {
             builder.addSource(new StringReader(content.toString()));
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
-            System.out.println("Processing on class :"+cls.getName());
+            System.out.println("Processing on class :" + cls.getName());
             getClassType(cls);
-            if (cls.getImplements().isEmpty()) {
-                return;
-            }
+            //if (cls.getImplements().isEmpty()) {
+            //    return;
+            //}
             javaClass.setName(cls.getName());
             javaClass.setClassName(cls.getName());
             javaClass.setClassType(getClassType(cls));
@@ -325,25 +322,35 @@ public class JavaClassesParsingService {
         ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
         hierarchy.Classes.types.JavaField javaField = null;
         for (JavaField field : fields) {
-            String fname = null;
-            String fType = null;
             try {
-                fname = field.getName();
-                fType = field.getType().getName();
-                javaField = new hierarchy.Classes.types.JavaField(fname, fType);
+                javaField = cloneToPlasmaField(field);
                 javaFields.add(javaField);
             } catch (Throwable t) {
                 ////nothing
                 t.printStackTrace();
             }
-            if (fname == null
-                    || fType == null) {
-                ///todo::
-
-            }
-
         }
         javaClass.setJavaFields(javaFields);
+    }
+
+    private hierarchy.Classes.types.JavaField cloneToPlasmaField(JavaField javaField) {
+        String fname = javaField.getName();
+        String ftype = null;
+        String collectionType = null;
+        boolean isCollection = false;
+
+        List<JavaType> defaultJavaType = ((DefaultJavaParameterizedType) javaField.getType()).getActualTypeArguments();
+        if (defaultJavaType.isEmpty()){
+            ftype = javaField.getType().getName();
+        }else{
+            for (JavaType javaType: defaultJavaType){
+                ftype = javaType.getCanonicalName();
+                collectionType = javaType.getFullyQualifiedName();
+            }
+            isCollection = true;
+        }
+
+        return new hierarchy.Classes.types.JavaField(fname, ftype, isCollection,collectionType);
     }
 
     private void createJavaCloneFile() throws IOException {
@@ -472,7 +479,7 @@ public class JavaClassesParsingService {
 
     private JavaClass createJavaClassWithNameTest(String name) {
         String[] splits = name.split("\\.");
-        name = splits[splits.length-1];
+        name = splits[splits.length - 1];
         return JavaClass.newJavaClass().className(name).build();
     }
 
@@ -494,7 +501,7 @@ public class JavaClassesParsingService {
         return javaClass;
     }
 
-    public void newProcess(){
+    public void newProcess() {
         File fileToRead = new File(file.getPath());
         appendContent(fileToRead.getPath());
         parseBody();

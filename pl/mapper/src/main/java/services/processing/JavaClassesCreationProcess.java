@@ -7,6 +7,7 @@ package services.processing;
 import Exceptions.ClassNameNotFoundException;
 import hierarchy.Classes.JavaClass;
 import files.IAbstractFile;
+import hierarchy.Classes.types.JavaField;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.JavaClassesParsingService;
@@ -104,17 +105,13 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
                     for (JavaClass impl : javaClass.getImplementations()) {
                         generatePivotBetween(javaClass, impl, "impl");
                     }
+                    System.out.println(javaClass.getClassName() +": Impl Pivots are generated");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        for (JavaClass javaClass : javaClasses) {
-            try {
                 if (javaClass.getHeritances() != null) {
                     for (JavaClass impl : javaClass.getHeritances()) {
                         generatePivotBetween(javaClass, impl, null);
                     }
+                    System.out.println(javaClass.getClassName() +": Superclass Pivot is generated");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -172,7 +169,38 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
     private void seedToDatabase() {
         for (JavaClass javaClass : this.javaClasses) {
             persist(javaClass);
+            persistFields(javaClass);
         }
+    }
+
+    private void persistFields(JavaClass javaClass) {
+        connect();
+        try{
+            if (javaClass.getJavaFields() != null){
+                for (JavaField jf:javaClass.getJavaFields()){
+                    try {
+                        PreparedStatement statement = conn.prepareStatement("INSERT INTO public.java_field (name, type, created_at, class_id,collection_type,is_collection) VALUES ( ?, ?, ?, ?, ?,?)");
+                        statement.setString(1, jf.getName());
+                        statement.setString(2, jf.getType());
+
+                        java.util.Date date = new Date();
+                        Timestamp timestamp2 = new Timestamp(date.getTime());
+                        statement.setTimestamp(3, timestamp2);
+                        statement.setInt(4, javaClass.getId());
+                        statement.setString(5, jf.getCollectionType());
+                        statement.setBoolean(6, jf.isCollection());
+
+                        int update = statement.executeUpdate();
+                        statement.close();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     private void persist(JavaClass javaClass) {

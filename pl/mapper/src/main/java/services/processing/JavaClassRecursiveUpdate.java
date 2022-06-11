@@ -5,22 +5,47 @@
 package services.processing;
 
 import hierarchy.Classes.JavaClass;
+import hierarchy.Classes.types.JavaField;
 import hierarchy.persistence.Persistent;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
+
 
 public class JavaClassRecursiveUpdate {
 
     private final ArrayList<Properties> properties;
     private ArrayList<JavaClass> javaclasses;
     private ArrayList<Persistent> persistences;
+    private Connection conn = null;
+    private final String url = "jdbc:postgresql://localhost:5432/test";
+    private final String user = "postgres";
+    private final String password = "admin";
+
+    /**
+     * Connect to the PostgreSQL database
+     *
+     * @return a Connection object
+     */
+    public Connection connect() {
+        if (conn == null) {
+            try {
+                conn = DriverManager.getConnection(url, user, password);
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return conn;
+
+    }
 
     public JavaClassRecursiveUpdate(ArrayList<JavaClass> javaclasses, ArrayList<Persistent> persistences, ArrayList<Properties> properties) {
         this.javaclasses = javaclasses;
         this.persistences = persistences;
         this.properties = properties;
-        update();
+        //update();
+        updatev2();
     }
 
     private void update()
@@ -28,8 +53,8 @@ public class JavaClassRecursiveUpdate {
          System.out.println("processing update...");
          for (JavaClass javaClass:javaclasses)
          {
-             updateImpl(javaClass);
-             updateExt(javaClass);
+             //updateImpl(javaClass);
+             //updateExt(javaClass);
              updatePersistent(javaClass);
              System.out.println("Class: "+ javaClass.getClassName()+" Has been updated");
          }
@@ -42,8 +67,81 @@ public class JavaClassRecursiveUpdate {
 
             if (found != null) {
                 javaClass.setPersistent(found);
+                seedAndUpdatePersistentTable(found,javaClass);
+                System.out.println("updating persistent : "+persistent.getName());
                 break;
             }
+        }
+    }
+    private void updatev2()
+    {
+        System.out.println("processing update...");
+        for (Persistent persistent:persistences)
+        {
+            //updateImpl(javaClass);
+            //updateExt(javaClass);
+            updatePersistentv2(persistent);
+            System.out.println("Class: "+ persistent.getName()+" Has been updated");
+        }
+        System.out.println("UPDATE DONE !");
+    }
+    private void updatePersistentv2(Persistent persistent) {
+            JavaClass found = find(persistent);
+
+            if (found != null) {
+                found.setPersistent(persistent);
+                seedAndUpdatePersistentTable(persistent,found);
+                System.out.println("updating persistent : "+persistent.getName());
+            }
+    }
+
+    public void seedAndUpdatePersistentTable(Persistent found, JavaClass javaClass) {
+        connect();
+        try {
+            connect();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM PERSISTENT WHERE NAME ='"+ found.getName()+"'");
+            while (rs.next()){
+                int persId = rs.getInt("id");
+                Statement statement2 = conn.createStatement();
+                ResultSet rs2 = statement2.executeQuery("SELECT * FROM LINKS WHERE PERSISTENT_ID =" + persId);
+                while (rs2.next()){
+                    int linkId = rs2.getInt("id");
+                    String linkName = rs2.getString("name");
+                    //Optional<Optional<JavaField>> target = Optional.of(javaClass.getJavaFields().stream().filter(f -> f.getName().equals(linkName)).findFirst());
+                    JavaField target = javaClass.getJavaFields() != null ? javaClass.getJavaFields().stream().filter(javaField -> javaField.getName().equals(linkName)).findFirst().orElse(null):null;
+                    if (target!=null){
+                        StringBuilder sb = new StringBuilder("UPDATE links SET \"elementType\" = ? ");
+                        if (target.isCollection()){
+                            sb.append(", \"collectionType\" = ?");
+                            sb.append(", is_collection = ?");
+                        }
+                        PreparedStatement statementupd = conn.prepareStatement(sb.toString()+" where id = ?");
+                        if (target.isCollection()){
+                            statementupd.setString(1,target.getType());
+                            statementupd.setString(2,target.getCollectionType());
+                            statementupd.setBoolean(3, target.isCollection());
+                            statementupd.setInt(4,linkId);
+                        }else{
+                            statementupd.setString(1,target.getType());
+                            statementupd.setInt(2,linkId);
+                        }
+
+                        int update = statementupd.executeUpdate();
+                        if (update<1){
+                            throw new NullPointerException("UPDATE FAILED");
+                        }
+                        System.out.println("Link "+linkName+" has been updated");
+                        statementupd.close();
+                    }else {
+                        throw new NoSuchFieldException("Field "+linkName+" doesn't exists in class"+ found.getName());
+                    }
+                }
+                statement2.close();
+            }
+            statement.close();
+        } catch (SQLException | NoSuchFieldException throwables) {
+            throwables.printStackTrace();
         }
     }
 
@@ -188,6 +286,15 @@ public class JavaClassRecursiveUpdate {
                 throw  new JavaClassObjectNotFoundException("class with NULL classname");
             } catch (JavaClassObjectNotFoundException e) {
                 e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private JavaClass find(Persistent persistent) {
+        for (JavaClass clazz : javaclasses) {
+            if (clazz.getClassName().equals(persistent.getName())) {
+                return clazz;
             }
         }
         return null;

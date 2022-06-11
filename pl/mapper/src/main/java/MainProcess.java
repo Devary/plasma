@@ -37,17 +37,20 @@ public class MainProcess {
 
     private ArrayList<Persistent> peristents = null;
     MainProcess() throws Exception {
+        AbstractMapper abstractMapperPersistence = initAbstractMapper(ProcessingTypes.PERSISTENT,FileTypes.PERSISTENCE,basePath,report);
 
+        p2(abstractMapperPersistence);
+
+        setPersistents(abstractMapperPersistence.getProcess().getPersistents());
 
         AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS,FileTypes.JAVACLASS,basePath,report);
 
 
         p1(abstractMapperJava);
 
+        setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
 //creating persistent
-        AbstractMapper abstractMapperPersistence = initAbstractMapper(ProcessingTypes.PERSISTENT,FileTypes.PERSISTENCE,basePath,report);
 
-        p2(abstractMapperPersistence);
 
 
         //properties
@@ -55,11 +58,11 @@ public class MainProcess {
         //p3(abstractMapperProperties);
         //System.out.println("ok");
 
-        // updating JAVACLASSES
+         //updating JAVACLASSES
         //p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
+        p4(abstractMapperJava,abstractMapperPersistence,null);
 
-        //setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
-        setPersistents(abstractMapperPersistence.getProcess().getPersistents());
+        //
 
     }
 
@@ -79,7 +82,8 @@ public class MainProcess {
         JavaClassRecursiveUpdate jcru = new JavaClassRecursiveUpdate(
                 abstractMapperJava.getProcess().getJavaClasses(),
                 abstractMapperPersistence.getProcess().getPersistents(),
-                abstractMapperProperties.getProcess().getProperties()
+                //abstractMapperProperties.getProcess().getProperties()
+                null
         );
         System.out.println(abstractMapperJava.getProcess().getJavaClasses().size());
         System.out.println(abstractMapperPersistence.getProcess().getPersistents().size());

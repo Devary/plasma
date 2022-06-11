@@ -73,9 +73,10 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
         return persistents;
     }
 
-    private void updateLinksElementTypes() {
+    public void updateLinksElementTypes() {
         try {
             //get All persistent from database
+            connect();
             Statement statement = conn.createStatement();
             ResultSet rsPers = statement.executeQuery("SELECT * FROM PERSISTENT WHERE 1=1");
             HashMap<String, Integer> persistentList = new HashMap<>();
