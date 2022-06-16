@@ -10,13 +10,16 @@ import projects.ProjectImpl;
 import services.processing.AbstractProcess;
 import services.processing.JavaClassRecursiveUpdate;
 import services.processing.ProcessingTypes;
+import services.processing.VirtualLinkCreationProcess;
 import services.reporting.Report;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
+    private Collection<String> test;
 
     public static void main(String[] args) throws Exception {
         new MainProcess();
@@ -49,6 +52,9 @@ public class MainProcess {
         p1(abstractMapperJava);
 
         setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
+
+        VirtualLinkCreationProcess virtualLinkCreationProcess = new VirtualLinkCreationProcess(getJavaClasses());
+        virtualLinkCreationProcess.lastAlgo();
 //creating persistent
 
 

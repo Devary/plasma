@@ -292,8 +292,11 @@ public class JavaClassRecursiveUpdate {
     }
 
     private JavaClass find(Persistent persistent) {
+        int persistentFieldsSize = persistent.getLinks().size()+
+                persistent.getFields().size()+
+                persistent.getCodes().size();
         for (JavaClass clazz : javaclasses) {
-            if (clazz.getClassName().equals(persistent.getName())) {
+            if (clazz.getClassName().equals(persistent.getName()) && clazz.getJavaFields().size()==persistentFieldsSize) {
                 return clazz;
             }
         }

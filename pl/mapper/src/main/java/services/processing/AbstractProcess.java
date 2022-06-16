@@ -8,6 +8,7 @@ import hierarchy.Classes.JavaClass;
 import hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.IAbstractFile;
+import hierarchy.property.PropertiesFile;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
 import projects.ProjectImpl;
@@ -35,15 +36,15 @@ public class AbstractProcess implements IAbstractProcess {
 
     private ArrayList<Persistent> persistents = new ArrayList<>();
 
-    public ArrayList<Properties> getProperties() {
+    public ArrayList<PropertiesFile> getProperties() {
         return properties;
     }
 
-    public void setProperties(ArrayList<Properties> properties) {
+    public void setProperties(ArrayList<PropertiesFile> properties) {
         this.properties = properties;
     }
 
-    private ArrayList<Properties> properties = new ArrayList<>();
+    private ArrayList<PropertiesFile> properties = new ArrayList<>();
     ProjectImpl project ;
 
     public AbstractProcess(String processingType, String basePath, Report report) {

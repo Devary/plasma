@@ -15,6 +15,7 @@ C:\sandPlas\plasma\pl\mapper\src\main\java\services\parsing\TypeService\FieldSer
 C:\sandPlas\plasma\pl\mapper\src\main\java\services\processing\AbstractProcess.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlImplementation.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\services\parsing\Utils.java
+C:\sandPlas\plasma\pl\mapper\src\main\java\services\processing\VirtualLinkCreationProcess.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\services\parsing\TypeService\LinkService.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlNodeGraphicsInfo.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\projects\Solife.java
@@ -50,6 +51,7 @@ C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlParticipant.
 C:\sandPlas\plasma\pl\mapper\src\main\java\mappers\ExcludedFileNames.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\ActualParameter.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Engines\connections\MysqlConnection.java
+C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\persistence\types\VirtualLink.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\IService.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Filters\VirtualFileFilter.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\services\processing\ProcessingTypes.java
@@ -58,6 +60,7 @@ C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlAssociation.
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\persistence\types\Field.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\services\processing\JavaClassesCreationProcess.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\projects\ProjectFile.java
+C:\sandPlas\plasma\pl\mapper\src\main\java\TikaTest.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Engines\custom_engines\FieldsEngine.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Exceptions\ErrorCodes.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\IServiceImpl.java
@@ -72,6 +75,7 @@ C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlWorkflowProc
 C:\sandPlas\plasma\pl\mapper\src\main\java\Engines\custom_engines\CodesEngine.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Engines\custom_engines\Fluent.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlFormalParameter.java
+C:\sandPlas\plasma\pl\mapper\src\main\java\JavaSourceVisitor.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\hierarchy\xpdl\types\XpdlExternalPackage.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Engines\connections\PostgresqlConnection.java
 C:\sandPlas\plasma\pl\mapper\src\main\java\Filters\PersistenceFilesFilter.java

@@ -68,7 +68,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
     @Override
     public ArrayList<JavaClass> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
         System.out.println("Processing Object creation");
-        int max = -500;
+        int max = 2000;
         int i = 0;
         ArrayList<JavaClass> javaClasses = new ArrayList<>();
         for (ProjectFile projectFile : projectJavaFiles) {
@@ -83,18 +83,19 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
             if (javaClass.getClassName() != null) {
                 javaClasses.add(javaClass);
             }
-            System.out.println(javaClass.getClassName() + " built successfully !");
+            //System.out.println(javaClass.getClassName() + " built successfully !");
             //if (javaClass.getJavaFields().size()>0)
             //break;
-            //if (i == max){
-            //    break;
-            //}
+            if (i == max){
+                System.out.println(i);
+                break;
+            }
         }
         System.out.println("FINISHED :: " + javaClasses.size() + " Objects created !");
         this.javaClasses = javaClasses;
         connect();
         seedToDatabase();
-        createPivotRelations(javaClasses);
+        //createPivotRelations(javaClasses);
         return javaClasses;
     }
 
@@ -235,11 +236,21 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
 
             }
 
+            Statement statement1 = conn.createStatement();
+            ResultSet rs = statement1.executeQuery("SELECT * FROM PERSISTENT WHERE NAME = '"+javaClass.getClassName()+"'");
+            int idPers = -1;
+            while (rs.next()){
+                idPers = rs.getInt("id");
+            }
             java.util.Date date = new Date();
             Timestamp timestamp2 = new Timestamp(date.getTime());
             statement.setTimestamp(5, timestamp2);
             statement.setTimestamp(6, null);
-            statement.setTimestamp(7, null);
+            if (idPers==-1){
+                statement.setTimestamp(7, null);
+            }else{
+                statement.setInt(7, idPers);
+            }
             int update = statement.executeUpdate();
             if (update == 1) {
                 if (id == -1) {

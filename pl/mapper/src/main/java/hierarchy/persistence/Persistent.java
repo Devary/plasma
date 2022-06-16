@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class Persistent extends ProjectFile implements IPersistent {
 
+    private long id;
     private String className;
     private String name;
     private String mappingType;
@@ -32,6 +33,7 @@ public class Persistent extends ProjectFile implements IPersistent {
 
 
     private Persistent(Builder builder) {
+        this.id = builder.id;
         this.className = builder.className;
         this.name = builder.name;
         this.mappingType = builder.mappingType;
@@ -178,6 +180,14 @@ public class Persistent extends ProjectFile implements IPersistent {
         this.table = table;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return this.name;
@@ -185,6 +195,7 @@ public class Persistent extends ProjectFile implements IPersistent {
 
 
     public static final class Builder {
+        private long id;
         private String className;
         private String name;
         private String mappingType;
@@ -202,6 +213,11 @@ public class Persistent extends ProjectFile implements IPersistent {
 
         public Persistent build() {
             return new Persistent(this);
+        }
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
         }
 
         public Builder className(String className) {

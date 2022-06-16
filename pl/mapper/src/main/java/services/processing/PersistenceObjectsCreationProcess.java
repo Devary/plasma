@@ -67,7 +67,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
             i++;
 
         }
-        updateLinksElementTypes();
+        //updateLinksElementTypes(); not needed right now
         System.out.println("FINISHED :: " + persistents.size() + " Objects created !");
         setPersistents(persistents);
         return persistents;
@@ -229,7 +229,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
             statement.setString(1,persistent.getName());
-            statement.setString(2,persistent.getMappingType().toUpperCase());
+            statement.setString(2,persistent.getMappingType()!=null ? persistent.getMappingType().toUpperCase():"HIERARCHICAL");
             statement.setString(3,persistent.getShortTableName());
             statement.setString(4,persistent.getTable());
             statement.setTimestamp(5,timestamp2);

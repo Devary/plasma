@@ -13,6 +13,7 @@ import com.thoughtworks.qdox.model.impl.DefaultJavaParameterizedType;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import hierarchy.Classes.types.Function;
+import hierarchy.persistence.Persistent;
 import projects.ProjectFile;
 import services.reporting.Report;
 
@@ -242,12 +243,16 @@ public class JavaClassesParsingService {
         JavaProjectBuilder builder = new JavaProjectBuilder();
         try {
             builder.addSource(new StringReader(content.toString()));
+            if (builder.getClasses().isEmpty()){
+                return;
+            }
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
             System.out.println("Processing on class :" + cls.getName());
             getClassType(cls);
             //if (cls.getImplements().isEmpty()) {
             //    return;
             //}
+            javaClass.setBody(builder);
             javaClass.setName(cls.getName());
             javaClass.setClassName(cls.getName());
             javaClass.setClassType(getClassType(cls));
@@ -259,8 +264,11 @@ public class JavaClassesParsingService {
             }
             javaClass.setContainingPackage(cls.getPackageName());
             javaClass.setImplementations(implsClasses);
-            extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            if (!(cls.getSuperClass() == null)){
+                extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            }
             javaClass.setHeritances(extClasses);
+
             //Field
             parseFields(cls);
             //Methods
@@ -322,23 +330,39 @@ public class JavaClassesParsingService {
         ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
         hierarchy.Classes.types.JavaField javaField = null;
         for (JavaField field : fields) {
-            try {
-                javaField = cloneToPlasmaField(field);
-                javaFields.add(javaField);
-            } catch (Throwable t) {
-                ////nothing
-                t.printStackTrace();
+            if (field.getModifiers().stream().filter(t ->{ return t.equals("transient");}).findFirst().orElse(null) == null){
+                try {
+                    javaField = cloneToPlasmaField(field,cls);
+                    javaFields.add(javaField);
+                } catch (Throwable t) {
+                    ////nothing
+                    t.printStackTrace();
+                }
             }
+
         }
         javaClass.setJavaFields(javaFields);
     }
 
-    private hierarchy.Classes.types.JavaField cloneToPlasmaField(JavaField javaField) {
+    private hierarchy.Classes.types.JavaField cloneToPlasmaField(JavaField javaField,com.thoughtworks.qdox.model.JavaClass cls) {
         String fname = javaField.getName();
         String ftype = null;
         String collectionType = null;
         boolean isCollection = false;
 
+        /*List<JavaType> defaultJavaType = ((DefaultJavaParameterizedType) javaField.getType()).getActualTypeArguments();
+        if (defaultJavaType.isEmpty()){
+            ftype = javaField.getType().getName();
+        }else{
+            for (JavaType javaType: defaultJavaType){
+                ftype = javaType.getCanonicalName();
+                collectionType = javaType.getFullyQualifiedName();
+            }
+            isCollection = true;
+        }*/
+        String capitalizedName = fname.substring(0, 1).toUpperCase() + fname.substring(1);
+
+        cls.getMethod("get"+capitalizedName,null,false);
         List<JavaType> defaultJavaType = ((DefaultJavaParameterizedType) javaField.getType()).getActualTypeArguments();
         if (defaultJavaType.isEmpty()){
             ftype = javaField.getType().getName();
@@ -505,5 +529,48 @@ public class JavaClassesParsingService {
         File fileToRead = new File(file.getPath());
         appendContent(fileToRead.getPath());
         parseBody();
+    }
+    //cls.getMethod("getAffectations",null,false)
+    public void parseBodyV2() {
+        cleanContent(content);
+        boolean isEligible = IsEligibleToBeParsed(content);
+        if (!isEligible) {
+            return;
+        }
+        JavaProjectBuilder builder = new JavaProjectBuilder();
+        try {
+            builder.addSource(new StringReader(content.toString()));
+            if (builder.getClasses().isEmpty()){
+                return;
+            }
+            com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
+            System.out.println("Processing on class :" + cls.getName());
+            getClassType(cls);
+            //if (cls.getImplements().isEmpty()) {
+            //    return;
+            //}
+            javaClass.setName(cls.getName());
+            javaClass.setClassName(cls.getName());
+            javaClass.setClassType(getClassType(cls));
+            ArrayList<JavaClass> implsClasses = new ArrayList();
+            ArrayList<JavaClass> extClasses = new ArrayList();
+
+            for (JavaType jc : cls.getImplements()) {
+                implsClasses.add(createJavaClassWithNameTest(jc.getBinaryName()));
+            }
+            javaClass.setContainingPackage(cls.getPackageName());
+            javaClass.setImplementations(implsClasses);
+            if (!(cls.getSuperClass() == null)){
+                extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            }
+            javaClass.setHeritances(extClasses);
+            //Field
+            parseFields(cls);
+            //Methods
+            parseMethods(cls);
+        } catch (Exception pe) {
+            System.out.println(pe.fillInStackTrace());
+        }
+
     }
 }

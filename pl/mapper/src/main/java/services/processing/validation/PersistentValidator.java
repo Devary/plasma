@@ -8,8 +8,8 @@ public class PersistentValidator extends ValidatorImpl {
 
     @Override
     public boolean validate(Persistent persistent) {
-        return isValidName(persistent.getName()) &&
-                isValidMapping(persistent.getMappingType()) ;
+        return isValidName(persistent.getName());
+                //&& isValidMapping(persistent.getMappingType()) ;
                 //&& isValidSTN(persistent.getShortTableName());
     }
 

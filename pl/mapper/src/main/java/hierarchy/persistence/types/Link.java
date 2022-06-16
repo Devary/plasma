@@ -15,6 +15,9 @@ public class Link extends Field {
     private String name;
     private String dbtype;
     private String dbname;
+    private long persistentId;
+    private long id;
+    private boolean is_collection;
 
     @Override
     public String getName() {
@@ -84,5 +87,29 @@ public class Link extends Field {
     @Override
     public void setDbname(String dbname) {
         this.dbname = dbname;
+    }
+
+    public long getPersistentId() {
+        return persistentId;
+    }
+
+    public void setPersistentId(long persistentId) {
+        this.persistentId = persistentId;
+    }
+
+    public void getIsCollection(boolean is_collection) {
+        this.is_collection = is_collection;
+    }
+
+    public void setIsCollection(boolean is_collection) {
+        this.is_collection = is_collection;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
