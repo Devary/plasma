@@ -5,14 +5,15 @@
 package services.parsing;
 
 import Exceptions.ClassNameNotFoundException;
-import Exceptions.ErrorCodes;
-import Exceptions.ParsingException;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaMethod;
+import com.thoughtworks.qdox.model.JavaType;
+import com.thoughtworks.qdox.model.impl.DefaultJavaParameterizedType;
 import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import hierarchy.Classes.types.Function;
+import hierarchy.persistence.Persistent;
 import projects.ProjectFile;
 import services.reporting.Report;
 
@@ -22,7 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class JavaClassesParsingService {
@@ -31,25 +32,27 @@ public class JavaClassesParsingService {
     StringBuilder content = new StringBuilder();
     StringBuilder newCleanContent = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
-    private final String plasmaGeneratedClassesDir =System.getProperty("user.dir")+"/mapper/src/main/java/plasma_generated_classes/";
+    private final String plasmaGeneratedClassesDir = System.getProperty("user.dir") + "/mapper/src/main/java/plasma_generated_classes/";
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
 
     public JavaClassesParsingService(ProjectFile projectFile, Report report) throws ClassNameNotFoundException {
         this.file = projectFile;
-        String[] typesToParse =adaptParsingRange();
-            parseContent(typesToParse);
+        String[] typesToParse = adaptParsingRange();
+        //parseContent(typesToParse);
+        newProcess();
     }
 
     private String[] adaptParsingRange() {
         String[] types = {
-                ClassDescriptor.PUBLIC+" "+ClassDescriptor.CLASS,
-                ClassDescriptor.PUBLIC+" "+ClassDescriptor.INTERFACE,
-                ClassDescriptor.PUBLIC+" "+ClassDescriptor.ANNOTATION,
-                ClassDescriptor.PUBLIC+" "+ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
-                ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
-                ClassDescriptor.STATIC+" "+ClassDescriptor.CLASS,
-                ClassDescriptor.STRICTFP+" "+ClassDescriptor.CLASS,
+                ClassDescriptor.PUBLIC + " " + ClassDescriptor.CLASS,
+                ClassDescriptor.PUBLIC + " " + ClassDescriptor.ABSTRACT + " " + ClassDescriptor.CLASS,
+                ClassDescriptor.PUBLIC + " " + ClassDescriptor.INTERFACE,
+                //ClassDescriptor.PUBLIC+" "+ClassDescriptor.ANNOTATION,
+                //ClassDescriptor.PUBLIC+" "+ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
+                //ClassDescriptor.FINAL+" "+ClassDescriptor.CLASS,
+                //ClassDescriptor.STATIC+" "+ClassDescriptor.CLASS,
+                //ClassDescriptor.STRICTFP+" "+ClassDescriptor.CLASS,
         };
         return types;
     }
@@ -64,15 +67,64 @@ public class JavaClassesParsingService {
             String line = null;
             String classname = null;
             while ((line = bufferedReader.readLine()) != null) {
-                if (line == null )
-                {
+                /*
+                TEST MATTERS
+                 */
+                boolean isHeader = Pattern.compile("(|public|final|abstract|private|static|protected).*(class).*(extends|implements).*(\\{)*$").matcher(line).find();
+                String IMPLEMENTS = "implements";
+                String EXTENDS = "extends";
+                if (isHeader) {
+                    if (!line.contains(IMPLEMENTS)) {
+                        break;
+                    }
+                    int indexExtends = line.indexOf(EXTENDS);
+                    int indexImplements = line.indexOf(IMPLEMENTS);
+
+                    ArrayList<String> impls = new ArrayList<>();
+                    String extendedClass = "";
+                    String toSplit = line.substring(indexImplements).trim();
+                    if (toSplit.contains("{")) {
+                        toSplit = toSplit.substring(0, toSplit.indexOf("{"));
+                    }
+                    toSplit = toSplit.substring(IMPLEMENTS.length());
+                    String[] splits = toSplit.split(",");
+                    ArrayList<JavaClass> implsClasses = new ArrayList();
+                    ArrayList<JavaClass> extClasses = new ArrayList();
+                    for (String spl : splits) {
+                        implsClasses.add(createJavaClassWithNameTest(spl));
+                    }
+                    String className;
+                    if (indexExtends < 0) {
+                        className = line.substring(line.indexOf("class") + 5, indexImplements).trim();
+                    } else {
+                        className = line.substring(line.indexOf("class") + 5, indexExtends).trim();
+                    }
+                    extendedClass = line.trim().substring(indexExtends + EXTENDS.length(), indexImplements);
+                    ArrayList<Integer> classTypeParams = getClassTypeParams(line, classTypes);
+                    setClassType(classTypes[classTypeParams.get(0)]);
+                    if (!extendedClass.equals("")) {
+                        extClasses.add(createJavaClassWithNameTest(extendedClass));
+                        javaClass.setHeritances(extClasses);
+                    }
+                    javaClass.setClassName(className);
+                    javaClass.setImplementations(implsClasses);
+                    setClassType(classTypes[classTypeParams.get(0)]);
+                    parsePackage();
+                    parseModule();
+                    parseBody();
+                    //break;
+
+                }
+
+                /*
+                END TEST
+                 */
+                if (line == null) {
                     continue;
                 }
-                if (!line.startsWith("//"))
-                {
-                    ArrayList<Integer> classTypeParams = getClassTypeParams(line,classTypes);
-                    if (classTypeParams==null)
-                    {
+                if (!line.startsWith("//")) {
+                    ArrayList<Integer> classTypeParams = getClassTypeParams(line, classTypes);
+                    if (classTypeParams == null) {
                         continue;
                     }
                     int indexClassType = classTypeParams.get(1);
@@ -80,41 +132,36 @@ public class JavaClassesParsingService {
                     if (indexClassType != -1) {
                         System.out.println(header + line);
                         int indexOfOpeningAcco = line.indexOf("{");
-                        if (line.contains("//"))
-                        {
+                        if (line.contains("//")) {
                             line = removeLineComments(line);
                         }
-                        if (lineIsNewInnerClass(line))
-                        {
+                        if (lineIsNewInnerClass(line)) {
                             delegateClass(line);
                             continue;
                         }
 
                         header.append(line);
-                        if (indexOfOpeningAcco == -1)
-                        {
+                        if (indexOfOpeningAcco == -1) {
                             header.setLength(header.length() - 1);
                             continue;
                         }
                         System.out.println(header);
                         count++;
 
-                        if(line.contains("<"))
-                        {
-                            header=cleanHeaderFromDiamond(header);
+                        if (line.contains("<")) {
+                            header = cleanHeaderFromDiamond(header);
                         }
                         int indexExtends = header.indexOf("extends");
                         int indexImplements = header.indexOf("implements");
-                        if (indexImplements != -1 &&!assertIsBetweenIndexes(indexClassType,indexImplements,indexExtends)  /* && !isOriginalExtending(line)*/)
-                        {
-                            indexExtends=-1;
+                        if (indexImplements != -1 && !assertIsBetweenIndexes(indexClassType, indexImplements, indexExtends)  /* && !isOriginalExtending(line)*/) {
+                            indexExtends = -1;
                         }
                         ///getting class name
                         indexOfOpeningAcco = header.indexOf("{");
                         indexExtends = header.indexOf("extends");
                         indexImplements = header.indexOf("implements");
                         if (indexExtends == -1 && indexImplements == -1) {
-                            int nbsp = nbspacesbeforeOpeningAcco(header,indexOfOpeningAcco);
+                            int nbsp = nbspacesbeforeOpeningAcco(header, indexOfOpeningAcco);
                             classname = header.substring(indexClassType + classTypeLength, indexOfOpeningAcco - nbsp);
 
                         } else if (indexImplements != -1 && indexExtends == -1) {
@@ -148,8 +195,7 @@ public class JavaClassesParsingService {
                         break;
                     }
                 }
-                if (index + 1 < classTypes.length)
-                {
+                if (index + 1 < classTypes.length) {
                     return;
                     //parseContent(classTypes[index + 1]);
                 }
@@ -169,46 +215,81 @@ public class JavaClassesParsingService {
     private void parsePackage() throws IOException {
         String line = null;
         BufferedReader bufferedReader = new BufferedReader(new StringReader(content.toString()));
-            while ((line = bufferedReader.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null) {
             if (line.startsWith("package")) {
-                    javaClass.setContainingPackage(line.substring(7,line.lastIndexOf(";")));
+                javaClass.setContainingPackage(line.substring(7, line.lastIndexOf(";")));
             }
         }
     }
 
     private int nbspacesbeforeOpeningAcco(StringBuilder header, int indexOfOpeningAcco) {
         int nb = 0;
-        int i= indexOfOpeningAcco-1;
+        int i = indexOfOpeningAcco - 1;
         StringBuilder sb = new StringBuilder();
-        if (header.toString().lastIndexOf(" ") == i)
-        {
+        if (header.toString().lastIndexOf(" ") == i) {
             nb++;
-            sb.append(header.toString().substring(0,header.toString().lastIndexOf(" "))).append("{");
-            nb+=nbspacesbeforeOpeningAcco(sb,indexOfOpeningAcco);
+            sb.append(header.toString().substring(0, header.toString().lastIndexOf(" "))).append("{");
+            nb += nbspacesbeforeOpeningAcco(sb, indexOfOpeningAcco);
         }
         return nb;
     }
 
-    public void parseBody()
-    {
+    public void parseBody() {
         cleanContent(content);
-        boolean isEligible =  IsEligibleToBeParsed(newCleanContent);
-        if (!isEligible){
+        boolean isEligible = IsEligibleToBeParsed(content);
+        if (!isEligible) {
             return;
         }
         JavaProjectBuilder builder = new JavaProjectBuilder();
-        System.out.println(newCleanContent.toString());
-        try{
-            builder.addSource(new StringReader(newCleanContent.toString()));
+        try {
+            builder.addSource(new StringReader(content.toString()));
+            if (builder.getClasses().isEmpty()){
+                return;
+            }
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
+            System.out.println("Processing on class :" + cls.getName());
+            getClassType(cls);
+            //if (cls.getImplements().isEmpty()) {
+            //    return;
+            //}
+            javaClass.setBody(builder);
+            javaClass.setName(cls.getName());
+            javaClass.setClassName(cls.getName());
+            javaClass.setClassType(getClassType(cls));
+            ArrayList<JavaClass> implsClasses = new ArrayList();
+            ArrayList<JavaClass> extClasses = new ArrayList();
+
+            for (JavaType jc : cls.getImplements()) {
+                implsClasses.add(createJavaClassWithNameTest(jc.getBinaryName()));
+            }
+            javaClass.setContainingPackage(cls.getPackageName());
+            javaClass.setImplementations(implsClasses);
+            if (!(cls.getSuperClass() == null)){
+                extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            }
+            javaClass.setHeritances(extClasses);
+
             //Field
             parseFields(cls);
             //Methods
             parseMethods(cls);
-        }catch (Exception pe){
+        } catch (Exception pe) {
             System.out.println(pe.fillInStackTrace());
         }
 
+    }
+
+    private String getClassType(com.thoughtworks.qdox.model.JavaClass cls) {
+        if (cls.isAnnotation()) {
+            return "ANNOTATION";
+        }
+        if (cls.isInterface()) {
+            return "INTERFACE";
+        }
+        if (cls.isEnum()) {
+            return "ENUM";
+        }
+        return "CLASS";
     }
 
     private boolean IsEligibleToBeParsed(StringBuilder newCleanContent) {
@@ -225,8 +306,7 @@ public class JavaClassesParsingService {
     }
 
     private void cleanComments(String s) {
-        if (!s.startsWith("//"))
-        {
+        if (!s.startsWith("//")) {
             newCleanContent.append(s);
         }
     }
@@ -234,8 +314,7 @@ public class JavaClassesParsingService {
     private void parseMethods(com.thoughtworks.qdox.model.JavaClass cls) {
         List<JavaMethod> methods = cls.getMethods();
         ArrayList<Function> javaMethods = new ArrayList<>();
-        for (JavaMethod jm:methods)
-        {
+        for (JavaMethod jm : methods) {
             javaMethods.add(Function.newFunction()
                     .name(jm.getName())
                     /// TODO: update resultType with existing JAVACLASS in the process
@@ -250,34 +329,58 @@ public class JavaClassesParsingService {
         List<JavaField> fields = cls.getFields();
         ArrayList<hierarchy.Classes.types.JavaField> javaFields = new ArrayList<>();
         hierarchy.Classes.types.JavaField javaField = null;
-        for (JavaField field:fields)
-        {
-            String fname = null;
-            String fType= null;
-            try {
-                fname = field.getName();
-                fType = field.getType().getName();
-                javaField = new hierarchy.Classes.types.JavaField(fname, fType);
-                javaFields.add(javaField);
-            } catch (Throwable t){
-                ////nothing
-                t.printStackTrace();
-            }
-            if (fname == null
-            || fType == null){
-                ///todo::
-
+        for (JavaField field : fields) {
+            if (field.getModifiers().stream().filter(t ->{ return t.equals("transient");}).findFirst().orElse(null) == null){
+                try {
+                    javaField = cloneToPlasmaField(field,cls);
+                    javaFields.add(javaField);
+                } catch (Throwable t) {
+                    ////nothing
+                    t.printStackTrace();
+                }
             }
 
         }
         javaClass.setJavaFields(javaFields);
     }
 
+    private hierarchy.Classes.types.JavaField cloneToPlasmaField(JavaField javaField,com.thoughtworks.qdox.model.JavaClass cls) {
+        String fname = javaField.getName();
+        String ftype = null;
+        String collectionType = null;
+        boolean isCollection = false;
+
+        /*List<JavaType> defaultJavaType = ((DefaultJavaParameterizedType) javaField.getType()).getActualTypeArguments();
+        if (defaultJavaType.isEmpty()){
+            ftype = javaField.getType().getName();
+        }else{
+            for (JavaType javaType: defaultJavaType){
+                ftype = javaType.getCanonicalName();
+                collectionType = javaType.getFullyQualifiedName();
+            }
+            isCollection = true;
+        }*/
+        String capitalizedName = fname.substring(0, 1).toUpperCase() + fname.substring(1);
+
+        cls.getMethod("get"+capitalizedName,null,false);
+        List<JavaType> defaultJavaType = ((DefaultJavaParameterizedType) javaField.getType()).getActualTypeArguments();
+        if (defaultJavaType.isEmpty()){
+            ftype = javaField.getType().getName();
+        }else{
+            for (JavaType javaType: defaultJavaType){
+                ftype = javaType.getCanonicalName();
+                collectionType = javaType.getFullyQualifiedName();
+            }
+            isCollection = true;
+        }
+
+        return new hierarchy.Classes.types.JavaField(fname, ftype, isCollection,collectionType);
+    }
+
     private void createJavaCloneFile() throws IOException {
-        String absPath= plasmaGeneratedClassesDir+javaClass.getClassName()+".java";
+        String absPath = plasmaGeneratedClassesDir + javaClass.getClassName() + ".java";
         File newFile = new File(absPath);
-        if (newFile.createNewFile())
-        {
+        if (newFile.createNewFile()) {
             FileOutputStream fos = new FileOutputStream(absPath);
             fos.write(content.toString().getBytes());
             fos.flush();
@@ -288,12 +391,9 @@ public class JavaClassesParsingService {
 
     private void appendContent(String filePath) {
         /// TODO : needs optimization , file reading twice
-        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.ISO_8859_1))
-        {
+        try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.ISO_8859_1)) {
             stream.forEach(s -> content.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -301,13 +401,13 @@ public class JavaClassesParsingService {
     private StringBuilder cleanHeaderFromDiamond(StringBuilder header) {
         StringBuilder newHeader = new StringBuilder();
         String line = header.toString();
-        line = line.replaceAll("<(.*?)>","");
+        line = line.replaceAll("<(.*?)>", "");
         newHeader.append(line);
         return newHeader;
     }
 
     private boolean isOriginalExtending(String line) {
-        return !line.contains("<") || (line.indexOf("<")>0 && line.indexOf("extends")>line.indexOf(">"));
+        return !line.contains("<") || (line.indexOf("<") > 0 && line.indexOf("extends") > line.indexOf(">"));
     }
 
     private void delegateClass(String line) {
@@ -324,26 +424,23 @@ public class JavaClassesParsingService {
     private boolean lineIsNewInnerClass(String line) {
         //// must be implemented
         String[] classTypes = adaptParsingRange();
-        ArrayList<Integer> classParams = getClassTypeParams(line,classTypes);
-        return classParams!=null && classParams.get(1)!=0;
+        ArrayList<Integer> classParams = getClassTypeParams(line, classTypes);
+        return classParams != null && classParams.get(1) != 0;
     }
 
     private ArrayList<Integer> getClassTypeParams(String line, String[] classTypes) {
-        int arrayIdx =-1;
+        int arrayIdx = -1;
         ArrayList<Integer> indexes = new ArrayList<>();
-        for (String classType:classTypes)
-        {
+        for (String classType : classTypes) {
             arrayIdx++;
             int idx = line.indexOf(classType);
-            if (idx!=-1)
-            {
+            if (idx != -1) {
                 indexes.add(arrayIdx);
                 indexes.add(idx);
             }
 
         }
-        if (!indexes.isEmpty())
-        {
+        if (!indexes.isEmpty()) {
             return indexes;
         }
         return null;
@@ -351,10 +448,10 @@ public class JavaClassesParsingService {
 
     private String removeLineComments(String line) {
         String newLine;
-        if (line.indexOf("//")==0)
+        if (line.indexOf("//") == 0)
             return "";
         else
-            newLine = line.substring(0,line.indexOf("//")-1);
+            newLine = line.substring(0, line.indexOf("//") - 1);
         if (newLine.contains("//"))
             removeLineComments(newLine);
         return newLine;
@@ -391,20 +488,22 @@ public class JavaClassesParsingService {
     private int getStopIndex(String line) {
         Character space = ' ';
         int indexOfOpeningAcco = line.indexOf("{");
-        int stopIndex ;
+        int stopIndex;
         System.out.println(line);
-        if(space.equals(line.charAt(indexOfOpeningAcco-1)))
-        {
-            stopIndex =indexOfOpeningAcco - 1;
+        if (indexOfOpeningAcco == -1) {
+            return line.length() - 1;
         }
-        else
-        {
-            stopIndex=indexOfOpeningAcco;
+        if (space.equals(line.charAt(indexOfOpeningAcco - 1))) {
+            stopIndex = indexOfOpeningAcco - 1;
+        } else {
+            stopIndex = indexOfOpeningAcco;
         }
         return stopIndex;
     }
 
     private JavaClass createJavaClassWithNameTest(String name) {
+        String[] splits = name.split("\\.");
+        name = splits[splits.length - 1];
         return JavaClass.newJavaClass().className(name).build();
     }
 
@@ -424,5 +523,54 @@ public class JavaClassesParsingService {
 
     public JavaClass getJavaClass() {
         return javaClass;
+    }
+
+    public void newProcess() {
+        File fileToRead = new File(file.getPath());
+        appendContent(fileToRead.getPath());
+        parseBody();
+    }
+    //cls.getMethod("getAffectations",null,false)
+    public void parseBodyV2() {
+        cleanContent(content);
+        boolean isEligible = IsEligibleToBeParsed(content);
+        if (!isEligible) {
+            return;
+        }
+        JavaProjectBuilder builder = new JavaProjectBuilder();
+        try {
+            builder.addSource(new StringReader(content.toString()));
+            if (builder.getClasses().isEmpty()){
+                return;
+            }
+            com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
+            System.out.println("Processing on class :" + cls.getName());
+            getClassType(cls);
+            //if (cls.getImplements().isEmpty()) {
+            //    return;
+            //}
+            javaClass.setName(cls.getName());
+            javaClass.setClassName(cls.getName());
+            javaClass.setClassType(getClassType(cls));
+            ArrayList<JavaClass> implsClasses = new ArrayList();
+            ArrayList<JavaClass> extClasses = new ArrayList();
+
+            for (JavaType jc : cls.getImplements()) {
+                implsClasses.add(createJavaClassWithNameTest(jc.getBinaryName()));
+            }
+            javaClass.setContainingPackage(cls.getPackageName());
+            javaClass.setImplementations(implsClasses);
+            if (!(cls.getSuperClass() == null)){
+                extClasses.add(createJavaClassWithNameTest(cls.getSuperClass().getBinaryName()));
+            }
+            javaClass.setHeritances(extClasses);
+            //Field
+            parseFields(cls);
+            //Methods
+            parseMethods(cls);
+        } catch (Exception pe) {
+            System.out.println(pe.fillInStackTrace());
+        }
+
     }
 }

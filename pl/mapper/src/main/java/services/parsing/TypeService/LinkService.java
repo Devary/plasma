@@ -44,9 +44,19 @@ public class LinkService extends ParsingService{
     }
 
     public String getInverseName() {
-        return createNodeAndCheckForExistence("inverseName");
+        return createNodeAndCheckForExistence("name");
     }
 
+    public String getName() {
+        return createNodeAndCheckForExistence("name");
+    }
+
+    public String getDbName() {
+        return createNodeAndCheckForExistence("dbname");
+    }
+    public String getDbType() {
+        return createNodeAndCheckForExistence("dbtype");
+    }
     public String getIfReferenceIntegrityCheck() {
         return createNodeAndCheckForExistence("referenceIntegrityCheck");
     }

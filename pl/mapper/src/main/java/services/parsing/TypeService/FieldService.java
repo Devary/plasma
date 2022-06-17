@@ -54,6 +54,9 @@ public class FieldService extends ParsingService{
     public String getDbSize() {
         return createNodeAndCheckForExistence("dbsize");
     }
+    public String getDbScale() {
+        return createNodeAndCheckForExistence("dbscale");
+    }
     //TODO : dbtype
 
     public String getDefaultValue() {

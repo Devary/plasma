@@ -10,11 +10,15 @@ import hierarchy.persistence.types.Field;
 import hierarchy.persistence.types.Link;
 import hierarchy.persistence.types.SolifeQuery;
 import projects.ProjectFile;
+import services.processing.validation.IValidator;
+import services.processing.validation.PersistentValidator;
+import services.processing.validation.ValidatorImpl;
 
 import java.util.ArrayList;
 
 public class Persistent extends ProjectFile implements IPersistent {
 
+    private long id;
     private String className;
     private String name;
     private String mappingType;
@@ -25,9 +29,11 @@ public class Persistent extends ProjectFile implements IPersistent {
     private ArrayList<Link> links;
     private ArrayList<SolifeQuery> queries;
     private ArrayList<Code> codes;
+    private String table;
 
 
     private Persistent(Builder builder) {
+        this.id = builder.id;
         this.className = builder.className;
         this.name = builder.name;
         this.mappingType = builder.mappingType;
@@ -38,6 +44,8 @@ public class Persistent extends ProjectFile implements IPersistent {
         this.links = builder.links;
         this.queries = builder.queries;
         this.codes = builder.codes;
+        this.table = builder.table;
+
     }
 
     public static Builder newPersistent() {
@@ -46,7 +54,7 @@ public class Persistent extends ProjectFile implements IPersistent {
 
     
     public String getName() {
-        return null;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -74,7 +82,8 @@ public class Persistent extends ProjectFile implements IPersistent {
 
     
     public boolean isValid() {
-        return false;
+        ValidatorImpl validator = new PersistentValidator();
+        return validator.validate(this);
     }
 
     
@@ -163,13 +172,30 @@ public class Persistent extends ProjectFile implements IPersistent {
         this.codes = codes;
     }
 
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Persistent";
+        return this.name;
     }
 
 
     public static final class Builder {
+        private long id;
         private String className;
         private String name;
         private String mappingType;
@@ -180,12 +206,18 @@ public class Persistent extends ProjectFile implements IPersistent {
         private ArrayList<Link> links;
         private ArrayList<SolifeQuery> queries;
         private ArrayList<Code> codes;
+        private String table;
 
         private Builder() {
         }
 
         public Persistent build() {
             return new Persistent(this);
+        }
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
         }
 
         public Builder className(String className) {
@@ -235,6 +267,11 @@ public class Persistent extends ProjectFile implements IPersistent {
 
         public Builder codes(ArrayList<Code> codeList) {
             this.codes = codeList;
+            return this;
+        }
+
+        public Builder table(String table) {
+            this.table = table;
             return this;
         }
     }

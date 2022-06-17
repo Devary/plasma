@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class SolifeQueryEngine extends Engine implements AbstractEngine {
     @Override
-    public boolean create(Object object) {
+    public boolean create(Object object) throws SQLException {
         SolifeQuery solifeQuery = (SolifeQuery) object;
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO queries Values (null,");
@@ -18,7 +18,8 @@ public class SolifeQueryEngine extends Engine implements AbstractEngine {
         query.append(",null");
         query.append(",null");
         query.append(",null)");
-        Statement st = super.getStatement();
+
+        Statement st = super.getConnection().createStatement();
         try {
             st.executeUpdate(query.toString());
         } catch (SQLException e) {

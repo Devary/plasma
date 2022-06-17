@@ -26,7 +26,7 @@ public class ProjectFile extends AbstractFile {
 
     public String getFileContent()
     {
-        if (getPath() != null && getName()!= null && getExtension() !=null)
+        if (getPath() != null && getName()!= null /*&& getExtension() !=null*/)
             return readContent();
         return null;
     }

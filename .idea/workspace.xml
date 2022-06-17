@@ -2,32 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ade153b-cc68-44a6-a970-ca29588045d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/intellij.plugin/intellij.plugin.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intellij.plugin/resources/META-INF/plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intellij.plugin/src/Starter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intellij.plugin/src/org/intellij/sdk/action/PopupDialogAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/TypeService/JsonParsingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pl/database/src/main/java/Engines/DBConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pl/database/src/main/java/Engines/connections/PostgresqlConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pl/database/src/main/resources/postgre.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/mappers/ExcludedFileNames.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/com.vermeg.plasma.analyzer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/com.vermeg.plasma.analyzer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/com.vermeg.plasma.groovy-utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/com.vermeg.plasma.groovy-utils/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/com.vermeg.plasma.webservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/com.vermeg.plasma.webservices/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/database/src/main/java/AbstractDatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/src/main/java/AbstractDatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/src/main/resources/params.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/src/main/resources/params.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/database/target/classes/AbstractDatabaseDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/classes/AbstractDatabaseDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/database/target/database-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/database-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/database/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/database/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/mapper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/Hierarchy/persistence/types/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/Hierarchy/persistence/types/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/ParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/ParsingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Hierarchy/persistence/types/SolifeQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/Hierarchy/persistence/types/SolifeQuery.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/META-INF/mapper.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/projects/VFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/projects/VFS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pl/mapper/target/mapper-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/mapper-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/IntellijService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/MainProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/MainProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/mappers/AbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/mappers/AbstractMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/projects/VFS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/PropertyParsingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/parsing/PropertyParsingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/src/main/java/services/processing/PropertyFileCreationProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Exceptions/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/classes/Exceptions/ErrorCodes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/Hierarchy/Classes/types/Function$FunctionBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/mapper/target/classes/projects/VFS.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pl/mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whitebox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/whitebox/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pl/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pl/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,10 +67,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1592" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -74,8 +78,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Course" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -92,6 +97,12 @@
               <item name="plasma" type="b2602c69:ProjectViewProjectNode" />
               <item name="plasma" type="462c0819:PsiDirectoryNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plasma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plasma" type="462c0819:PsiDirectoryNode" />
+              <item name="pl" type="462c0819:PsiDirectoryNode" />
+              <item name="com.vermeg.plasma.analyzer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plasma" type="b2602c69:ProjectViewProjectNode" />
@@ -149,15 +160,17 @@
     <option name="totallyTimeSpent" value="114000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1592" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18532526" />
+      <window_info id="Learn" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18710022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -165,18 +178,19 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33163264" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33152762" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32974428" />
       <window_info anchor="bottom" id="Docker" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="right" id="Codota" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.33282906" />
+      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.3326226" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
     </layout>

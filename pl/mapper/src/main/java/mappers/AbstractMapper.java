@@ -15,23 +15,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AbstractMapper implements IAbstractMapper{
+public class AbstractMapper implements IAbstractMapper {
     public HashMap<Integer, AbstractFile> files = null;
     public String projectPath = null;
     public ProjectImpl project;
     public AbstractProcess process;
 
 
-
     public ArrayList<ProjectFile> projectFiles = new ArrayList<>();
 
-    public AbstractMapper(ProjectImpl project,String fileType) {
+    public AbstractMapper(ProjectImpl project, String fileType) {
         this.files = new HashMap<Integer, AbstractFile>();
         this.projectPath = projectPath;
         this.project = project;
@@ -40,7 +37,7 @@ public class AbstractMapper implements IAbstractMapper{
 
 
     public void initProject() {
-        projectPath= "C:\\projects";
+        projectPath = "C:\\sandboxes";
     }
 
     public void getAllFiles() {
@@ -50,11 +47,14 @@ public class AbstractMapper implements IAbstractMapper{
                         //TODO : need file builder and build custom file AbstractFile from java.io.File
                         return new AbstractFile();
                     }).collect(Collectors.toList());
-            result.forEach(x -> {this.files.put(this.files.size()+1,x);});
+            result.forEach(x -> {
+                this.files.put(this.files.size() + 1, x);
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     public ArrayList<ProjectFile> getProjectFiles() {
         return projectFiles;
     }
@@ -75,32 +75,57 @@ public class AbstractMapper implements IAbstractMapper{
     public void setProjectPath(String projectPath) {
         this.projectPath = projectPath;
     }
-    public void setFile(AbstractFile abstractFile)
-    {
-        if (abstractFile != null)
-        {
-            this.files.put(this.files.size()+1,abstractFile);
+
+    public void setFile(AbstractFile abstractFile) {
+        if (abstractFile != null) {
+            this.files.put(this.files.size() + 1, abstractFile);
         }
     }
 
     private void getProjectFilesByType(String fileType) {
         try (Stream<Path> walk = Files.walk(Paths.get(project.getMainDirectory().getPath()))) {
-
             List<String> result = walk.map(Path::toString)
-                    .filter(f -> f.endsWith(fileType)).collect(Collectors.toList());
-            result.forEach(x->{
-                File f = new File(x);
-                ProjectFile pf = new ProjectFile();
-                pf.setExtension(fileType.replace(".",""));
-                pf.setName(f.getName());
-                pf.setPath(f.getPath());
-                pf.setProject(project);
-                projectFiles.add(pf);
-            });
+                    .filter(f -> f.endsWith(fileType))
+                    .filter(f -> {
+                        for (String ender : ExcludedFileNames.enders) {
+                            if (f.endsWith(ender)) {
+                                return false;
+                            }
+                        }
+                        return true;
+
+                    }).filter(f -> {
+                        for (String cont : ExcludedFileNames.containers) {
+                            if (f.contains(cont) || (f.contains(ExcludedFileNames.byQuery[0]) && f.contains(ExcludedFileNames.byQuery[1]))) {
+                                return false;
+                            }
+                        }
+                        return true;
+
+                    }).collect(Collectors.toList());
+
+            for (String x : result) {
+                    try{
+                        File f = new File(x);
+                        ProjectFile pf = new ProjectFile();
+                        //pf.setExtension(fileType.replace(".", ""));
+                        pf.setName(f.getName());
+                        pf.setPath(f.getPath());
+                        pf.setProject(project);
+                        projectFiles.add(pf);
+                    } catch (Exception exception){
+                        exception.printStackTrace();
+                    }
+                }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //dirty and temporary solution for duplicates
+        Set<ProjectFile> set = new HashSet<>(projectFiles);
+        projectFiles.clear();
+        projectFiles.addAll(set);
+        System.out.println("test");
     }
 
     public ProjectImpl getProject() {

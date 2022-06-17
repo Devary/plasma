@@ -14,5 +14,5 @@ import java.util.ArrayList;
 public interface IAbstractProcess {
     public ProjectImpl createProject(String basePath);
     public IAbstractFile createAbstractFile();
-    ArrayList createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report);
+    ArrayList createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) throws Exception;
 }

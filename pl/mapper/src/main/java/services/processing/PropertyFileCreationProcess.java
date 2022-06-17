@@ -1,6 +1,5 @@
 package services.processing;
 
-import com.intellij.openapi.util.MultiValuesMap;
 import files.IAbstractFile;
 import hierarchy.property.PropertiesFile;
 import projects.ProjectFile;
@@ -14,7 +13,6 @@ import java.util.Properties;
 public class PropertyFileCreationProcess implements IAbstractProcess {
 
 
-    MultiValuesMap<String,Properties> propertiesMultiValuesMap;
     @Override
     public ProjectImpl createProject(String basePath) {
         return null;
@@ -43,7 +41,4 @@ public class PropertyFileCreationProcess implements IAbstractProcess {
         return properties;
     }
 
-    public MultiValuesMap<String, Properties> getPropertiesMultiValuesMap() {
-        return propertiesMultiValuesMap;
-    }
 }

@@ -8,13 +8,17 @@ import hierarchy.Classes.JavaClass;
 import hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.IAbstractFile;
+import hierarchy.property.PropertiesFile;
 import mappers.AbstractMapper;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.reporting.Report;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class AbstractProcess implements IAbstractProcess {
 
@@ -32,21 +36,22 @@ public class AbstractProcess implements IAbstractProcess {
 
     private ArrayList<Persistent> persistents = new ArrayList<>();
 
-    public ArrayList<Properties> getProperties() {
+    public ArrayList<PropertiesFile> getProperties() {
         return properties;
     }
 
-    public void setProperties(ArrayList<Properties> properties) {
+    public void setProperties(ArrayList<PropertiesFile> properties) {
         this.properties = properties;
     }
 
-    private ArrayList<Properties> properties = new ArrayList<>();
+    private ArrayList<PropertiesFile> properties = new ArrayList<>();
     ProjectImpl project ;
 
     public AbstractProcess(String processingType, String basePath, Report report) {
         ProjectImpl project = createProject(basePath);
-        AbstractMapper abstractMapper = new AbstractMapper(project, processingType);
-        project.setProjectJavaFiles(abstractMapper.getProjectFiles());
+        //todo:to be checked
+        //AbstractMapper abstractMapper = new AbstractMapper(project, processingType);
+        //project.setProjectJavaFiles(abstractMapper.getProjectFiles());
         this.report = report;
         this.project = project;
     }
@@ -62,7 +67,7 @@ public class AbstractProcess implements IAbstractProcess {
 
     @Override
     public IAbstractFile createAbstractFile() {
-        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_1_2_CLV23_FP").name("is\\modules").build();
+        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_3_x").name("is\\modules").build();
     }
 
     @Override
@@ -71,7 +76,7 @@ public class AbstractProcess implements IAbstractProcess {
         return null;
     }
 
-    public void adaptProcess(ArrayList<ProjectFile> projectFiles,String processingType) throws ClassNotFoundException {
+    public void adaptProcess(ArrayList<ProjectFile> projectFiles,String processingType) throws Exception {
         IAbstractProcess abstractProcess;
 
         if (processingType.equals(ProcessingTypes.JAVACLASS))
@@ -82,8 +87,14 @@ public class AbstractProcess implements IAbstractProcess {
         }
         else if (processingType.equals(ProcessingTypes.PERSISTENT))
         {
+            //for target folder
+            String separator = "\\";
+            ArrayList<ProjectFile> newProjectFiles = (ArrayList<ProjectFile>) projectFiles.stream().filter(projectFile -> {
+                String[] splits = projectFile.getPath().split(Pattern.quote(separator));
+                return Arrays.asList(splits).contains("target");
+            }).collect(Collectors.toList());
             abstractProcess= new PersistenceObjectsCreationProcess();
-            persistents.addAll(abstractProcess.createObjectFiles(projectFiles,this.report));
+            persistents.addAll(abstractProcess.createObjectFiles(newProjectFiles,this.report));
         }
         else if (processingType.equals(ProcessingTypes.PROPERTY))
         {
@@ -95,6 +106,6 @@ public class AbstractProcess implements IAbstractProcess {
             //should never happen for now
             return;
         }
-
+        System.out.println("Init completed for : "+ processingType);
     }
 }
