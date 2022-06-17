@@ -42,13 +42,13 @@ public class VirtualLinkCreationProcess {
      *
      * @return a Connection object
      */
-    public Connection connect(String driver,boolean reset) {
+    public Connection connect(String driver, boolean reset) {
         if (conn == null || reset) {
             try {
                 conn = null;
                 if (driver.equals("ORA")) {
                     conn = DriverManager.getConnection("jdbc:oracle:thin:@10.6.140.67:1521:orcl", "CLV61PERF22", "CLV61PERF22");
-                }else{
+                } else {
                     conn = DriverManager.getConnection(url, user, password);
                 }
             } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class VirtualLinkCreationProcess {
 
     public VirtualLinkCreationProcess(ArrayList<JavaClass> parsedJavaclasses) {
         this.parsedJavaclasses = parsedJavaclasses;
-        connect("",false);
+        connect("", false);
         initLinks();
         initPersistents();
         initJavaClasses();
@@ -151,6 +151,7 @@ public class VirtualLinkCreationProcess {
                         .shortTableName(resultSet.getString("short_table_name"))
                         .table(resultSet.getString("table"))
                         .id(resultSet.getLong("id"))
+                        .isPersistent(resultSet.getBoolean("is_persistent"))
                         .build();
                 persistences.add(persistent);
             }
@@ -187,7 +188,10 @@ public class VirtualLinkCreationProcess {
 
     public static void main(String[] args) {
         //doProcess(virtualLinkCreationProcess);
+
         VirtualLinkCreationProcess vcp = new VirtualLinkCreationProcess();
+        //vcp.convertToUnderscoredName("endorsementOid");
+        //vcp.convertToUnderscoredName("endorsementCID");
         //vcp.startGlobal();
         vcp.doProcess();
     }
@@ -426,7 +430,7 @@ public class VirtualLinkCreationProcess {
     ///select * from {perss}.getName() =>formatted to table name
     // where exists(select * from {per} where {perlink}.name+_oid = {link}.name+_oid and oid <> oid      //pour éviter de selectionner le meme objet
     private boolean execute(Persistent persistent, Link link, Persistent per, Link perLink) {
-        connect("ORA",false);
+        connect("ORA", false);
         try {
             PlasmaObjectTableName nameProcessor = new PlasmaObjectTableName();
             Statement statement = conn.createStatement();
@@ -524,7 +528,7 @@ public class VirtualLinkCreationProcess {
 
     private void startGlobal() {
 
-        connect("",false);
+        connect("", false);
 
         System.out.println("ok");
         processorPersistence();
@@ -584,7 +588,7 @@ public class VirtualLinkCreationProcess {
                     com.thoughtworks.qdox.model.JavaClass elementTypeClass = getClassByName(pers.getName(), filtered);
                     return getVariableReturnType(elementTypeClass, lin);
                     //}
-                } else if (isInPlural(lin.getName(),filtered)) {
+                } else if (isInPlural(lin.getName(), filtered)) {
                     String singular = lin.getName().substring(0, lin.getName().length() - 1);
                     //Persistent pers = findPersistentById(lin.getPersistentId());
                     com.thoughtworks.qdox.model.JavaClass elementTypeClass = getClassByName(singular, filtered);
@@ -684,19 +688,12 @@ public class VirtualLinkCreationProcess {
         //projectP2.setProjectPropertiesFiles(abstractMapperProperties.getProjectFiles());
 
         try {
-            abstractMapperProperties.getProcess().adaptProcess(abstractMapperProperties.getProjectFiles(),ProcessingTypes.PROPERTY);
+            abstractMapperProperties.getProcess().adaptProcess(abstractMapperProperties.getProjectFiles(), ProcessingTypes.PROPERTY);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
     }
-
-
-
-
-
-
-
 
 
     ////CID ANALYSIS
@@ -705,12 +702,12 @@ public class VirtualLinkCreationProcess {
         //virtualLinkCreationProcess.process();
         //virtualLinkCreationProcess.dataModelTraining();
         try {
-            connect("",false);
+            connect("", false);
             processorPersistence();
             initLinks();
             initPersistents();
             assignLinksToPersistents();
-            AbstractMapper abstractMapperProperties = initAbstractMapper(ProcessingTypes.PROPERTY,FileTypes.CIDREG,basePath,report);
+            AbstractMapper abstractMapperProperties = initAbstractMapper(ProcessingTypes.PROPERTY, FileTypes.CIDREG, basePath, report);
             p3(abstractMapperProperties);
             mergeProperties(abstractMapperProperties.getProcess().getProperties());
             seedPropoerties();
@@ -722,77 +719,97 @@ public class VirtualLinkCreationProcess {
         }
         System.out.println("test ok");
     }
-    private HashMap<String,String> mergedProperties = new HashMap<>();
-    private HashMap<String,String> linkToPersistent = new HashMap<>();
+
+    private HashMap<String, String> mergedProperties = new HashMap<>();
+    private HashMap<String, String> linkToPersistent = new HashMap<>();
+
     private void mergeProperties(ArrayList<PropertiesFile> properties) {
-        for (PropertiesFile props:properties){
+        for (PropertiesFile props : properties) {
             Properties prp = props.getProperties();
-            for (Map.Entry property:prp.entrySet()){
-                mergedProperties.put((String)property.getValue(),(String)property.getKey());
+            for (Map.Entry property : prp.entrySet()) {
+                mergedProperties.put((String) property.getValue(), (String) property.getKey());
             }
         }
     }
 
 
     private void processAnalysis(ArrayList<PropertiesFile> properties) {
-        connect("ORA",true);
-        for(Persistent persistent:persistences){
-            for(Link link:persistent.getLinks()){
-                //String linkName = linkName.replaceAll("([A-Z])", "_$1").concat("_OID").toUpperCase();
-                String linkNameCid;
-                if (link.getDbname() == null){
-                    linkNameCid = convertToUnderscoredName(link.getName()).concat("_CID").toUpperCase();
-                }
-                else {
-                    String name = "";
-                    String[] splits = link.getDbname().split(",");
-                    for (String split:splits){
-                        if (split.contains("CID") || split.contains("cid")){
-                            name = split;
+        connect("ORA", true);
+        try {
+            Statement statement = conn.createStatement();
+            for (Persistent persistent : persistences) {
+                if (persistent.isPersistent()){
+                    for (Link link : persistent.getLinks()) {
+                        if (link.getInverseName() != null){
+                            //String linkName = linkName.replaceAll("([A-Z])", "_$1").concat("_OID").toUpperCase();
+                            String linkNameCid;
+                            if (link.getDbname() == null) {
+                                linkNameCid = convertToUnderscoredName(link.getName()).concat("_CID").toUpperCase();
+                            } else {
+                                String name = "";
+                                String[] splits = link.getDbname().split(",");
+                                for (String split : splits) {
+                                    if (split.contains("CID") || split.contains("cid")) {
+                                        name = split;
+                                    }
+                                }
+                                linkNameCid = name;
+                            }
+                            String table = "";
+                            if (persistent.getTable() == null) {
+                                table = convertToUnderscoredName(persistent.getName()).toUpperCase();
+                            } else {
+                                table = persistent.getTable();
+                            }
+                            try {
+                                ResultSet resultSet = statement.executeQuery("SELECT DISTINCT " + linkNameCid + " FROM " + table + " WHERE 1=1 ");//flip oid and cid in some cases
+                                while (resultSet.next()) {
+                                    String cid = resultSet.getString(1);
+                                    String type = mergedProperties.get(cid);
+                                    linkToPersistent.put(link.getName(), type);
+                                }
+                                resultSet.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                    linkNameCid = name;
                 }
-                String table = "";
-                if(persistent.getTable() == null){
-                    table = convertToUnderscoredName(persistent.getName()).toUpperCase();
-                }else{
-                    table = persistent.getTable();
-                }
-                try {
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery("SELECT DISTINCT "+linkNameCid+" FROM "+table+" WHERE 1=1 ");//flip oid and cid in some cases
-                    while (resultSet.next()){
-                        String cid = resultSet.getString(1);
-                        String type = mergedProperties.get(cid);
-                        linkToPersistent.put(link.getName(),type);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+
             }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+
         linkToPersistent.values();
     }
 
 
     private void seedPropoerties() {
     }
+
     private String convertToUnderscoredName(String name) {
         List<String> splits = Arrays.asList(name.split(""));
-        String result="";
-        int i=0;
-        for (String split:splits) {
-            boolean isFirst = i==0;
-            if (isFirst){
+        String result = "";
+        int i = -1;
+        for (String split : splits) {
+            boolean isFirst = i == 0;
+            if (isFirst) {
                 result = result.concat(split.toLowerCase());
                 i++;
                 continue;
             }
-            if (Character.isUpperCase(split.charAt(0))){
-                String mod = "_"+split.toLowerCase();
+            i++;
+            boolean isLast = i==name.length()-1;
+            char currentChar = split.charAt(0);
+            char nextChar = isLast? 0:splits.get(i+1).charAt(0);
+            char prevChar = i-1<0? 0:splits.get(i-1).charAt(0);
+            int lastIndexUnderscore = result.lastIndexOf("_");
+            if ((!Character.isUpperCase(prevChar) && Character.isUpperCase(currentChar) ) || (Character.isUpperCase(nextChar) && Character.isUpperCase(currentChar) && !(lastIndexUnderscore!=i-2))) {
+            //if (Character.isUpperCase(split.charAt(0)) && !isLast && !Character.isUpperCase(splits.get(i+1).charAt(0))) {
+                String mod = "_" + split.toLowerCase();
                 result = result.concat(mod);
-            }else {
+            } else {
                 result = result.concat(split.toLowerCase());
             }
         }

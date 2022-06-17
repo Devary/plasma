@@ -219,7 +219,8 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
                 "short_table_name, " +
                 "\"table\", " +
                 "created_at, " +
-                "updated_at) VALUES (?,?,?,?,?,?)");
+                "is_persistent, " +
+                "updated_at) VALUES (?,?,?,?,?,?,?)");
         Date date = new Date();
         Timestamp timestamp2 = new Timestamp(date.getTime());
         //if (id == -1) {
@@ -233,6 +234,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
             statement.setString(3,persistent.getShortTableName());
             statement.setString(4,persistent.getTable());
             statement.setTimestamp(5,timestamp2);
+            statement.setBoolean(5,persistent.isPersistent());
             statement.setTimestamp(6,null);
             int update = statement.executeUpdate();
             statement.close();

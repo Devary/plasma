@@ -103,15 +103,20 @@ public class AbstractMapper implements IAbstractMapper {
                         return true;
 
                     }).collect(Collectors.toList());
-            result.forEach(x -> {
-                File f = new File(x);
-                ProjectFile pf = new ProjectFile();
-                pf.setExtension(fileType.replace(".", ""));
-                pf.setName(f.getName());
-                pf.setPath(f.getPath());
-                pf.setProject(project);
-                projectFiles.add(pf);
-            });
+
+            for (String x : result) {
+                    try{
+                        File f = new File(x);
+                        ProjectFile pf = new ProjectFile();
+                        //pf.setExtension(fileType.replace(".", ""));
+                        pf.setName(f.getName());
+                        pf.setPath(f.getPath());
+                        pf.setProject(project);
+                        projectFiles.add(pf);
+                    } catch (Exception exception){
+                        exception.printStackTrace();
+                    }
+                }
 
         } catch (IOException e) {
             e.printStackTrace();

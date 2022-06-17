@@ -31,6 +31,7 @@ public class ParsingService {
     private static Document xmlDocument;
     private JsonParsingService jsonParsingService;
     private Persistent persistent = Persistent.newPersistent().build();
+
     public ProjectFile getFile() {
         return file;
     }
@@ -46,7 +47,7 @@ public class ParsingService {
     }
 
     public ParsingService(ProjectFile file) {
-        this.file=file;
+        this.file = file;
         jsonParsingService = new JsonParsingService();
         try {
             parse();
@@ -64,13 +65,12 @@ public class ParsingService {
         xmlDocument = builder.parse(new InputSource(new StringReader(file.getFileContent())));
         return true;
     }
-    public static NodeList getElement(String elementName, Document doc)
-    {
+
+    public static NodeList getElement(String elementName, Document doc) {
         return doc.getElementsByTagName(elementName);
     }
 
-    public Persistent buildPersistentFromXML()
-    {
+    public Persistent buildPersistentFromXML() {
         persistent = Persistent.newPersistent()
                 .name(getName()) // to improve
                 .className(getClassName())
@@ -83,21 +83,22 @@ public class ParsingService {
                 .codes(getCodeList())
                 .queries(getQueryList())
                 .links(getLinkList())
+                .isPersistent(Boolean.getBoolean(getIsPersistent() == null ? "false" : getIsPersistent()))
                 .build();
 
         return persistent;
     }
 
     private String getName() {
-        return createNodeAndCheckForExistence("class","name");
+        return createNodeAndCheckForExistence("class", "name");
 
     }
 
     private ArrayList<Link> getLinkList() {
-        NodeList nl = ParsingService.getElement("link",xmlDocument);
+        NodeList nl = ParsingService.getElement("link", xmlDocument);
         ArrayList<Link> links = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
-            LinkService ls =new LinkService(nl.item(i));
+            LinkService ls = new LinkService(nl.item(i));
             Link link = new Link();
             link.setName(ls.getName());
             link.setCollectionType(ls.getCollectionType());
@@ -114,10 +115,10 @@ public class ParsingService {
     }
 
     private ArrayList<SolifeQuery> getQueryList() {
-        NodeList nl = ParsingService.getElement("query",xmlDocument);
+        NodeList nl = ParsingService.getElement("query", xmlDocument);
         ArrayList<SolifeQuery> queries = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
-            FieldService fs =new FieldService(nl.item(i));
+            FieldService fs = new FieldService(nl.item(i));
             queries.add(SolifeQuery.newSolifeQuery()
                     .name(fs.getName())
                     .className(fs.getQueryClassName())
@@ -129,11 +130,11 @@ public class ParsingService {
     }
 
     private ArrayList<Field> getFieldList() {
-        NodeList nl = ParsingService.getElement("field",xmlDocument);
+        NodeList nl = ParsingService.getElement("field", xmlDocument);
         ArrayList<Field> fields = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
             Field f = new Field();
-            FieldService fs =new FieldService(nl.item(i));
+            FieldService fs = new FieldService(nl.item(i));
             f.setName(fs.getName());
             f.setAllowNulls(fs.getIfAllowsNull());
             f.setDbname(getTableName(fs.getName()));
@@ -147,23 +148,25 @@ public class ParsingService {
     }
 
     private ArrayList<Code> getCodeList() {
-        NodeList nl = ParsingService.getElement("code",xmlDocument);
+        NodeList nl = ParsingService.getElement("code", xmlDocument);
         ArrayList<Code> codes = new ArrayList<>();
         for (int i = 0; i < nl.getLength(); i++) {
             Code c = new Code();
-            FieldService fs =new FieldService(nl.item(i));
+            FieldService fs = new FieldService(nl.item(i));
             c.setName(fs.getName());
             c.setDbname(fs.getDbName());
             codes.add(c);
         }
         return codes;
     }
+
     private String getShortTableName() {
-        return createNodeAndCheckForExistence("class","shortTableName");
+        return createNodeAndCheckForExistence("class", "shortTableName");
 
     }
+
     private String getTable() {
-        return createNodeAndCheckForExistence("class","table");
+        return createNodeAndCheckForExistence("class", "table");
 
     }
 
@@ -172,12 +175,12 @@ public class ParsingService {
     }
 
     private String getIsPersistent() {
-        return createNodeAndCheckForExistence("class","persistent");
+        return createNodeAndCheckForExistence("class", "persistent");
 
     }
 
-    private String createNodeAndCheckForExistence(String elementName,String nodeName) {
-        Node node = ParsingService.getElement(elementName,xmlDocument)
+    private String createNodeAndCheckForExistence(String elementName, String nodeName) {
+        Node node = ParsingService.getElement(elementName, xmlDocument)
                 .item(0)
                 .getAttributes()
                 .getNamedItem(nodeName);
@@ -188,46 +191,42 @@ public class ParsingService {
     }
 
     public static String getTableName(String name) {
-        if (moreThanZeroUpperCaseLetter(name))
-        {
+        if (moreThanZeroUpperCaseLetter(name)) {
             String newName = name.replaceAll("([A-Z])", "_$1").toLowerCase();
             correctDBname(newName);
             return newName;
-        }
-        else
-        {
+        } else {
             String newName = name.toLowerCase();
             correctDBname(newName);
             return newName;
         }
     }
+
     private static boolean moreThanZeroUpperCaseLetter(String s) {
-        return s.codePoints().filter(c-> c>='A' && c<='Z').count()>0;
+        return s.codePoints().filter(c -> c >= 'A' && c <= 'Z').count() > 0;
     }
+
     private static void correctDBname(String s) {
         for (int i = 0; i < s.length(); i++) {
-            if (i!=0 && i+1<s.length())
-            {
+            if (i != 0 && i + 1 < s.length()) {
                 //TODO : external_i_d
-                char prevch = s.charAt(i-1);
-                int prevasciivalue = (int)prevch;
-                char nextch = s.charAt(i+1);
-                int nextasciivalue = (int)nextch;
-                if (prevasciivalue==95 && nextasciivalue ==95)
-                {
-                    s.substring(0,i+1);
+                char prevch = s.charAt(i - 1);
+                int prevasciivalue = (int) prevch;
+                char nextch = s.charAt(i + 1);
+                int nextasciivalue = (int) nextch;
+                if (prevasciivalue == 95 && nextasciivalue == 95) {
+                    s.substring(0, i + 1);
                 }
             }
         }
     }
 
-    private String getClassName()
-    {
-        return createNodeAndCheckForExistence("class","name");
+    private String getClassName() {
+        return createNodeAndCheckForExistence("class", "name");
     }
-    private String getMappingType()
-    {
-        return createNodeAndCheckForExistence("class","mapping");
+
+    private String getMappingType() {
+        return createNodeAndCheckForExistence("class", "mapping");
     }
 
 }
