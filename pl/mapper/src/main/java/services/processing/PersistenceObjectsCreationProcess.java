@@ -9,6 +9,7 @@ import hierarchy.persistence.Persistent;
 import files.IAbstractFile;
 import hierarchy.persistence.types.Field;
 import hierarchy.persistence.types.Link;
+import org.apache.log4j.Logger;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.ParsingService;
@@ -22,7 +23,9 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
     private Collection<Persistent> persistents;
     private Connection conn = null;
-    long id=-1;
+    long id = -1;
+    private static Logger logger = Logger.getLogger(PersistenceObjectsCreationProcess.class);
+
     public Collection<Persistent> getPersistents() {
         return persistents;
     }
@@ -43,7 +46,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
     @Override
     public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectPersistenceFiles, Report report) throws Exception {
-        System.out.println("Processing Object creation");
+        logger.warn("Processing Object creation");
         ArrayList<Persistent> persistents = new ArrayList<>();
         int max = 5000; // for dev matters , must be removed after tests
         int i = 0;
@@ -58,17 +61,17 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
                 //TODO: check for validity
                 seedToDb(persistent);
             } else {
-                System.out.println("Persistent " + persistent.toString() + " is not valid");
+                logger.warn("Persistent " + persistent.toString() + " is not valid");
 
                 //throw new Exception("Persistent " + persistent.toString() + " is not valid");
             }
             persistents.add(persistent);
-            System.out.println(persistent.getClassName() + " built successfully !");
+            logger.warn(persistent.getClassName() + " built successfully !");
             i++;
 
         }
         //updateLinksElementTypes(); not needed right now
-        System.out.println("FINISHED :: " + persistents.size() + " Objects created !");
+        logger.warn("FINISHED :: " + persistents.size() + " Objects created !");
         setPersistents(persistents);
         return persistents;
     }
@@ -91,17 +94,17 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
                 int id = rsLinks.getInt("id");
                 String elementType = rsLinks.getString("elementType");
                 if (elementType != null) {
-                    elementType = elementType.substring(elementType.lastIndexOf(".")+1);
-                    Integer idper = persistentList.get(elementType);
-                    if (idper != null){ //for dev matters
-                        PreparedStatement statement2 = conn.prepareStatement("UPDATE LINKS SET \"elementType_id\" = ? where id = ?");
-                        statement2.setInt(1,idper);
-                        statement2.setInt(2,id);
-                        statement2.executeUpdate();
-                        statement2.closeOnCompletion();
-
+                    if (elementType.lastIndexOf(".") != -1) {
+                        elementType = elementType.substring(elementType.lastIndexOf(".") + 1);
+                        Integer idper = persistentList.get(elementType);
+                        if (idper != null) { //for dev matters
+                            PreparedStatement statement2 = conn.prepareStatement("UPDATE LINKS SET \"elementType_id\" = ? where id = ?");
+                            statement2.setString(1, elementType);
+                            statement2.setInt(2, id);
+                            statement2.executeUpdate();
+                            statement2.closeOnCompletion();
+                        }
                     }
-
                 }
             }
             statement.closeOnCompletion();
@@ -173,6 +176,8 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
                 if (link.getInverseName() != null) {
                     statement.setString(7, link.getInverseName());
+                } else {
+                    statement.setString(7, null);
                 }
                 Date date = new Date();
                 Timestamp timestamp2 = new Timestamp(date.getTime());
@@ -205,7 +210,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
             try {
                 conn = DriverManager.getConnection(url, user, password);
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                logger.warn(e.getMessage());
             }
         }
         return conn;
@@ -220,7 +225,8 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
                 "\"table\", " +
                 "created_at, " +
                 "is_persistent, " +
-                "updated_at) VALUES (?,?,?,?,?,?,?)");
+                "updated_at," +
+                "expected_table_name) VALUES (?,?,?,?,?,?,?,?)");
         Date date = new Date();
         Timestamp timestamp2 = new Timestamp(date.getTime());
         //if (id == -1) {
@@ -229,13 +235,14 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
         connect();
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
-            statement.setString(1,persistent.getName());
-            statement.setString(2,persistent.getMappingType()!=null ? persistent.getMappingType().toUpperCase():"HIERARCHICAL");
-            statement.setString(3,persistent.getShortTableName());
-            statement.setString(4,persistent.getTable());
-            statement.setTimestamp(5,timestamp2);
-            statement.setBoolean(5,persistent.isPersistent());
-            statement.setTimestamp(6,null);
+            statement.setString(1, persistent.getName());
+            statement.setString(2, persistent.getMappingType() != null ? persistent.getMappingType().toUpperCase() : "HIERARCHICAL");
+            statement.setString(3, persistent.getShortTableName());
+            statement.setString(4, persistent.getTable());
+            statement.setTimestamp(5, timestamp2);
+            statement.setBoolean(6, persistent.isPersistent());
+            statement.setTimestamp(7, null);
+            statement.setString(8, persistent.getTableName());
             int update = statement.executeUpdate();
             statement.close();
         } catch (SQLException throwables) {
@@ -244,6 +251,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
         return id;
     }
+
     private int getMaxId(String tableName) {
         connect();
         StringBuilder insertion = new StringBuilder("SELECT max(id) from " + tableName);
@@ -259,6 +267,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
         }
         return -1;
     }
+
     private void SeedFields(Persistent persistent, long persistentId) {
         connect();
 
@@ -282,16 +291,16 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
             Timestamp timestamp2 = new Timestamp(date.getTime());
             try {
                 PreparedStatement statement = conn.prepareStatement(insertion.toString());
-                statement.setString(1,field.getName());
-                statement.setString(2,field.getDbname());
-                statement.setString(3,field.getDbtype());
-                statement.setBoolean(4,field.isAllowNulls());
-                statement.setString(5,field.getDbsize());
-                statement.setString(6,field.getDbscale());
-                statement.setString(7,field.getDefaultValue());
-                statement.setTimestamp(8,timestamp2);
-                statement.setTimestamp(9,null);
-                statement.setLong(10,persistentId);
+                statement.setString(1, field.getName());
+                statement.setString(2, field.getDbname());
+                statement.setString(3, field.getDbtype());
+                statement.setBoolean(4, field.isAllowNulls());
+                statement.setString(5, field.getDbsize());
+                statement.setString(6, field.getDbscale());
+                statement.setString(7, field.getDefaultValue());
+                statement.setTimestamp(8, timestamp2);
+                statement.setTimestamp(9, null);
+                statement.setLong(10, persistentId);
                 statement.executeUpdate();
                 statement.close();
 

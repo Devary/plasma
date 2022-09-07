@@ -43,13 +43,15 @@ public class DatabaseService {
                 }
             }
         } else if (PersistentType.PROJECT.equals(persistentType)) {
-            ArrayList<BasicProject> projects = (ArrayList<BasicProject>) object;
-            for (BasicProject project : projects) {
-                persistProject(project);
+            com.atlassian.jira.rest.client.api.domain.Project project = (com.atlassian.jira.rest.client.api.domain.Project) object;
+            persistProject(project);
+        } else if (PersistentType.COMPONENT.equals(persistentType)) {
+            ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent> components = (ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent>) object;
+            for (com.atlassian.jira.rest.client.api.domain.BasicComponent component : components) {
+                persistComponent(component);
             }
 
         }
-
     }
 
     private void persistQuery(PlasmaQuery pq) {
@@ -79,7 +81,7 @@ public class DatabaseService {
         }
     }
 
-    private void persistProject(BasicProject project) {
+    private void persistProject(com.atlassian.jira.rest.client.api.domain.Project project) {
         StringBuilder insertion = new StringBuilder("INSERT INTO public.project (id,name, slug, created_at, updated_at) VALUES (?,?, ?, ?, ?);");
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
@@ -90,6 +92,23 @@ public class DatabaseService {
             Timestamp timestamp2 = new Timestamp(date.getTime());
             statement.setTimestamp(4, timestamp2);
             statement.setTimestamp(5, null);
+
+            int update = statement.executeUpdate();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void persistComponent(com.atlassian.jira.rest.client.api.domain.BasicComponent component) {
+        StringBuilder insertion = new StringBuilder("INSERT INTO public.component (id,name, created_at, updated_at) VALUES (?,?, ?, ?);");
+        try {
+            PreparedStatement statement = conn.prepareStatement(insertion.toString());
+            statement.setInt(1, component.getId().intValue());
+            statement.setString(2, component.getName());
+            java.util.Date date = new Date();
+            Timestamp timestamp2 = new Timestamp(date.getTime());
+            statement.setTimestamp(3, timestamp2);
+            statement.setTimestamp(4, null);
 
             int update = statement.executeUpdate();
             statement.close();

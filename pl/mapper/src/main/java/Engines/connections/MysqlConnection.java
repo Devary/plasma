@@ -1,5 +1,8 @@
 package Engines.connections;
 
+import org.apache.log4j.Logger;
+import services.processing.VirtualLinkCreationProcess;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,13 +12,15 @@ public class MysqlConnection implements AbstractConnection{
     private static MysqlConnection instance;
     private Connection connection;
     private Statement statement;
+    private static Logger logger = Logger.getLogger(MysqlConnection.class);
+
     private MysqlConnection() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
                     "","root","");
             statement = connection.createStatement();
-        }catch(Exception e){ System.out.println(e);}
+        }catch(Exception e){ logger.warn(e);}
     }
     public static MysqlConnection getInstance(){
         if(instance == null){

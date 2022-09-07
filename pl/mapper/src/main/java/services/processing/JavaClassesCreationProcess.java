@@ -7,7 +7,9 @@ package services.processing;
 import Exceptions.ClassNameNotFoundException;
 import hierarchy.Classes.JavaClass;
 import files.IAbstractFile;
+import hierarchy.Classes.types.Function;
 import hierarchy.Classes.types.JavaField;
+import org.apache.log4j.Logger;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.parsing.JavaClassesParsingService;
@@ -26,6 +28,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
     public Collection<JavaClass> getJavaClasses() {
         return javaClasses;
     }
+    private static Logger logger = Logger.getLogger(JavaClassesCreationProcess.class);
 
     private int id = -1;
     private Connection conn = null;
@@ -44,7 +47,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
             try {
                 conn = DriverManager.getConnection(url, user, password);
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                logger.warn(e.getMessage());
             }
         }
         return conn;
@@ -67,10 +70,12 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
 
     @Override
     public ArrayList<JavaClass> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
-        System.out.println("Processing Object creation");
+        logger.warn("Processing Object creation");
         int max = 2000;
         int i = 0;
+        connect();
         ArrayList<JavaClass> javaClasses = new ArrayList<>();
+        JavaClass javaClass;
         for (ProjectFile projectFile : projectJavaFiles) {
             i++;
             JavaClassesParsingService ps = null;
@@ -79,22 +84,21 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
             } catch (ClassNameNotFoundException e) {
                 e.printStackTrace();
             }
-            JavaClass javaClass = ps.getJavaClass();
+            javaClass = ps.getJavaClass();
             if (javaClass.getClassName() != null) {
-                javaClasses.add(javaClass);
+                seedToDatabase(javaClass);
+                //javaClasses.add(javaClass);
             }
-            //System.out.println(javaClass.getClassName() + " built successfully !");
+            //logger.warn(javaClass.getClassName() + " built successfully !");
             //if (javaClass.getJavaFields().size()>0)
             //break;
-            if (i == max){
-                System.out.println(i);
-                break;
-            }
+            //if (i == max){
+            //    logger.warn(i);
+            //    break;
+            //}
         }
-        System.out.println("FINISHED :: " + javaClasses.size() + " Objects created !");
+        logger.warn("FINISHED :: " + javaClasses.size() + " Objects created !");
         this.javaClasses = javaClasses;
-        connect();
-        seedToDatabase();
         //createPivotRelations(javaClasses);
         return javaClasses;
     }
@@ -106,13 +110,13 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
                     for (JavaClass impl : javaClass.getImplementations()) {
                         generatePivotBetween(javaClass, impl, "impl");
                     }
-                    System.out.println(javaClass.getClassName() +": Impl Pivots are generated");
+                    logger.warn(javaClass.getClassName() +": Impl Pivots are generated");
                 }
                 if (javaClass.getHeritances() != null) {
                     for (JavaClass impl : javaClass.getHeritances()) {
                         generatePivotBetween(javaClass, impl, null);
                     }
-                    System.out.println(javaClass.getClassName() +": Superclass Pivot is generated");
+                    logger.warn(javaClass.getClassName() +": Superclass Pivot is generated");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -167,13 +171,41 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
         }
     }
 
-    private void seedToDatabase() {
-        for (JavaClass javaClass : this.javaClasses) {
+    private void seedToDatabase(JavaClass javaClass) {
+        //for (JavaClass javaClass : this.javaClasses) {
             persist(javaClass);
             persistFields(javaClass);
-        }
+            persistMethods(javaClass);
+        //}
     }
+    private void persistMethods(JavaClass javaClass) {
+        connect();
+        try{
+            if (javaClass.getJavaFields() != null){
+                for (Function jf:javaClass.getFunctions()){
+                    try {
+                        PreparedStatement statement = conn.prepareStatement("INSERT INTO public.java_method (name, result_type, created_at,class_id ,is_void) VALUES ( ?, ?, ?, ?, ?)");
+                        statement.setString(1, jf.getName());
+                        statement.setString(2, jf.getResultType());
 
+                        java.util.Date date = new Date();
+                        Timestamp timestamp2 = new Timestamp(date.getTime());
+                        statement.setTimestamp(3, timestamp2);
+                        statement.setInt(4, javaClass.getId());
+                        statement.setBoolean(5, jf.isVoid());
+
+                        int update = statement.executeUpdate();
+                        statement.close();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
     private void persistFields(JavaClass javaClass) {
         connect();
         try{
@@ -206,8 +238,8 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
 
     private void persist(JavaClass javaClass) {
         StringBuilder insertion = new StringBuilder("INSERT INTO public.java_class " +
-                "(\"className\", \"classType\", implements, inherit, created_at, updated_at, persistent_id)" +
-                " VALUES ( ?, ?, ?, ?, ?, ?, ?)");
+                "(\"className\", \"classType\", implements, inherit, created_at, updated_at, persistent_id,full_path)" +
+                " VALUES ( ?, ?, ?, ?, ?, ?, ?,?)");
         if (id != -1) {
             id = getMaxId("java_class");
         }
@@ -251,6 +283,7 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
             }else{
                 statement.setInt(7, idPers);
             }
+            statement.setString(8,javaClass.getPath());
             int update = statement.executeUpdate();
             if (update == 1) {
                 if (id == -1) {

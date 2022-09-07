@@ -19,27 +19,32 @@ import org.apache.http.client.utils.DateUtils;
 
 public class Processor {
     public static void main(String[] args) throws Exception {
-        getIssue("RUNCLV-");
+        getIssue("RUNCLV");
     }
 
-    public static void getIssue(String issueKey) throws Exception {
+    public static void getIssue(String projectKey) throws Exception {
         Instant start = Instant.now();
 // CODE HERE
         final URI jiraServerUri = new URI("https://jira.vermeg.com");
-        final JiraRestClient restClient = new AsynchronousJiraRestClientFactory().createWithBasicHttpAuthentication(jiraServerUri, "fhammami", "###Rettila###1510");
+        final JiraRestClient restClient = new AsynchronousJiraRestClientFactory().createWithBasicHttpAuthentication(jiraServerUri, "fhammami", "###Plasma###1803");
         final IssueRestClient issueRestClient = restClient.getIssueClient();
         ArrayList<PlasmaQuery> pqs = new ArrayList<>();
         //Persist projects
-        Promise projectPromise = restClient.getProjectClient().getAllProjects();
+        Promise projectPromise = restClient.getProjectClient().getProject(projectKey);
         DatabaseService dbs = new DatabaseService(projectPromise.claim(), PersistentType.PROJECT);
         dbs.closeConnection();
-        for (BasicProject basicProject : (ArrayList<BasicProject>) projectPromise.claim()) {
+        //for (com.atlassian.jira.rest.client.api.domain.Project ) {
+        com.atlassian.jira.rest.client.api.domain.Project basicProject = (com.atlassian.jira.rest.client.api.domain.Project) projectPromise.claim();
             if (basicProject.getKey().equals("RUNCLV")){
                 int j = 1;
                 System.out.println(j);
-                issueKey = basicProject.getKey();
+                projectKey = basicProject.getKey();
+                dbs = new DatabaseService(basicProject.getComponents(), PersistentType.COMPONENT);
+                ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent> newCom = new ArrayList();
+                newCom.add(new com.atlassian.jira.rest.client.api.domain.BasicComponent(null,new Long(1),"NONE",""));
+                new DatabaseService(newCom, PersistentType.COMPONENT);
                 while (true) {
-                    Promise issuePromise = issueRestClient.getIssue(issueKey + "-" + j);
+                    Promise issuePromise = issueRestClient.getIssue(projectKey + "-" + j);
                     Issue issue;
                     try {
                         issue = (Issue) issuePromise.claim();
@@ -56,19 +61,17 @@ public class Processor {
                     ParsingService ps = new ParsingService(issue, false);
                     pqs.addAll(ps.getSqls());
 
-                    System.out.println("Issue : "+issueKey + "-" + j+" Completed");
+                    System.out.println("Issue : "+projectKey + "-" + j+" Completed");
 
-                    if (pqs.size() > 1000) {
                         //commit cycle
                         dbs = new DatabaseService(pqs, PersistentType.QUERY);
                         //reinit
                         pqs = new ArrayList<>();
-                    }
                     j++;
                     dbs.closeConnection();
                 }
             }
-        }
+        //}
 
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();

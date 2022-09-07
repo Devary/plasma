@@ -7,6 +7,7 @@ package services.processing;
 import hierarchy.Classes.JavaClass;
 import hierarchy.Classes.types.JavaField;
 import hierarchy.persistence.Persistent;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class JavaClassRecursiveUpdate {
     private final ArrayList<Properties> properties;
     private ArrayList<JavaClass> javaclasses;
     private ArrayList<Persistent> persistences;
+    private static Logger logger = Logger.getLogger(JavaClassRecursiveUpdate.class);
+
     private Connection conn = null;
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
@@ -33,7 +36,7 @@ public class JavaClassRecursiveUpdate {
             try {
                 conn = DriverManager.getConnection(url, user, password);
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                logger.warn(e.getMessage());
             }
         }
         return conn;
@@ -50,15 +53,15 @@ public class JavaClassRecursiveUpdate {
 
     private void update()
      {
-         System.out.println("processing update...");
+         logger.warn("processing update...");
          for (JavaClass javaClass:javaclasses)
          {
              //updateImpl(javaClass);
              //updateExt(javaClass);
              updatePersistent(javaClass);
-             System.out.println("Class: "+ javaClass.getClassName()+" Has been updated");
+             logger.warn("Class: "+ javaClass.getClassName()+" Has been updated");
          }
-         System.out.println("UPDATE DONE !");
+         logger.warn("UPDATE DONE !");
      }
 
     private void updatePersistent(JavaClass javaClass) {
@@ -68,22 +71,22 @@ public class JavaClassRecursiveUpdate {
             if (found != null) {
                 javaClass.setPersistent(found);
                 seedAndUpdatePersistentTable(found,javaClass);
-                System.out.println("updating persistent : "+persistent.getName());
+                logger.warn("updating persistent : "+persistent.getName());
                 break;
             }
         }
     }
     private void updatev2()
     {
-        System.out.println("processing update...");
+        logger.warn("processing update...");
         for (Persistent persistent:persistences)
         {
             //updateImpl(javaClass);
             //updateExt(javaClass);
             updatePersistentv2(persistent);
-            System.out.println("Class: "+ persistent.getName()+" Has been updated");
+            logger.warn("Class: "+ persistent.getName()+" Has been updated");
         }
-        System.out.println("UPDATE DONE !");
+        logger.warn("UPDATE DONE !");
     }
     private void updatePersistentv2(Persistent persistent) {
             JavaClass found = find(persistent);
@@ -91,7 +94,7 @@ public class JavaClassRecursiveUpdate {
             if (found != null) {
                 found.setPersistent(persistent);
                 seedAndUpdatePersistentTable(persistent,found);
-                System.out.println("updating persistent : "+persistent.getName());
+                logger.warn("updating persistent : "+persistent.getName());
             }
     }
 
@@ -131,7 +134,7 @@ public class JavaClassRecursiveUpdate {
                         if (update<1){
                             throw new NullPointerException("UPDATE FAILED");
                         }
-                        System.out.println("Link "+linkName+" has been updated");
+                        logger.warn("Link "+linkName+" has been updated");
                         statementupd.close();
                     }else {
                         throw new NoSuchFieldException("Field "+linkName+" doesn't exists in class"+ found.getName());

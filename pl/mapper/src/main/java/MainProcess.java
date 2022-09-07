@@ -6,6 +6,7 @@ import files.FileTypes;
 import hierarchy.Classes.JavaClass;
 import hierarchy.persistence.Persistent;
 import mappers.AbstractMapper;
+import org.apache.log4j.Logger;
 import projects.ProjectImpl;
 import services.processing.AbstractProcess;
 import services.processing.JavaClassRecursiveUpdate;
@@ -20,6 +21,8 @@ public class MainProcess {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
     private Collection<String> test;
+    private static Logger logger = Logger.getLogger(MainProcess.class);
+
 
     public static void main(String[] args) throws Exception {
         new MainProcess();
@@ -53,8 +56,8 @@ public class MainProcess {
 
         setJavaClasses(abstractMapperJava.getProcess().getJavaClasses());
 
-        VirtualLinkCreationProcess virtualLinkCreationProcess = new VirtualLinkCreationProcess(getJavaClasses());
-        virtualLinkCreationProcess.lastAlgo();
+        //VirtualLinkCreationProcess virtualLinkCreationProcess = new VirtualLinkCreationProcess(getJavaClasses());
+        //virtualLinkCreationProcess.lastAlgo();
 //creating persistent
 
 
@@ -62,7 +65,7 @@ public class MainProcess {
         //properties
         //AbstractMapper abstractMapperProperties = initAbstractMapper(ProcessingTypes.PROPERTY,FileTypes.PROPERTIES,basePath,report);
         //p3(abstractMapperProperties);
-        //System.out.println("ok");
+        //logger.warn("ok");
 
          //updating JAVACLASSES
         //p4(abstractMapperJava,abstractMapperPersistence,abstractMapperProperties);
@@ -91,9 +94,9 @@ public class MainProcess {
                 //abstractMapperProperties.getProcess().getProperties()
                 null
         );
-        System.out.println(abstractMapperJava.getProcess().getJavaClasses().size());
-        System.out.println(abstractMapperPersistence.getProcess().getPersistents().size());
-        System.out.println(AbstractProcess.class.getDeclaredFields()[0]);
+        logger.warn(abstractMapperJava.getProcess().getJavaClasses().size());
+        logger.warn(abstractMapperPersistence.getProcess().getPersistents().size());
+        logger.warn(AbstractProcess.class.getDeclaredFields()[0]);
     }
 
     private static void p2(AbstractMapper abstractMapperPersistence) throws Exception {

@@ -97,7 +97,7 @@ public class ParsingService {
 
         PlasmaQuery pq = new PlasmaQuery.PlasmaQueryBuilder()
                 .withIssue_id(issue.getKey())
-                .withModule_id(-1)
+                .withModule_id(1)
                 .withDescription(null)
                 .withProject_id(issue.getProject().getId())
                 .withType(0)
@@ -134,7 +134,7 @@ public class ParsingService {
         if (m.find()) {
             PlasmaQuery pq = new PlasmaQuery.PlasmaQueryBuilder()
                     .withIssue_id(issue.getKey())
-                    .withModule_id(-1)
+                    .withModule_id(1)
                     .withDescription(null)
                     .withProject_id(issue.getProject().getId())
                     .withType(0)

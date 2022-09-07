@@ -1,11 +1,16 @@
 package Engines;
 
+import org.apache.log4j.Logger;
+import services.processing.VirtualLinkCreationProcess;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesExtractor {
+    private static Logger logger = Logger.getLogger(PropertiesExtractor.class);
+
 
     public static String getPropValue(String filename ,String val) throws IOException {
         InputStream inputStream = null;
@@ -28,7 +33,7 @@ public class PropertiesExtractor {
             // get the property value and print it out
             return prop.getProperty(val);
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            logger.warn("Exception: " + e);
         } finally {
             inputStream.close();
         }

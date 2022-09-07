@@ -71,10 +71,11 @@ public class ParsingService {
     }
 
     public Persistent buildPersistentFromXML() {
+        Boolean isPersistent = getIsPersistent() == null || !Boolean.valueOf(getIsPersistent()) ? Boolean.valueOf("false") : Boolean.valueOf(getIsPersistent());
         persistent = Persistent.newPersistent()
                 .name(getName()) // to improve
                 .className(getClassName())
-                .tableName(getTableName(getClassName()))
+                .tableName(PlasmaUtils.convertToUnderscoredName(getClassName()))
                 .isPersistent(Boolean.parseBoolean(getIsPersistent()))
                 .mappingType(getMappingType())
                 .table(getTable())
@@ -83,7 +84,7 @@ public class ParsingService {
                 .codes(getCodeList())
                 .queries(getQueryList())
                 .links(getLinkList())
-                .isPersistent(Boolean.getBoolean(getIsPersistent() == null ? "false" : getIsPersistent()))
+                .isPersistent(isPersistent)
                 .build();
 
         return persistent;
@@ -137,7 +138,7 @@ public class ParsingService {
             FieldService fs = new FieldService(nl.item(i));
             f.setName(fs.getName());
             f.setAllowNulls(fs.getIfAllowsNull());
-            f.setDbname(getTableName(fs.getName()));
+            f.setDbname(PlasmaUtils.convertToUnderscoredName(fs.getName()));
             f.setDbtype(fs.getDbType());
             f.setDbsize(fs.getDbSize());
             f.setDefaultValue(fs.getDefaultValue());

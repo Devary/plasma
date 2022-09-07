@@ -10,6 +10,7 @@ import files.AbstractFile;
 import files.IAbstractFile;
 import hierarchy.property.PropertiesFile;
 import mappers.AbstractMapper;
+import org.apache.log4j.Logger;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.reporting.Report;
@@ -23,6 +24,8 @@ import java.util.stream.Collectors;
 public class AbstractProcess implements IAbstractProcess {
 
     private final Report report;
+    private static Logger logger = Logger.getLogger(AbstractProcess.class);
+
 
     public ArrayList<JavaClass> getJavaClasses() {
         return javaClasses;
@@ -106,6 +109,6 @@ public class AbstractProcess implements IAbstractProcess {
             //should never happen for now
             return;
         }
-        System.out.println("Init completed for : "+ processingType);
+        logger.warn("Init completed for : "+ processingType);
     }
 }
