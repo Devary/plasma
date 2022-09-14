@@ -43,8 +43,8 @@ public class DatabaseService {
                 }
             }
         } else if (PersistentType.PROJECT.equals(persistentType)) {
-            com.atlassian.jira.rest.client.api.domain.Project project = (com.atlassian.jira.rest.client.api.domain.Project) object;
-            persistProject(project);
+            //com.atlassian.jira.rest.client.api.domain.Project project = (com.atlassian.jira.rest.client.api.domain.Project) object;
+            persistProject((BasicProject)object);
         } else if (PersistentType.COMPONENT.equals(persistentType)) {
             ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent> components = (ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent>) object;
             for (com.atlassian.jira.rest.client.api.domain.BasicComponent component : components) {
@@ -81,7 +81,7 @@ public class DatabaseService {
         }
     }
 
-    private void persistProject(com.atlassian.jira.rest.client.api.domain.Project project) {
+    private void persistProject(BasicProject project) {
         StringBuilder insertion = new StringBuilder("INSERT INTO public.project (id,name, slug, created_at, updated_at) VALUES (?,?, ?, ?, ?);");
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
