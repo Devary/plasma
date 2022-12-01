@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
 
-public class PropertyParsingService {
+public class PropertyParsingService extends ParsingService {
 
     private PropertiesFile propertiesFile;
 

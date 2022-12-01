@@ -24,6 +24,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
     public String classType;
     public String module;
     public String containingPackage;
+    public String path;
     public boolean isInnerClass;
     public JavaProjectBuilder body;
     private int id=-1;
@@ -45,6 +46,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         this.containingPackage = builder.containingPackage;
         this.id = builder.id;
         this.body = builder.body;
+        this.path = builder.path;
 
     }
 
@@ -163,7 +165,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
 
     @Override
     public String getPath() {
-        return null;
+        return this.path;
     }
 
     @Override
@@ -195,6 +197,12 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         this.body = body;
     }
 
+    @Override
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+
     public static final class Builder {
         public String classType;
         public boolean isInnerClass;
@@ -206,6 +214,7 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         private Persistent persistent;
         public String module;
         public String containingPackage;
+        public String path;
         public JavaProjectBuilder body;
         private int id;
 
@@ -263,6 +272,11 @@ public class JavaClass extends ProjectFile implements IJavaClass {
         }
         public Builder setBody(JavaProjectBuilder body) {
             this.body = body;
+            return this;
+        }
+
+        public Builder path(String path) {
+            this.path = path;
             return this;
         }
 

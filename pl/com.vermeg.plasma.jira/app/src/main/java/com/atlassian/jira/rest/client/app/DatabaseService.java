@@ -13,7 +13,7 @@ public class DatabaseService {
 
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
 
     /**
@@ -43,17 +43,19 @@ public class DatabaseService {
                 }
             }
         } else if (PersistentType.PROJECT.equals(persistentType)) {
-            ArrayList<BasicProject> projects = (ArrayList<BasicProject>) object;
-            for (BasicProject project : projects) {
-                persistProject(project);
+            //com.atlassian.jira.rest.client.api.domain.Project project = (com.atlassian.jira.rest.client.api.domain.Project) object;
+            persistProject((BasicProject)object);
+        } else if (PersistentType.COMPONENT.equals(persistentType)) {
+            ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent> components = (ArrayList<com.atlassian.jira.rest.client.api.domain.BasicComponent>) object;
+            for (com.atlassian.jira.rest.client.api.domain.BasicComponent component : components) {
+                persistComponent(component);
             }
 
         }
-
     }
 
     private void persistQuery(PlasmaQuery pq) {
-        StringBuilder insertion = new StringBuilder("INSERT INTO public.jira_query (status, creation_date, \"ticketNumber\", owner, type, created_at, module_id, project_id,description,entities) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?);");
+        StringBuilder insertion = new StringBuilder("INSERT INTO public.jira_query (status, creation_date, \"ticketNumber\", owner, type, created_at, project_id,description,entities) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);");
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
             statement.setInt(1, 0);
@@ -66,10 +68,10 @@ public class DatabaseService {
             java.util.Date date = new Date();
             timestamp2 = new Timestamp(date.getTime());
             statement.setTimestamp(6, timestamp2);
-            statement.setInt(7, 1);
-            statement.setInt(8, pq.getIssue().getProject().getId().intValue());
-            statement.setString(9, pq.getSql());
-            statement.setString(10, "");
+            //statement.setInt(7, null);
+            statement.setInt(7, pq.getIssue().getProject().getId().intValue());
+            statement.setString(8, pq.getSql());
+            statement.setString(9, "");
 
 
             int update = statement.executeUpdate();
@@ -90,6 +92,23 @@ public class DatabaseService {
             Timestamp timestamp2 = new Timestamp(date.getTime());
             statement.setTimestamp(4, timestamp2);
             statement.setTimestamp(5, null);
+
+            int update = statement.executeUpdate();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void persistComponent(com.atlassian.jira.rest.client.api.domain.BasicComponent component) {
+        StringBuilder insertion = new StringBuilder("INSERT INTO public.component (id,name, created_at, updated_at) VALUES (?,?, ?, ?);");
+        try {
+            PreparedStatement statement = conn.prepareStatement(insertion.toString());
+            statement.setInt(1, component.getId().intValue());
+            statement.setString(2, component.getName());
+            java.util.Date date = new Date();
+            Timestamp timestamp2 = new Timestamp(date.getTime());
+            statement.setTimestamp(3, timestamp2);
+            statement.setTimestamp(4, null);
 
             int update = statement.executeUpdate();
             statement.close();

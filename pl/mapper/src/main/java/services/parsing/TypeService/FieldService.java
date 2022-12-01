@@ -7,9 +7,10 @@ package services.parsing.TypeService;
 import org.w3c.dom.Node;
 import projects.ProjectFile;
 import services.parsing.ParsingService;
+import services.parsing.PlasmaUtils;
 import services.reporting.Report;
 
-public class FieldService extends ParsingService{
+public class FieldService extends ParsingService {
     Node node;
     ProjectFile projectFile;
     public FieldService(Node node) {
@@ -43,7 +44,7 @@ public class FieldService extends ParsingService{
         else
         {
             if (getName()!= null)
-            return ParsingService.getTableName(getName())+"_CODEID".toUpperCase();
+            return PlasmaUtils.convertToUnderscoredName(getName())+"_CODEID".toUpperCase();
             else
                 return null;
         }

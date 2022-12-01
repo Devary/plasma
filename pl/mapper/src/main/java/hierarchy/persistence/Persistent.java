@@ -26,7 +26,7 @@ public class Persistent extends ProjectFile implements IPersistent {
     private String tableName;
     private String shortTableName;
     private ArrayList<Field> fields;
-    private ArrayList<Link> links;
+    private ArrayList<Link> links = new ArrayList<>();
     private ArrayList<SolifeQuery> queries;
     private ArrayList<Code> codes;
     private String table;
@@ -191,6 +191,13 @@ public class Persistent extends ProjectFile implements IPersistent {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    public void addLink(Link link) {
+        if (this.links == null){
+            this.links = new ArrayList<>();
+        }
+        this.links.add(link);
     }
 
 

@@ -2,6 +2,8 @@ package Engines.connections;
 
 import Engines.DBConstants;
 import Engines.PropertiesExtractor;
+import org.apache.log4j.Logger;
+import services.processing.VirtualLinkCreationProcess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +16,8 @@ public class PostgresqlConnection implements AbstractConnection, DBConstants{
     private Connection connection;
     private Statement statement;
     private final String connectionName = "postgre";
+    private static Logger logger = Logger.getLogger(PostgresqlConnection.class);
+
     public PostgresqlConnection() {
         try{
             String user = PropertiesExtractor.getPropValue(connectionName, DATABASE_USER);
@@ -26,7 +30,7 @@ public class PostgresqlConnection implements AbstractConnection, DBConstants{
             props.setProperty(DATABASE_SSL,ssl);
             connection =  DriverManager.getConnection(url,props);
 
-        }catch(Exception e){ System.out.println(e);}
+        }catch(Exception e){ logger.warn(e);}
     }
     public static PostgresqlConnection getInstance(){
         if(instance == null){

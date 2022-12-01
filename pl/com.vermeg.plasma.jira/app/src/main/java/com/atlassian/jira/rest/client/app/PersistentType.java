@@ -4,5 +4,5 @@ public class PersistentType {
     ;
     public static final String QUERY = "QUERY" ;
     public static final String PROJECT = "PROJECT";
-    public static final String MODULE = "MODULE";
+    public static final String COMPONENT = "COMPONENT";
 }

@@ -5,7 +5,7 @@
 package projects;
 
 public interface SolifeConstants {
-    public final String PROJECT_NAME = "SOLIFE";
-    public final String PROJECT_PATH = "C:\\sandboxes\\"+PROJECT_NAME+"\\is";
+    public final String PROJECT_NAME = "Solife_6_3_x";
+    public final String PROJECT_PATH = "C:\\sandbox\\plasma-app\\"+PROJECT_NAME+"\\is";
 
 }

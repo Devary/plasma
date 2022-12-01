@@ -5,6 +5,8 @@
 package services.processing;
 
 import files.IAbstractFile;
+import hierarchy.Classes.JavaClass;
+import hierarchy.persistence.Persistent;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.reporting.Report;

@@ -44,7 +44,7 @@ public class LinkService extends ParsingService{
     }
 
     public String getInverseName() {
-        return createNodeAndCheckForExistence("name");
+        return createNodeAndCheckForExistence("inverseName");
     }
 
     public String getName() {

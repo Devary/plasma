@@ -9,20 +9,23 @@ import hierarchy.persistence.Persistent;
 import files.AbstractFile;
 import files.IAbstractFile;
 import hierarchy.property.PropertiesFile;
-import mappers.AbstractMapper;
+import org.apache.log4j.Logger;
 import projects.ProjectFile;
 import projects.ProjectImpl;
+import projects.SolifeConstants;
 import services.reporting.Report;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Properties;
+import java.util.Collection;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class AbstractProcess implements IAbstractProcess {
+public class AbstractProcess implements IAbstractProcess, SolifeConstants {
 
     private final Report report;
+    private static Logger logger = Logger.getLogger(AbstractProcess.class);
+
 
     public ArrayList<JavaClass> getJavaClasses() {
         return javaClasses;
@@ -55,6 +58,11 @@ public class AbstractProcess implements IAbstractProcess {
         this.report = report;
         this.project = project;
     }
+    public AbstractProcess(Report report) {
+
+        this.report = report;
+    }
+
 
     @Override
     public ProjectImpl createProject(String basePath) {
@@ -67,14 +75,14 @@ public class AbstractProcess implements IAbstractProcess {
 
     @Override
     public IAbstractFile createAbstractFile() {
-        return AbstractFile.newAbstractFile().path("C:\\sandboxes\\solife_6_3_x").name("is\\modules").build();
+        return AbstractFile.newAbstractFile().path(PROJECT_PATH).name("\\modules").build();
     }
 
     @Override
-    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
-
+    public ArrayList<JavaClass> createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) throws Exception {
         return null;
     }
+
 
     public void adaptProcess(ArrayList<ProjectFile> projectFiles,String processingType) throws Exception {
         IAbstractProcess abstractProcess;
@@ -106,6 +114,6 @@ public class AbstractProcess implements IAbstractProcess {
             //should never happen for now
             return;
         }
-        System.out.println("Init completed for : "+ processingType);
+        logger.warn("Init completed for : "+ processingType);
     }
 }

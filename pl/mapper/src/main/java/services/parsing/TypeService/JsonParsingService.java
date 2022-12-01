@@ -5,12 +5,17 @@
 package services.parsing.TypeService;
 
 import hierarchy.persistence.types.Link;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
+import services.parsing.ParsingService;
+import services.processing.VirtualLinkCreationProcess;
 
 import java.io.File;
 import java.io.IOException;
 
-public class JsonParsingService {
+public class JsonParsingService extends ParsingService {
+    private static Logger logger = Logger.getLogger(JsonParsingService.class);
+
     public void parseLinkToJson(Link link)
     {
         String message;
@@ -27,7 +32,7 @@ public class JsonParsingService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(message);
+        logger.warn(message);
     }
 
 }

@@ -14,10 +14,13 @@ import hierarchy.Classes.JavaClass;
 import descriptors.ClassDescriptor;
 import hierarchy.Classes.types.Function;
 import hierarchy.persistence.Persistent;
+import org.apache.log4j.Logger;
 import projects.ProjectFile;
+import services.processing.VirtualLinkCreationProcess;
 import services.reporting.Report;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,13 +29,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-public class JavaClassesParsingService {
+public class JavaClassesParsingService extends ParsingService {
     JavaClass javaClass = JavaClass.newJavaClass().build();
     ProjectFile file;
     StringBuilder content = new StringBuilder();
     StringBuilder newCleanContent = new StringBuilder();
     private ArrayList<JavaClass> innerClasses = new ArrayList<>();
     private final String plasmaGeneratedClassesDir = System.getProperty("user.dir") + "/mapper/src/main/java/plasma_generated_classes/";
+    private static Logger logger = Logger.getLogger(JavaClassesParsingService.class);
 
     public static final String[] CLASS_TYPES = {"public class", "public interface", "public enum"};
 
@@ -130,7 +134,7 @@ public class JavaClassesParsingService {
                     int indexClassType = classTypeParams.get(1);
                     int classTypeLength = classTypes[classTypeParams.get(0)].length();
                     if (indexClassType != -1) {
-                        System.out.println(header + line);
+                        logger.warn(header + line);
                         int indexOfOpeningAcco = line.indexOf("{");
                         if (line.contains("//")) {
                             line = removeLineComments(line);
@@ -145,7 +149,7 @@ public class JavaClassesParsingService {
                             header.setLength(header.length() - 1);
                             continue;
                         }
-                        System.out.println(header);
+                        logger.warn(header);
                         count++;
 
                         if (line.contains("<")) {
@@ -247,7 +251,7 @@ public class JavaClassesParsingService {
                 return;
             }
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
-            System.out.println("Processing on class :" + cls.getName());
+            logger.warn("Processing on class :" + cls.getName());
             getClassType(cls);
             //if (cls.getImplements().isEmpty()) {
             //    return;
@@ -255,6 +259,7 @@ public class JavaClassesParsingService {
             javaClass.setBody(builder);
             javaClass.setName(cls.getName());
             javaClass.setClassName(cls.getName());
+            javaClass.setPath(cls.getFullyQualifiedName());
             javaClass.setClassType(getClassType(cls));
             ArrayList<JavaClass> implsClasses = new ArrayList();
             ArrayList<JavaClass> extClasses = new ArrayList();
@@ -274,7 +279,7 @@ public class JavaClassesParsingService {
             //Methods
             parseMethods(cls);
         } catch (Exception pe) {
-            System.out.println(pe.fillInStackTrace());
+            logger.warn(pe.fillInStackTrace());
         }
 
     }
@@ -315,12 +320,15 @@ public class JavaClassesParsingService {
         List<JavaMethod> methods = cls.getMethods();
         ArrayList<Function> javaMethods = new ArrayList<>();
         for (JavaMethod jm : methods) {
-            javaMethods.add(Function.newFunction()
-                    .name(jm.getName())
-                    /// TODO: update resultType with existing JAVACLASS in the process
-                    .resultType(null)
-                    .build()
-            );
+            if(jm.isPublic()){
+                javaMethods.add(Function.newFunction()
+                        .name(jm.getName())
+                        .isVoid(jm.getDeclarationSignature(true).contains("void"))
+                        /// TODO: update resultType with existing JAVACLASS in the process
+                        .resultType(null)
+                        .build()
+                );
+            }
         }
         javaClass.setFunctions(javaMethods);
     }
@@ -385,7 +393,7 @@ public class JavaClassesParsingService {
             fos.write(content.toString().getBytes());
             fos.flush();
             fos.close();
-            System.out.println("::::CLONE CREATED::::");
+            logger.warn("::::CLONE CREATED::::");
         }
     }
 
@@ -489,7 +497,7 @@ public class JavaClassesParsingService {
         Character space = ' ';
         int indexOfOpeningAcco = line.indexOf("{");
         int stopIndex;
-        System.out.println(line);
+        logger.warn(line);
         if (indexOfOpeningAcco == -1) {
             return line.length() - 1;
         }
@@ -544,7 +552,7 @@ public class JavaClassesParsingService {
                 return;
             }
             com.thoughtworks.qdox.model.JavaClass cls = builder.getClasses().iterator().next();
-            System.out.println("Processing on class :" + cls.getName());
+            logger.warn("Processing on class :" + cls.getName());
             getClassType(cls);
             //if (cls.getImplements().isEmpty()) {
             //    return;
@@ -569,7 +577,7 @@ public class JavaClassesParsingService {
             //Methods
             parseMethods(cls);
         } catch (Exception pe) {
-            System.out.println(pe.fillInStackTrace());
+            logger.warn(pe.fillInStackTrace());
         }
 
     }

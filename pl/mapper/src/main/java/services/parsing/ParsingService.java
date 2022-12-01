@@ -15,6 +15,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import projects.ProjectFile;
+import services.IService;
+import services.IServiceImpl;
 import services.parsing.TypeService.FieldService;
 import services.parsing.TypeService.JsonParsingService;
 import services.parsing.TypeService.LinkService;
@@ -26,7 +28,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-public class ParsingService {
+public class ParsingService extends IServiceImpl {
 
     private static Document xmlDocument;
     private JsonParsingService jsonParsingService;
@@ -71,10 +73,11 @@ public class ParsingService {
     }
 
     public Persistent buildPersistentFromXML() {
+        Boolean isPersistent = getIsPersistent() == null || !Boolean.valueOf(getIsPersistent()) ? Boolean.valueOf("false") : Boolean.valueOf(getIsPersistent());
         persistent = Persistent.newPersistent()
                 .name(getName()) // to improve
                 .className(getClassName())
-                .tableName(getTableName(getClassName()))
+                .tableName(PlasmaUtils.convertToUnderscoredName(getClassName()))
                 .isPersistent(Boolean.parseBoolean(getIsPersistent()))
                 .mappingType(getMappingType())
                 .table(getTable())
@@ -83,7 +86,7 @@ public class ParsingService {
                 .codes(getCodeList())
                 .queries(getQueryList())
                 .links(getLinkList())
-                .isPersistent(Boolean.getBoolean(getIsPersistent() == null ? "false" : getIsPersistent()))
+                .isPersistent(isPersistent)
                 .build();
 
         return persistent;
@@ -137,7 +140,7 @@ public class ParsingService {
             FieldService fs = new FieldService(nl.item(i));
             f.setName(fs.getName());
             f.setAllowNulls(fs.getIfAllowsNull());
-            f.setDbname(getTableName(fs.getName()));
+            f.setDbname(PlasmaUtils.convertToUnderscoredName(fs.getName()));
             f.setDbtype(fs.getDbType());
             f.setDbsize(fs.getDbSize());
             f.setDefaultValue(fs.getDefaultValue());
