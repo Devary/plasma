@@ -24,7 +24,7 @@ public class JavaClassRecursiveUpdate {
     private Connection conn = null;
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
     /**
      * Connect to the PostgreSQL database

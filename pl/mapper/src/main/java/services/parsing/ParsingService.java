@@ -15,6 +15,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import projects.ProjectFile;
+import services.IService;
+import services.IServiceImpl;
 import services.parsing.TypeService.FieldService;
 import services.parsing.TypeService.JsonParsingService;
 import services.parsing.TypeService.LinkService;
@@ -26,7 +28,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-public class ParsingService {
+public class ParsingService extends IServiceImpl {
 
     private static Document xmlDocument;
     private JsonParsingService jsonParsingService;

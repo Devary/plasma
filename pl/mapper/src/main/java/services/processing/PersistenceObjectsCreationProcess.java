@@ -4,7 +4,6 @@
 
 package services.processing;
 
-import Engines.connections.PostgresqlConnection;
 import hierarchy.persistence.Persistent;
 import files.IAbstractFile;
 import hierarchy.persistence.types.Field;
@@ -19,18 +18,25 @@ import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
-public class PersistenceObjectsCreationProcess implements IAbstractProcess {
+public class PersistenceObjectsCreationProcess extends AbstractProcess {
 
-    private Collection<Persistent> persistents;
+    private ArrayList<Persistent> persistents;
     private Connection conn = null;
     long id = -1;
     private static Logger logger = Logger.getLogger(PersistenceObjectsCreationProcess.class);
 
-    public Collection<Persistent> getPersistents() {
+    public PersistenceObjectsCreationProcess(Report report) {
+        super(report);
+    }
+    public PersistenceObjectsCreationProcess() {
+        super(new Report());
+    }
+
+    public ArrayList<Persistent> getPersistents() {
         return persistents;
     }
 
-    private void setPersistents(Collection<Persistent> persistents) {
+    private void setPersistents(ArrayList<Persistent> persistents) {
         this.persistents = persistents;
     }
 
@@ -45,7 +51,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
     }
 
     @Override
-    public ArrayList<Persistent> createObjectFiles(ArrayList<ProjectFile> projectPersistenceFiles, Report report) throws Exception {
+    public ArrayList createObjectFiles(ArrayList<ProjectFile> projectPersistenceFiles, Report report) throws Exception {
         logger.warn("Processing Object creation");
         ArrayList<Persistent> persistents = new ArrayList<>();
         int max = 5000; // for dev matters , must be removed after tests
@@ -198,7 +204,7 @@ public class PersistenceObjectsCreationProcess implements IAbstractProcess {
 
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
     /**
      * Connect to the PostgreSQL database

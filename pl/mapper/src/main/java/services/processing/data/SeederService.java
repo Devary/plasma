@@ -6,6 +6,7 @@ import hierarchy.persistence.types.Link;
 import mappers.AbstractMapper;
 import org.apache.log4j.Logger;
 import projects.ProjectImpl;
+import services.IServiceImpl;
 import services.processing.AbstractProcess;
 import services.processing.ProcessingTypes;
 import services.processing.PropertyFileCreationProcess;
@@ -15,7 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SeederService {
+public class SeederService  extends IServiceImpl {
     private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
     private static Report report = new Report();
     private static Logger logger = Logger.getLogger(PropertyFileCreationProcess.class);
@@ -28,7 +29,7 @@ public class SeederService {
 
         try {
             AbstractMapper abstractMapperPersistence = initAbstractMapper(ProcessingTypes.PERSISTENT, FileTypes.PERSISTENCE, basePath, report);
-            p2(abstractMapperPersistence);
+            ProcessPersistent(abstractMapperPersistence);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -37,7 +38,7 @@ public class SeederService {
 
         try {
             AbstractMapper abstractMapperJava = initAbstractMapper(ProcessingTypes.JAVACLASS, FileTypes.JAVACLASS, basePath, report);
-            p1(abstractMapperJava);
+            ProcessJavaClasses(abstractMapperJava);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -45,7 +46,7 @@ public class SeederService {
 
         try {
             AbstractMapper abstractMapperProperties = initAbstractMapper(ProcessingTypes.PROPERTY, FileTypes.CIDREG, basePath, report);
-            p3(abstractMapperProperties);
+            ProcessProperties(abstractMapperProperties);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -63,7 +64,7 @@ public class SeederService {
         return abstractMapper;
     }
 
-    private static void p1(AbstractMapper abstractMapperJava) throws Exception {
+    private static void ProcessJavaClasses(AbstractMapper abstractMapperJava) throws Exception {
         try {
             abstractMapperJava.getProcess().adaptProcess(abstractMapperJava.getProjectFiles(), ProcessingTypes.JAVACLASS);
         } catch (ClassNotFoundException e) {
@@ -71,7 +72,7 @@ public class SeederService {
         }
     }
 
-    private void p2(AbstractMapper abstractMapperPersistence) throws Exception {
+    private void ProcessPersistent(AbstractMapper abstractMapperPersistence) throws Exception {
         try {
             abstractMapperPersistence.getProcess().adaptProcess(abstractMapperPersistence.getProjectFiles(), ProcessingTypes.PERSISTENT);
         } catch (ClassNotFoundException e) {
@@ -80,7 +81,7 @@ public class SeederService {
 
     }
 
-    private void p3(AbstractMapper abstractMapperProperties) throws Exception {
+    private void ProcessProperties(AbstractMapper abstractMapperProperties) throws Exception {
         try {
             abstractMapperProperties.getProcess().adaptProcess(abstractMapperProperties.getProjectFiles(), ProcessingTypes.PROPERTY);
         } catch (ClassNotFoundException e) {

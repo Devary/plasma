@@ -13,7 +13,7 @@ public class DatabaseService {
 
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
 
     /**
@@ -55,7 +55,7 @@ public class DatabaseService {
     }
 
     private void persistQuery(PlasmaQuery pq) {
-        StringBuilder insertion = new StringBuilder("INSERT INTO public.jira_query (status, creation_date, \"ticketNumber\", owner, type, created_at, module_id, project_id,description,entities) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?);");
+        StringBuilder insertion = new StringBuilder("INSERT INTO public.jira_query (status, creation_date, \"ticketNumber\", owner, type, created_at, project_id,description,entities) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);");
         try {
             PreparedStatement statement = conn.prepareStatement(insertion.toString());
             statement.setInt(1, 0);
@@ -68,10 +68,10 @@ public class DatabaseService {
             java.util.Date date = new Date();
             timestamp2 = new Timestamp(date.getTime());
             statement.setTimestamp(6, timestamp2);
-            statement.setInt(7, 1);
-            statement.setInt(8, pq.getIssue().getProject().getId().intValue());
-            statement.setString(9, pq.getSql());
-            statement.setString(10, "");
+            //statement.setInt(7, null);
+            statement.setInt(7, pq.getIssue().getProject().getId().intValue());
+            statement.setString(8, pq.getSql());
+            statement.setString(9, "");
 
 
             int update = statement.executeUpdate();

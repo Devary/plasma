@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-public class JavaClassesParsingService {
+public class JavaClassesParsingService extends ParsingService {
     JavaClass javaClass = JavaClass.newJavaClass().build();
     ProjectFile file;
     StringBuilder content = new StringBuilder();

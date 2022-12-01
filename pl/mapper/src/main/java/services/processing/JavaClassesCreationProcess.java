@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-public class JavaClassesCreationProcess implements IAbstractProcess {
+public class JavaClassesCreationProcess extends AbstractProcess {
 
 
     private Collection<JavaClass> javaClasses;
 
-    public Collection<JavaClass> getJavaClasses() {
-        return javaClasses;
-    }
+    //public Collection<JavaClass> getJavaClasses() {
+    //    return javaClasses;
+    //}
     private static Logger logger = Logger.getLogger(JavaClassesCreationProcess.class);
 
     private int id = -1;
@@ -35,8 +35,15 @@ public class JavaClassesCreationProcess implements IAbstractProcess {
 
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
+    public JavaClassesCreationProcess(Report report) {
+        super(report);
+    }
+
+    public JavaClassesCreationProcess() {
+        super(new Report());
+    }
     /**
      * Connect to the PostgreSQL database
      *

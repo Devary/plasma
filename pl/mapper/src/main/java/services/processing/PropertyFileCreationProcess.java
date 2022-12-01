@@ -13,9 +13,17 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropertyFileCreationProcess implements IAbstractProcess {
+public class PropertyFileCreationProcess extends AbstractProcess {
     private Connection conn = null;
     private static Logger logger = Logger.getLogger(PropertyFileCreationProcess.class);
+
+    public PropertyFileCreationProcess(Report report) {
+        super(report);
+    }
+    public PropertyFileCreationProcess() {
+
+        super(new Report());
+    }
 
 
     @Override
@@ -68,7 +76,7 @@ public class PropertyFileCreationProcess implements IAbstractProcess {
     }
     private final String url = "jdbc:postgresql://localhost:5432/test";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "Fakher15";
 
     /**
      * Connect to the PostgreSQL database

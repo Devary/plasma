@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class MainProcess {
-    private static String basePath = "C:/Sandboxes/solife_6_1_2_CLV23_FP";
+    private static String basePath = "C:\\sandbox\\plasma-app\\Solife_6_3_x";
     private static Report report = new Report();
     private Collection<String> test;
     private static Logger logger = Logger.getLogger(MainProcess.class);

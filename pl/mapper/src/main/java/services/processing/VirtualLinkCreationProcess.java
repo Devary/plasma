@@ -5,29 +5,33 @@ import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.impl.DefaultJavaParameterizedType;
 import com.thoughtworks.qdox.model.impl.JavaMethodDelegate;
+import files.IAbstractFile;
 import hierarchy.Classes.JavaClass;
 import hierarchy.Classes.types.Function;
 import hierarchy.Classes.types.JavaField;
 import hierarchy.persistence.Persistent;
 import hierarchy.persistence.types.Link;
 import org.apache.log4j.Logger;
+import projects.ProjectFile;
+import projects.ProjectImpl;
 import services.parsing.PlasmaUtils;
 import services.processing.data.Connections;
 import services.processing.data.LoaderService;
 import services.processing.data.SeederService;
+import services.reporting.Report;
 
 import java.io.File;
 import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class VirtualLinkCreationProcess {
+public class VirtualLinkCreationProcess extends AbstractProcess {
     private ArrayList<Link> links = new ArrayList<>();
     private ArrayList<JavaClass> javaclasses = new ArrayList<>();
-    private ArrayList<JavaClass> parsedJavaclasses = new ArrayList<>();
+    //private ArrayList<JavaClass> parsedJavaclasses = new ArrayList<>();
     private ArrayList<Persistent> persistences = new ArrayList<>();
-    private ArrayList<JavaField> javaFields = new ArrayList<>();
-    private ArrayList<Function> javaMethods = new ArrayList<>();
+    //private ArrayList<JavaField> javaFields = new ArrayList<>();
+    //private ArrayList<Function> javaMethods = new ArrayList<>();
     public Map<Long, Long> virtualLinksPoints = new HashMap<>();
     public ArrayList<String> virtualLinksPointsV2 = new ArrayList<>();
     private HashMap<String, String> mergedProperties = new HashMap<>();
@@ -37,18 +41,19 @@ public class VirtualLinkCreationProcess {
     private Connections connectionService;
     private static Logger logger = Logger.getLogger(VirtualLinkCreationProcess.class);
     private static Connection conn = null;
-    private HashMap<String, String> linkToPersistentDB = new HashMap<>();
-    private HashMap<String, String> linkToPersistentDirectLink = new HashMap<>();
+    //private HashMap<String, String> linkToPersistentDB = new HashMap<>();
+    //private HashMap<String, String> linkToPersistentDirectLink = new HashMap<>();
 
 
 
     public VirtualLinkCreationProcess(boolean reset) {
+        super(new Report());
         if(reset){
             seederService = new SeederService();
             seederService.processorEntities();
         }
         loaderService = new LoaderService(reset);
-        this.parsedJavaclasses = loaderService.getParsedJavaclasses();
+        //this.parsedJavaclasses = loaderService.getParsedJavaclasses();
     }
 
     public static void main(String[] args) {
@@ -72,149 +77,149 @@ public class VirtualLinkCreationProcess {
         vcp.doProcess();
     }
 
+    /*
+        public void process() {
+            //do process
+            for (Link link : links) {
+                try {
+                    //1.first step : create unique-linked persistent Virtual Link
 
-    public void process() {
-        //do process
-        for (Link link : links) {
-            try {
-                //1.first step : create unique-linked persistent Virtual Link
-
-                /*String inverseName = link.getInverseName();
-                inverseName = inverseName.substring(0, 1).toUpperCase() + inverseName.substring(1);
-                String finalInverseName = inverseName;
-                Persistent persistent = persistences.stream().filter(per -> {
-                    return per.getName().equals(finalInverseName);
-                }).findFirst().orElse(null);
-
-                if (persistent == null) {
-                    String linkName = link.getName();
-                    linkName = linkName.substring(0, 1).toUpperCase() + linkName.substring(1);
-                    String finalLinkName = linkName;
-                    persistent = persistences.stream().filter(per -> {
-                        return per.getTable() != null && per.getTable().equals(finalLinkName);
+                    /*String inverseName = link.getInverseName();
+                    inverseName = inverseName.substring(0, 1).toUpperCase() + inverseName.substring(1);
+                    String finalInverseName = inverseName;
+                    Persistent persistent = persistences.stream().filter(per -> {
+                        return per.getName().equals(finalInverseName);
                     }).findFirst().orElse(null);
-                    String s = inverseName.substring(inverseName.length() - 1);
-                    boolean isInverseNameInPlural = s.equals("s");
-                    if (persistent == null && isInverseNameInPlural) {
-                        inverseName = inverseName.substring(0, inverseName.length() - 1);
-                        String finalInverseName1 = inverseName;
+
+                    if (persistent == null) {
+                        String linkName = link.getName();
+                        linkName = linkName.substring(0, 1).toUpperCase() + linkName.substring(1);
+                        String finalLinkName = linkName;
                         persistent = persistences.stream().filter(per -> {
-                            return per.getName().equals(finalInverseName1);
+                            return per.getTable() != null && per.getTable().equals(finalLinkName);
                         }).findFirst().orElse(null);
-                    }
-                }
-
-                if (persistent != null) {
-                    virtualLinksPoints.put(persistent.getId(), link.getId());
-                    continue;
-                }*/
-
-                //2. second step : get all persistent classes from INTERFACES and ABSTRACT classes
-                JavaClass theClazz = null;
-                String[] splits;
-                if (link.getElementType() != null) {
-                    splits = link.getElementType().split("\\.");
-                    String name = splits[splits.length - 1];
-                    theClazz = javaclasses.stream().filter(clazz -> {
-                        return clazz.getClassName().equals(name);
-                    }).findFirst().orElse(null);
-                }
-
-                ArrayList<JavaClass> subClasses = new ArrayList<>();
-                if (theClazz != null) {
-                    //tryToGetSubClasses(theClazz, link);
-                    newAlgo(theClazz, link);
-
-                    /*
-                    if (theClazz.getClassType().equals("INTERFACE")) {
-                        //get sub classes & check for sub interfaces
-                        tmpSubClasses.addAll(getSubClasses(theClazz));
-                    } else {
-                        //check if there is a persistent with class name
-                        persistent = persistences.stream().filter(per -> {
-                            return per.getName().equals(theClazz.getClassName());
-                        }).findFirst().orElse(null);
-                        if (persistent == null) {
-                            //find sub classes
-
-                        } else {
-                            //add persistent
-                            virtualLinksPoints.put(persistent.getId(), link.getId());
-                            subClasses.add(theClazz);
+                        String s = inverseName.substring(inverseName.length() - 1);
+                        boolean isInverseNameInPlural = s.equals("s");
+                        if (persistent == null && isInverseNameInPlural) {
+                            inverseName = inverseName.substring(0, inverseName.length() - 1);
+                            String finalInverseName1 = inverseName;
+                            persistent = persistences.stream().filter(per -> {
+                                return per.getName().equals(finalInverseName1);
+                            }).findFirst().orElse(null);
                         }
-                    }*/
-
-                }
-
-                //3. create a link for each persistent
-
-
-                //4. add to collection
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        //fillVirtualLinksTable(link);
-        //virtual link  => id ,
-        // source,
-        // target ,
-        // from ( persistent's link owner) ,
-        // to ( link's persistent target ) ,
-        // text (iscollection),
-        // to text,
-        // name (link name),
-        // inversename (link inverse name)
-    }
-
-    private void tryToGetSubClasses(JavaClass theClazz, Link link) {
-        try {
-            //ArrayList<JavaClass> tmpSubClasses = new ArrayList<>();
-            subClazzz = new ArrayList<>();
-            getSubClasses(theClazz);
-            for (JavaClass jc : subClazzz
-            ) {
-                Persistent lclpers = persistences.stream().filter(per -> {
-                    return per.getName().equals(jc.getClassName());
-                }).findFirst().orElse(null);
-                if (lclpers != null) {
-                    virtualLinksPoints.put(lclpers.getId(), link.getId());
-                }
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    private ArrayList<JavaClass> subClazzz = new ArrayList<>();
-
-    private ArrayList<JavaClass> getSubClasses(JavaClass theClazz) {
-        //ArrayList<JavaClass> subClazzz = new ArrayList<>();
-        if (theClazz.getImplementations() != null || theClazz.getHeritances() != null) {
-            for (JavaClass clazz : theClazz.getImplementations()) {
-                JavaClass cls = javaclasses.stream().filter(c -> {
-                    return c.getClassName().equals(clazz.getClassName());
-                }).findFirst().orElse(null);
-                if (cls != null && (cls.getClassType().equals("INTERFACE") || cls.getClassType().contains("Abstract"))) {
-                    ArrayList<JavaClass> clazzez = classesWhoImplementTheInterfaceOrExtendsThisClass(cls);
-                    for (JavaClass impl : clazzez) {
-                        getSubClasses(impl);
                     }
-                    //if (tmpSubClazzz != null){
-                    //    for (JavaClass subClass : tmpSubClazzz) {
-                    //        getSubClasses(subClass);
-                    //    }
-                    //}
-                } else if (cls != null) {
-                    subClazzz.add(cls);
+
+                    if (persistent != null) {
+                        virtualLinksPoints.put(persistent.getId(), link.getId());
+                        continue;
+                    }
+
+                    //2. second step : get all persistent classes from INTERFACES and ABSTRACT classes
+                    JavaClass theClazz = null;
+                    String[] splits;
+                    if (link.getElementType() != null) {
+                        splits = link.getElementType().split("\\.");
+                        String name = splits[splits.length - 1];
+                        theClazz = javaclasses.stream().filter(clazz -> {
+                            return clazz.getClassName().equals(name);
+                        }).findFirst().orElse(null);
+                    }
+
+                    ArrayList<JavaClass> subClasses = new ArrayList<>();
+                    if (theClazz != null) {
+                        //tryToGetSubClasses(theClazz, link);
+                        newAlgo(theClazz, link);
+
+                        /*
+                        if (theClazz.getClassType().equals("INTERFACE")) {
+                            //get sub classes & check for sub interfaces
+                            tmpSubClasses.addAll(getSubClasses(theClazz));
+                        } else {
+                            //check if there is a persistent with class name
+                            persistent = persistences.stream().filter(per -> {
+                                return per.getName().equals(theClazz.getClassName());
+                            }).findFirst().orElse(null);
+                            if (persistent == null) {
+                                //find sub classes
+
+                            } else {
+                                //add persistent
+                                virtualLinksPoints.put(persistent.getId(), link.getId());
+                                subClasses.add(theClazz);
+                            }
+
+
+                    }
+
+                    //3. create a link for each persistent
+
+
+                    //4. add to collection
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-        }
-        return new ArrayList<>();
-    }
 
+
+            //fillVirtualLinksTable(link);
+            //virtual link  => id ,
+            // source,
+            // target ,
+            // from ( persistent's link owner) ,
+            // to ( link's persistent target ) ,
+            // text (iscollection),
+            // to text,
+            // name (link name),
+            // inversename (link inverse name)
+        }
+                        /*
+        private void tryToGetSubClasses(JavaClass theClazz, Link link) {
+            try {
+                //ArrayList<JavaClass> tmpSubClasses = new ArrayList<>();
+                subClazzz = new ArrayList<>();
+                getSubClasses(theClazz);
+                for (JavaClass jc : subClazzz
+                ) {
+                    Persistent lclpers = persistences.stream().filter(per -> {
+                        return per.getName().equals(jc.getClassName());
+                    }).findFirst().orElse(null);
+                    if (lclpers != null) {
+                        virtualLinksPoints.put(lclpers.getId(), link.getId());
+                    }
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+
+        private ArrayList<JavaClass> subClazzz = new ArrayList<>();
+
+        private ArrayList<JavaClass> getSubClasses(JavaClass theClazz) {
+            //ArrayList<JavaClass> subClazzz = new ArrayList<>();
+            if (theClazz.getImplementations() != null || theClazz.getHeritances() != null) {
+                for (JavaClass clazz : theClazz.getImplementations()) {
+                    JavaClass cls = javaclasses.stream().filter(c -> {
+                        return c.getClassName().equals(clazz.getClassName());
+                    }).findFirst().orElse(null);
+                    if (cls != null && (cls.getClassType().equals("INTERFACE") || cls.getClassType().contains("Abstract"))) {
+                        ArrayList<JavaClass> clazzez = classesWhoImplementTheInterfaceOrExtendsThisClass(cls);
+                        for (JavaClass impl : clazzez) {
+                            getSubClasses(impl);
+                        }
+                        //if (tmpSubClazzz != null){
+                        //    for (JavaClass subClass : tmpSubClazzz) {
+                        //        getSubClasses(subClass);
+                        //    }
+                        //}
+                    } else if (cls != null) {
+                        subClazzz.add(cls);
+                    }
+                }
+            }
+            return new ArrayList<>();
+        }
+        */
     private ArrayList<JavaClass> classesWhoImplementTheInterfaceOrExtendsThisClass(JavaClass cls) {
         ArrayList<JavaClass> all = new ArrayList<>();
         if (cls.getImplementations() != null) {
@@ -286,7 +291,7 @@ public class VirtualLinkCreationProcess {
     // target = per ,
     // link_source = link
     // link_target = perlink
-
+    /*
     public void dataModelTraining() {
         ArrayList<Persistent> persistents = persistences;
         for (Persistent persistent : persistents) {
@@ -302,7 +307,7 @@ public class VirtualLinkCreationProcess {
             }
         }
     }
-
+    */
     ///select * from {perss}.getName() =>formatted to table name
     // where exists(select * from {per} where {perlink}.name+_oid = {link}.name+_oid and oid <> oid      //pour éviter de selectionner le meme objet
     private boolean execute(Persistent persistent, Link link, Persistent per, Link perLink) {
@@ -351,7 +356,7 @@ public class VirtualLinkCreationProcess {
     // same for field to field : example : fo.external_id = accImpl.reference
     //+ add isfield isLink to the table virtualLink
 
-
+    /*
     public void lastAlgo() {
         filterJavaClasses();
         for (Link link : links) {
@@ -389,10 +394,10 @@ public class VirtualLinkCreationProcess {
         javaclasses = (ArrayList<JavaClass>) javaclasses.stream().filter(javaClass -> javaClass.getPersistent() != null && javaClass.getClassType().equals("CLASS")).collect(Collectors.toList());
         parsedJavaclasses = (ArrayList<JavaClass>) parsedJavaclasses.stream().filter(javaClass -> javaClass.getPersistent() != null && javaClass.getClassType().equals("CLASS")).collect(Collectors.toList());
     }
-
+    */
 
     ////new Processor parser
-
+    /*
     private void startGlobal() {
 
         connectionService.connect("", false);
@@ -470,7 +475,7 @@ public class VirtualLinkCreationProcess {
 
     }
 
-
+*/
     public Collection<com.thoughtworks.qdox.model.JavaClass> filter(JavaProjectBuilder javaProjectBuilder) {
         return javaProjectBuilder.getClasses().stream().filter(jc -> !jc.getSource().getURL().getPath().contains("src/test") && !jc.getSource().getURL().getPath().contains("target/")).collect(Collectors.toList());
     }
@@ -479,9 +484,8 @@ public class VirtualLinkCreationProcess {
         return classes.stream().filter(cls -> cls.getName().equals(name)).findFirst().orElse(null);
     }
 
-    ArrayList<String> varsDown = new ArrayList<>();
-    ArrayList<String> varsUp = new ArrayList<>();
 
+    /*
     public String getVariableReturnType(com.thoughtworks.qdox.model.JavaClass javaClass, Link link) {
         String var = link.getName();
         String capitalizedName = var.substring(0, 1).toUpperCase() + var.substring(1);
@@ -507,7 +511,7 @@ public class VirtualLinkCreationProcess {
     public Persistent findPersistentById(long id) {
         return persistences.stream().filter(per -> per.getId() == id).findFirst().orElse(null);
     }
-
+*/
     ////CID ANALYSIS
 
     private void doProcess() {
@@ -522,7 +526,7 @@ public class VirtualLinkCreationProcess {
             exception.printStackTrace();
         }
     }
-
+    /*
     private void generateInterfaceLinks() {
         seederService = new SeederService();
         for (Persistent persistent : loaderService.getPersistences()) {
@@ -591,7 +595,7 @@ public class VirtualLinkCreationProcess {
         }
 
     }
-
+    */
     public void generateDirectLink(){
         seederService = new SeederService();
         for (Persistent persistent : loaderService.getPersistences()) {
@@ -609,4 +613,18 @@ public class VirtualLinkCreationProcess {
         }
     }
 
+    @Override
+    public ProjectImpl createProject(String basePath) {
+        return null;
+    }
+
+    @Override
+    public IAbstractFile createAbstractFile() {
+        return null;
+    }
+
+    @Override
+    public ArrayList createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) {
+        return null;
+    }
 }

@@ -6,11 +6,14 @@ package mappers;
 
 import files.AbstractFile;
 import files.FileTypes;
+import files.IAbstractFile;
 import org.apache.log4j.Logger;
 import projects.ProjectFile;
 import projects.ProjectImpl;
 import services.processing.AbstractProcess;
+import services.processing.IAbstractProcess;
 import services.processing.VirtualLinkCreationProcess;
+import services.reporting.Report;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +24,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AbstractMapper implements IAbstractMapper {
+public class AbstractMapper implements IAbstractMapper, IAbstractProcess {
     public HashMap<Integer, AbstractFile> files = null;
     public String projectPath = null;
     public ProjectImpl project;
@@ -146,5 +149,20 @@ public class AbstractMapper implements IAbstractMapper {
 
     public AbstractProcess getProcess() {
         return process;
+    }
+
+    @Override
+    public ProjectImpl createProject(String basePath) {
+        return null;
+    }
+
+    @Override
+    public IAbstractFile createAbstractFile() {
+        return null;
+    }
+
+    @Override
+    public ArrayList createObjectFiles(ArrayList<ProjectFile> projectJavaFiles, Report report) throws Exception {
+        return null;
     }
 }

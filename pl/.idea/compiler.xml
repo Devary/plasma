@@ -18,8 +18,5 @@
         <module name="jira-rest-java-client-api" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="com.vermeg.plasma.database" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

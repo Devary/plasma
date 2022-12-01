@@ -10,7 +10,7 @@ import services.parsing.ParsingService;
 import services.parsing.PlasmaUtils;
 import services.reporting.Report;
 
-public class FieldService extends ParsingService{
+public class FieldService extends ParsingService {
     Node node;
     ProjectFile projectFile;
     public FieldService(Node node) {

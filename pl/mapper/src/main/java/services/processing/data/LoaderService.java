@@ -7,6 +7,7 @@ import hierarchy.persistence.Persistent;
 import hierarchy.persistence.types.Link;
 import hierarchy.property.PropertiesFile;
 import org.apache.log4j.Logger;
+import services.IServiceImpl;
 import services.processing.PropertyFileCreationProcess;
 
 import java.sql.Connection;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-public class LoaderService {
+public class LoaderService extends IServiceImpl {
 
     private HashMap<String, String> mergedProperties = new HashMap<>();
     private HashMap<String, String> linkToPersistent = new HashMap<>();
